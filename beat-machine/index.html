@@ -303,10 +303,10 @@
       // const filePath = '808-Clap01.wav';
 
       const samples_title = new Array(4);
-      samples_title[0] = filePath;
-      samples_title[1] = "sample-2";
-      samples_title[2] = "sample-3";
-      samples_title[3] = "sample-4";
+      samples_title[0] = '808-Kicks01.wav';
+      samples_title[1] = '808-HiHats01.wav';
+      samples_title[2] = '808-Clap01.wav';
+      samples_title[3] = '8 Bit Drop.wav';
 
       for (let i = 0; i < 4; ++i) {
         let sample_name = 'sample-' + (0).toString();
@@ -316,9 +316,11 @@
 
       // Here we're `await`ing the async/promise that is `getFile`.
       // To be able to use this keyword we need to be within an `async` function
-      const sample = await getFile(audioCtx, filePath);
-      const sample_2 = await getFile(audioCtx, filePath);
-      return [sample, sample_2];
+      const sample = await getFile(audioCtx, samples_title[0]);
+      const sample_2 = await getFile(audioCtx, samples_title[1]);
+      const sample_3 = await getFile(audioCtx, samples_title[2]);
+      const sample_4 = await getFile(audioCtx, samples_title[3]);
+      return [sample, sample_2, sample_3, sample_4];
     }
 
 
@@ -352,8 +354,10 @@
 
     // Create a queue for the notes that are to be played, with the current time that we want them to play:
     const notesInQueue = [];
-    let dtmf;
-    let dtmf_2;
+
+    let tracks = new Array(4);
+    // let dtmf;
+    // let dtmf_2;
 
     function scheduleNote(beatNumber, time) {
       // push the note on the queue, even if we're not playing.
@@ -361,18 +365,19 @@
       // console.log(beatNumber, time);
 
       if (pads[0].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSweep();
+        //playSweep();
+        playSample(audioCtx, tracks[0]);
       }
       if (pads[1].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playPulse();
+        //playPulse();
+        playSample(audioCtx, tracks[1]);
       }
       if (pads[2].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
         //playNoise();
-
-        playSample(audioCtx, dtmf_2);
+        playSample(audioCtx, tracks[2]);
       }
       if (pads[3].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSample(audioCtx, dtmf);
+        playSample(audioCtx, tracks[3]);
       }
 
     }
@@ -422,8 +427,11 @@
       .then((samples) => {
         loadingEl.style.display = 'none';
 
-        dtmf = samples[0]; // to be used in our playSample function
-        dtmf_2 = samples[1];
+        // to be used in our playSample function
+        tracks[0] = samples[0];
+        tracks[1] = samples[1];
+        tracks[2] = samples[2];
+        tracks[3] = samples[3];
 
         playButton.addEventListener('click', ev => {
           isPlaying = !isPlaying;
