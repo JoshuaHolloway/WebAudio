@@ -103,29 +103,6 @@ bandControl.addEventListener('input', ev => {
     bandHz = Number(ev.target.value);
 }, false);
 
-function playNoise() {
-    const bufferSize = audioCtx.sampleRate * noiseDuration; // set the time of the note
-    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate); // create an empty buffer
-    const data = buffer.getChannelData(0); // get data
-
-    // fill the buffer with noise
-    for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
-    }
-
-    // create a buffer source for our created data
-    const noise = audioCtx.createBufferSource();
-    noise.buffer = buffer;
-
-    const bandpass = audioCtx.createBiquadFilter();
-    bandpass.type = 'bandpass';
-    bandpass.frequency.value = bandHz;
-
-    // connect our graph
-    noise.connect(bandpass).connect(audioCtx.destination);
-    noise.start();
-}
-
 // Loading ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // fetch the audio file and decode the data
 async function getFile(audioContext, filepath) {
