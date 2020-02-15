@@ -1,5 +1,5 @@
 // import { AudioContext } from 'https://dev.jspm.io/standardized-audio-context';
-console.clear();
+// console.clear();
 
 const audioCtx = new AudioContext();
 
@@ -11,16 +11,16 @@ const audioCtx = new AudioContext();
 const pads = document.querySelectorAll('.pads');
 const allPadButtons = document.querySelectorAll('#tracks button');
 
-console.log('pads:');
-console.dir(pads);
+// console.log('pads:');
+// console.dir(pads);
 
-console.log('===========================');
-console.log('allPadsButtons:');
-console.dir(allPadButtons);
+// console.log('===========================');
+// console.log('allPadsButtons:');
+// console.dir(allPadButtons);
 
-console.log('===========================');
-console.log('allPadButtons[4]:');
-console.log(allPadButtons[4]);
+// console.log('===========================');
+// console.log('allPadButtons[4]:');
+// console.log(allPadButtons[4]);
 
 // -Switch aria attribute on click
 allPadButtons.forEach(el => {
@@ -32,6 +32,10 @@ allPadButtons.forEach(el => {
         }
     }, false)
 })
+
+
+
+
 
 
 
@@ -60,8 +64,8 @@ function playSample(audioContext, audioBuffer) {
     return sampleSource;
 }
 
-async function setupSample() {
 
+async function setupSample() {
 
     // Have button to select which target track (html input field)
     // Have button to load sample
@@ -83,7 +87,6 @@ async function setupSample() {
 
     for (let i = 0; i < 4; ++i) {
         let sample_name = 'sample-' + (0).toString();
-        console.log(sample_name);
         document.getElementById(sample_name).textContent = samples_title[0];
     }
 
@@ -135,7 +138,9 @@ let tracks = new Array(4);
 function scheduleNote(beatNumber, time) {
     // push the note on the queue, even if we're not playing.
     notesInQueue.push({ note: beatNumber, time: time });
-    // console.log(beatNumber, time);
+    // console.log('================================');
+    // console.log('scheduleNote()');
+    console.log('beatNumber: ' + beatNumber);
 
     if (pads[0].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
         //playSweep();
@@ -170,19 +175,51 @@ function scheduler() {
 
 let lastNoteDrawn = 3;
 function draw() {
+
+    // This function is called for each column
+    // -Want to change:
+    //      (4-calls then repeat) -> (8-calls then repeat)
+
     let drawNote = lastNoteDrawn;
     const currentTime = audioCtx.currentTime;
 
     while (notesInQueue.length && notesInQueue[0].time < currentTime) {
+
+        // console.log('In draw()');
+
         drawNote = notesInQueue[0].note;
+        // console.log('notesInQueue:');
+        console.log(`notesInQueue[0]: ${notesInQueue[0].note}`)
+        // console.log('drawNote = ' + drawNote);
+
         notesInQueue.splice(0, 1);   // remove note from queue
     }
 
+
+
+
     // We only need to draw if the note has moved.
     if (lastNoteDrawn !== drawNote) {
+
+
+        console.log(`lastNoteDrawn = ${lastNoteDrawn}, drawNote = ${drawNote}`);
+        console.log(notesInQueue);
+
+
+
+        // console.log('pads:');
+        // console.dir(pads);
+
+
         pads.forEach(el => {
+            // console.log(el);
+            // console.log('lastNoteDrawn = ' + lastNoteDrawn);
+            // console.log('drawNote = ' + drawNote);
+
             el.children[lastNoteDrawn].style.borderColor = 'hsla(0, 0%, 10%, 1)';
             el.children[drawNote].style.borderColor = 'hsla(49, 99%, 50%, 1)';
+
+            // el.children[4].style.borderColor = 'hsla(100, 99%, 50%, 1)';
         });
 
         lastNoteDrawn = drawNote;
@@ -198,6 +235,9 @@ let isPlaying = false;
 setupSample()
     // .then((sample, sample_2) => {
     .then((samples) => {
+
+        console.log('setupSample().then((samples) => {...})');
+
         loadingEl.style.display = 'none';
 
         // to be used in our playSample function
@@ -210,6 +250,8 @@ setupSample()
             isPlaying = !isPlaying;
 
             if (isPlaying) { // start playing
+
+                console.log('Start Playing ');
 
                 // check if context is in suspended state (autoplay policy)
                 if (audioCtx.state === 'suspended') {
