@@ -44,11 +44,6 @@ bp_measure_elem.addEventListener('change', () => {
 });
 
 // Individual-Beats
-const beat_1_elem = document.getElementById('beat-1');
-const beat_2_elem = document.getElementById('beat-2');
-const beat_3_elem = document.getElementById('beat-3');
-const beat_4_elem = document.getElementById('beat-4');
-
 const beats = document.querySelectorAll('.beat');
 console.log('=========beats:==========');
 for (let beat of beats) {
@@ -106,30 +101,175 @@ function song(time) {
     console.log(currentBeat[0] + ' ' + currentBeat[1] + ' ' + floor(currentBeat[2]));
 
 
-    const current = floor(currentBeat[2]) % 4;
-    if (current == 0) {
-        beats[0].style.background = 'red';
+
+    const x = currentBeat[1];
+    if (x == 0) {
+
+        beats[4].style.background = 'yellow';
+        beats[5].style.background = 'yellow';
+        beats[6].style.background = 'yellow';
+        beats[7].style.background = 'yellow';
+
+        beats[8].style.background = 'yellow';
+        beats[9].style.background = 'yellow';
+        beats[10].style.background = 'yellow';
+        beats[11].style.background = 'yellow';
+
+        beats[12].style.background = 'yellow';
+        beats[13].style.background = 'yellow';
+        beats[14].style.background = 'yellow';
+        beats[15].style.background = 'yellow';
+
+        const current = floor(currentBeat[2]);
+        if (current == 0) {
+            beats[0].style.background = 'red';
+            beats[1].style.background = 'yellow';
+            beats[2].style.background = 'yellow';
+            beats[3].style.background = 'yellow';
+        }
+        else if (current == 1) {
+            beats[0].style.background = 'yellow';
+            beats[1].style.background = 'red';
+            beats[2].style.background = 'yellow';
+            beats[3].style.background = 'yellow';
+        }
+        else if (current == 2) {
+            beats[0].style.background = 'yellow';
+            beats[1].style.background = 'yellow';
+            beats[2].style.background = 'red';
+            beats[3].style.background = 'yellow';
+        }
+        else if (current == 3) {
+            beats[0].style.background = 'yellow';
+            beats[1].style.background = 'yellow';
+            beats[2].style.background = 'yellow';
+            beats[3].style.background = 'red';
+        }
+    }
+    else if (x == 1) {
+
+        beats[0].style.background = 'yellow';
         beats[1].style.background = 'yellow';
         beats[2].style.background = 'yellow';
         beats[3].style.background = 'yellow';
+
+        beats[8].style.background = 'yellow';
+        beats[9].style.background = 'yellow';
+        beats[10].style.background = 'yellow';
+        beats[11].style.background = 'yellow';
+
+        beats[12].style.background = 'yellow';
+        beats[13].style.background = 'yellow';
+        beats[14].style.background = 'yellow';
+        beats[15].style.background = 'yellow';
+
+        const current = floor(currentBeat[2]);
+        if (current == 0) {
+            beats[4].style.background = 'red';
+            beats[5].style.background = 'yellow';
+            beats[6].style.background = 'yellow';
+            beats[7].style.background = 'yellow';
+        }
+        else if (current == 1) {
+            beats[4].style.background = 'yellow';
+            beats[5].style.background = 'red';
+            beats[6].style.background = 'yellow';
+            beats[7].style.background = 'yellow';
+        }
+        else if (current == 2) {
+            beats[4].style.background = 'yellow';
+            beats[5].style.background = 'yellow';
+            beats[6].style.background = 'red';
+            beats[7].style.background = 'yellow';
+        }
+        else if (current == 3) {
+            beats[4].style.background = 'yellow';
+            beats[5].style.background = 'yellow';
+            beats[6].style.background = 'yellow';
+            beats[7].style.background = 'red';
+        }
     }
-    else if (current == 1) {
-        beats[0].style.background = 'yellow';
-        beats[1].style.background = 'red';
-        beats[2].style.background = 'yellow';
-        beats[3].style.background = 'yellow';
-    }
-    else if (current == 2) {
+    else if (x == 2) {
+
         beats[0].style.background = 'yellow';
         beats[1].style.background = 'yellow';
-        beats[2].style.background = 'red';
+        beats[2].style.background = 'yellow';
         beats[3].style.background = 'yellow';
+        beats[4].style.background = 'yellow';
+        beats[5].style.background = 'yellow';
+        beats[6].style.background = 'yellow';
+        beats[7].style.background = 'yellow';
+        beats[12].style.background = 'yellow';
+        beats[13].style.background = 'yellow';
+        beats[14].style.background = 'yellow';
+        beats[15].style.background = 'yellow';
+
+        const current = floor(currentBeat[2]);
+        if (current == 0) {
+            beats[8].style.background = 'red';
+            beats[9].style.background = 'yellow';
+            beats[10].style.background = 'yellow';
+            beats[11].style.background = 'yellow';
+        }
+        else if (current == 1) {
+            beats[8].style.background = 'yellow';
+            beats[9].style.background = 'red';
+            beats[10].style.background = 'yellow';
+            beats[11].style.background = 'yellow';
+        }
+        else if (current == 2) {
+            beats[8].style.background = 'yellow';
+            beats[9].style.background = 'yellow';
+            beats[10].style.background = 'red';
+            beats[11].style.background = 'yellow';
+        }
+        else if (current == 3) {
+            beats[8].style.background = 'yellow';
+            beats[9].style.background = 'yellow';
+            beats[10].style.background = 'yellow';
+            beats[11].style.background = 'red';
+        }
     }
-    else if (current == 3) {
+    else if (x == 3) {
+
         beats[0].style.background = 'yellow';
         beats[1].style.background = 'yellow';
         beats[2].style.background = 'yellow';
-        beats[3].style.background = 'red';
+        beats[3].style.background = 'yellow';
+        beats[4].style.background = 'yellow';
+        beats[5].style.background = 'yellow';
+        beats[6].style.background = 'yellow';
+        beats[7].style.background = 'yellow';
+        beats[8].style.background = 'yellow';
+        beats[9].style.background = 'yellow';
+        beats[10].style.background = 'yellow';
+        beats[11].style.background = 'yellow';
+
+        const current = floor(currentBeat[2]);
+        if (current == 0) {
+            beats[12].style.background = 'red';
+            beats[13].style.background = 'yellow';
+            beats[14].style.background = 'yellow';
+            beats[15].style.background = 'yellow';
+        }
+        else if (current == 1) {
+            beats[12].style.background = 'yellow';
+            beats[13].style.background = 'red';
+            beats[14].style.background = 'yellow';
+            beats[15].style.background = 'yellow';
+        }
+        else if (current == 2) {
+            beats[12].style.background = 'yellow';
+            beats[13].style.background = 'yellow';
+            beats[14].style.background = 'red';
+            beats[15].style.background = 'yellow';
+        }
+        else if (current == 3) {
+            beats[12].style.background = 'yellow';
+            beats[13].style.background = 'yellow';
+            beats[14].style.background = 'yellow';
+            beats[15].style.background = 'red';
+        }
     }
 
 
