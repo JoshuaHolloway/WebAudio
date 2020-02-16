@@ -5,24 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- <script src="p5.js"></script> -->
-    <script src="js/p5.js"></script>
+    <div id="script" class="dev">
+        <script src="js/p5.js"></script>
+        <script src="js/p5.dom.js"></script>
+        <script src="js/p5.sound.js"></script>
+        <!-- <script src="main.js"></script> -->
+    </div>
 
-    <!-- <script src="p5.dom.js"></script> -->
-    <script src="js/p5.dom.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="el1"></div>
+            <div class="el2"></div>
+            <div class="el3"></div>
+            <div class="el4"></div>
+            <div class="el5">
+                <span class="beats">
+                    <span id="beat-1" class="beat"></span>
+                    <span id="beat-2" class="beat"></span>
+                    <span id="beat-3" class="beat"></span>
+                    <span id="beat-4" class="beat"></span>
+                </span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+                <span class="beats"></span>
+            </div>
+        </div>
+        <div class="row">
 
-    <!-- <script src="p5.sound.js"></script> -->
-    <script src="js/p5.sound.js"></script>
+        </div>
+    </div>
 
-    <!-- <script src="sketch.js"></script> -->
-    <!-- <script src="{% static 'app/js/sketch.js' %}"></script> -->
-    <!-- -------------------------------------------------------- -->
-    <style></style>
+    <button id="play_button" class="button">Play</button>
 
-    <script src="main.js"></script>
+    <!-- Get volume -->
+    <input id="vol" type="text" placeholder="volume">
+    <input id="note" type="text" placeholder="note [15e3-15Hz. or NOTE]">
+
+    <input id="bp_measure_elem" type="text" placeholder="beats/measure [e.g. 4n]">
+
+    <p>
+        "NOTE (optional)SHARP[#]/FLAT[b] OCTAVE"
+    </p>
+
+    <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+    <script src="main-2.js"></script>
 </body>
 
 </html>
