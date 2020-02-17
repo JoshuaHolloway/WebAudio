@@ -1,16 +1,17 @@
 let loopBeat;
-let bassSynth = new Tone.MembraneSynth().toMaster();
 
-const init_button = document.getElementById('create_beat_button');
-init_button.addEventListener('click', () => {
+
+//create a synth and bass and connect them to the master output (your speakers)
+let bassSynth = new Tone.MembraneSynth().toMaster();
+let synth = new Tone.Synth().toMaster()
+
+const play_button = document.getElementById('play_button');
+play_button.addEventListener('click', () => {
+
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 140;
     Tone.Transport.start();
 
-});
-
-const play_button = document.getElementById('play_button');
-play_button.addEventListener('click', () => {
     loopBeat.start(0);
 });
 
@@ -32,4 +33,7 @@ function callback(time) {
     const velocity = volume;
     bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
     console.log(time);
+
+    //play a middle 'C' for the duration of an 8th note
+    synth.triggerAttackRelease('C4', '8n', time, velocity)
 }
