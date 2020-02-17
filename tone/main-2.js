@@ -1,14 +1,35 @@
-const play_button = document.getElementById('play_button');
-play_button.addEventListener('click', () => {
-    bassSynth = new Tone.MembraneSynth().toMaster();
+let loopBeat;
+let bassSynth = new Tone.MembraneSynth().toMaster();
+
+const init_button = document.getElementById('create_beat_button');
+init_button.addEventListener('click', () => {
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 140;
     Tone.Transport.start();
-    loopBeat.start(0);
 
-    function callback(time) {
-        const velocity = 0.1;
-        bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-        console.log(time);
-    }
 });
+
+const play_button = document.getElementById('play_button');
+play_button.addEventListener('click', () => {
+    loopBeat.start(0);
+});
+
+const stop_button = document.getElementById('stop_button');
+stop_button.addEventListener('click', () => {
+    loopBeat.stop();
+});
+
+const vol_slider = document.getElementById('volume');
+console.dir(vol_slider);
+
+let volume;
+vol_slider.addEventListener('change', () => {
+    volume = Number(vol_slider.value);
+    console.log('volume = ' + volume + ', type: ' + typeof volume);
+});
+
+function callback(time) {
+    const velocity = volume;
+    bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
+    console.log(time);
+}
