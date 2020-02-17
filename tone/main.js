@@ -82,5 +82,15 @@ function callback(time) {
     const beat_elem = document.querySelector('#beat');
     bar_elem.innerHTML = 'Bar: ' + bar;
     beat_elem.innerHTML = 'Beat ' + beat;
-}
 
+    const beats_1 = document.querySelectorAll('.beats-1');
+    const beats_2 = document.querySelectorAll('.beats-2');
+    console.dir(beats_1);
+
+    beats_1[bar].style.background = 'yellow';
+    beats_2[bar].style.background = 'yellow';
+    if (bar > 0) {
+        beats_1[bar - 1].style.background = 'green';
+        beats_2[bar - 1].style.background = 'green';
+    }
+}
