@@ -22,6 +22,7 @@ document.querySelector('#play_button').addEventListener('click', async () => {
     await Tone.start();
     console.log('audio is ready');
 
+
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 140;
     Tone.Transport.start();
@@ -59,12 +60,27 @@ function callback(time) {
 
 
 
-    const currentBeat = Tone.Transport.position;
-    const x = currentBeat.split(':');
-    console.log(x);
-    console.log(currentBeat);
-    console.log(typeof currentBeat);
+    const BarsBeatsSixteenths = Tone.Transport.position;
+    const Bars_Beats_Sixteenths = BarsBeatsSixteenths.split(':');
+    console.log(Bars_Beats_Sixteenths);
 
+    // .position ↝ BarsBeatsSixteenths #
+    // The Transport’s position in Bars:Beats:Sixteenths. Setting the value will jump to that position right away.
+    //      BarsBeatsSixteenths
+    //      A colon-separated representation of time in the form of Bars:Beats:Sixteenths.
 
+    const bar = Number(Bars_Beats_Sixteenths[0]);
+    console.log(`bar: ${bar}`);
 
+    const beat = Number(Bars_Beats_Sixteenths[1]);
+    console.log(`beat: ${beat}`);
+
+    const sixteenth = Number(Bars_Beats_Sixteenths[2]);
+    console.log(`sixteenth: ${sixteenth}`);
+
+    const bar_elem = document.querySelector('#bar');
+    const beat_elem = document.querySelector('#beat');
+    bar_elem.innerHTML = 'Bar: ' + bar;
+    beat_elem.innerHTML = 'Beat ' + beat;
 }
+
