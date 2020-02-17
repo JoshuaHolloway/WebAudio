@@ -58,8 +58,6 @@ function callback(time) {
     //play a middle 'C' for the duration of an 8th note
     synth.triggerAttackRelease('C4', '8n', time, velocity)
 
-
-
     const BarsBeatsSixteenths = Tone.Transport.position;
     const Bars_Beats_Sixteenths = BarsBeatsSixteenths.split(':');
     console.log(Bars_Beats_Sixteenths);
@@ -93,4 +91,21 @@ function callback(time) {
         beats_1[bar - 1].style.background = 'green';
         beats_2[bar - 1].style.background = 'green';
     }
+}
+
+// Grab each individual beat and  
+const beat_1 = document.querySelectorAll('.beat-1');
+console.dir(beat_1);
+console.log(beat_1[1]);
+for (let b of beat_1) {
+    b.addEventListener('click', () => {
+        b.style.background = 'purple';
+    });
+}
+
+const beat_2 = document.querySelectorAll('.beat-2');
+for (let b of beat_2) {
+    b.addEventListener('click', () => {
+        b.style.background = 'purple';
+    });
 }
