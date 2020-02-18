@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 
+const path = require('path');
+
 // executed for every incoming request
-app.use((req, res, next) => {
+app.use('/', (req, res, next) => {
     console.log('In the middleware');
-    res.send('<h1>Hello from express!<\h1>');
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 const port_num = 3e3;
