@@ -69,10 +69,13 @@ function callback(time) {
     const sixteenth = Number(Bars_Beats_Sixteenths[2]);
     // console.log(`sixteenth: ${sixteenth}`);
 
-    const bar_elem = document.querySelector('#bar');
-    const beat_elem = document.querySelector('#beat');
-    bar_elem.innerHTML = 'Bar: ' + bar;
-    beat_elem.innerHTML = 'Beat ' + beat;
+
+
+    const idx = (bar * 4) + (beat);
+    document.querySelector('#bar').innerHTML = 'Bar: ' + bar;
+    document.querySelector('#beat').innerHTML = 'Beat ' + beat;
+    document.querySelector('#index').innerHTML = 'Index: ' + idx;
+
 
     const beats_1 = document.querySelectorAll('.beats-1');
     const beats_2 = document.querySelectorAll('.beats-2');
@@ -86,10 +89,11 @@ function callback(time) {
     }
 
 
-    if (track_1[bar]) {
+
+    if (track_1[idx]) {
         bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
     }
-    if (track_2[bar]) {
+    if (track_2[idx]) {
         //play a middle 'C' for the duration of an 8th note
         synth.triggerAttackRelease('C4', '8n', time, velocity)
     }
