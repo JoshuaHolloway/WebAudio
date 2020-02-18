@@ -49,6 +49,10 @@ vol_slider.addEventListener('change', () => {
 
 let track_1 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+let track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
+// Player
+var player = new Tone.Player("./hh_sample.mp3").toMaster();
 
 function callback(time) {
     const velocity = volume;
@@ -75,17 +79,20 @@ function callback(time) {
     document.querySelector('#bar').innerHTML = 'Bar: ' + bar;
     document.querySelector('#beat').innerHTML = 'Beat ' + beat;
     document.querySelector('#index').innerHTML = 'Index: ' + idx;
-
+    document.querySelector('#time').innerHTML = 'Time: ' + time;
 
     const beats_1 = document.querySelectorAll('.beats-1');
     const beats_2 = document.querySelectorAll('.beats-2');
+    const beats_3 = document.querySelectorAll('.beats-3');
     // console.dir(beats_1);
 
     beats_1[bar].style.background = 'yellow';
     beats_2[bar].style.background = 'yellow';
+    beats_3[bar].style.background = 'yellow';
     if (bar > 0) {
         beats_1[bar - 1].style.background = 'green';
         beats_2[bar - 1].style.background = 'green';
+        beats_3[bar - 1].style.background = 'green';
     }
 
 
@@ -97,13 +104,19 @@ function callback(time) {
         //play a middle 'C' for the duration of an 8th note
         synth.triggerAttackRelease('C4', '8n', time, velocity)
     }
+    if (track_3[idx]) {
+        //sync the source so that it plays between 0 and 0.3 on the Transport's timeline
+        //player.sync().start(time).stop(time + 0.3);
+        player.start(time);
+        player.stop(time + 0.1);
+    }
 
-    // console.log(time);
+    console.log('time: ' + time);
 }
 
 // Grab each individual beat and  
 const beat_1 = document.querySelectorAll('.beat-1');
-beat_1.forEach(function (value, i) {
+beat_1.forEach((val, i) => {
 
     beat_1[i].addEventListener('click', () => {
         if (track_1[i]) beat_1[i].style.background = 'rgba(255, 154, 72)';
@@ -111,12 +124,10 @@ beat_1.forEach(function (value, i) {
 
         track_1[i] = !track_1[i];
     });
-    //console.log('%d: %s', i, value);
 });
 
-
 const beat_2 = document.querySelectorAll('.beat-2');
-beat_2.forEach(function (value, i) {
+beat_2.forEach((val, i) => {
 
     beat_2[i].addEventListener('click', () => {
         if (track_2[i]) beat_2[i].style.background = 'rgba(255, 154, 72)';
@@ -124,5 +135,15 @@ beat_2.forEach(function (value, i) {
 
         track_2[i] = !track_2[i];
     });
-    //console.log('%d: %s', i, value);
+});
+
+const beat_3 = document.querySelectorAll('.beat-3');
+beat_3.forEach((val, i) => {
+
+    beat_3[i].addEventListener('click', () => {
+        if (track_3[i]) beat_3[i].style.background = 'rgba(255, 154, 72)';
+        else beat_3[i].style.background = 'black';
+
+        track_3[i] = !track_3[i];
+    });
 });
