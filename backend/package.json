@@ -1,21 +1,16 @@
 {
-  "name": "nodejs-complete-guide",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Complete Node.js Guide",
-  "main": "app.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "start": "nodemon server.js"
   },
   "author": "Josh Holloway",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^1.18.3"
-  },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
   }
 }
