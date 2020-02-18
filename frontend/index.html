@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="script" class="dev">
+        <script src="js/p5.js"></script>
+        <script src="js/p5.dom.js"></script>
+        <script src="js/p5.sound.js"></script>
+        <!-- <script src="main.js"></script> -->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="el1"></div>
+            <div class="el2"></div>
+            <div class="el3"></div>
+            <div class="el4"></div>
+            <div class="el5">
+                <span class="beats-1">
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                </span>
+                <span class="beats-1">
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                </span>
+                <span class="beats-1">
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                </span>
+                <span class="beats-1">
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                    <span class="beat-1"></span>
+                </span>
+                <span class="beats-1"></span>
+                <span class="beats-1"></span>
+                <span class="beats-1"></span>
+                <span class="beats-1"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="el1"></div>
+            <div class="el2"></div>
+            <div class="el3"></div>
+            <div class="el4"></div>
+            <div class="el5">
+                <span class="beats-2">
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                </span>
+                <span class="beats-2">
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                </span>
+                <span class="beats-2">
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                </span>
+                <span class="beats-2">
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                    <span class="beat-2"></span>
+                </span>
+                <span class="beats-2"></span>
+                <span class="beats-2"></span>
+                <span class="beats-2"></span>
+                <span class="beats-2"></span>
+            </div>
+        </div>
+    </div>
+
+    <button id="play_button" class="button">Play</button>
+    <button id="stop_button" class="button">Stop</button>
+
+    <input type="range" id="volume" name="volume" min="0" max="1" step="0.1">
+    <label for="volume">Volume</label>
+
+    <p id="bar">Bar: </p>
+    <p id="beat">Beat: </p>
+    <!-- <p>Sixteenth: </p> -->
+
+
+    <p>Load a track to store into song's database:</p>
+    <input id="audio_file" type="file" accept="audio/*" />
+    <audio id="audio_player" />
+    <script>
+        audio_file.onchange = function () {
+            const files = this.files;
+            const file = URL.createObjectURL(files[0]);
+            audio_player.src = file;
+            audio_player.play();
+        };
+    </script>
+
+
+
+    <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
