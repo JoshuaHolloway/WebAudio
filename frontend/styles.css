@@ -29,6 +29,14 @@
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3; */
+
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    /* Use CSS-grid as 1D and add my own row-divs */
+    grid-template-rows: 1fr 1fr;
+
+    text-align: center;
 }
 
 .el4 {
@@ -76,6 +84,24 @@
 }
 
 .button:hover {
+    color: red;
+    background: green;
+    transition: background-color 0.3s ease-in;
+}
+
+.track-name {
+    width: 100%;
+    border: yellow solid 1px;
+}
+
+.load-track {
+    height: 20px;
+    width: 100%;
+    background: red;
+    text-align: center;
+}
+
+.load-track:hover {
     color: red;
     background: green;
     transition: background-color 0.3s ease-in;
