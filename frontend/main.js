@@ -1,8 +1,8 @@
 let loopBeat;
 
 //create a synth and bass and connect them to the master output (your speakers)
-let bassSynth = new Tone.MembraneSynth().toMaster();
-let synth = new Tone.Synth().toMaster()
+// let bassSynth = new Tone.MembraneSynth().toMaster();
+// let synth = new Tone.Synth().toMaster()
 
 //attach a click listener to a play button
 document.querySelector('#play_button').addEventListener('click', async () => {
@@ -91,17 +91,21 @@ function callback(time) {
 
 
     if (track_1[idx]) {
-        bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
+        // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
+        Track_0.start(time);
+        Track_0.stop(time + 0.1);
     }
     if (track_2[idx]) {
         //play a middle 'C' for the duration of an 8th note
-        synth.triggerAttackRelease('C4', '8n', time, velocity)
+        // synth.triggerAttackRelease('C4', '8n', time, velocity)
+        Track_1.start(time);
+        Track_1.stop(time + 0.1);
     }
     if (track_3[idx]) {
         //sync the source so that it plays between 0 and 0.3 on the Transport's timeline
         //player.sync().start(time).stop(time + 0.3);
-        player.start(time);
-        player.stop(time + 0.1);
+        Track_2.start(time);
+        Track_2.stop(time + 0.1);
     }
 
     console.log('time: ' + time);
@@ -152,22 +156,43 @@ const load_buttons = document.querySelectorAll('.load-track');
 // }
 
 // Player
-let player;
-audio_file_JOSH.onchange = function () {
-    const files = this.files;
-    const file = URL.createObjectURL(files[0]);
-    // audio_player.src = file;
-    // audio_player.play();
-
+let Track_0, Track_1, Track_2;
+load_0.onchange = function () {
     // Step 1: Get name
+    const files = this.files;
     const name = files[0].name;
-    console.log(name);
 
     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
     // -Assumes in current directory
-    player = new Tone.Player("./" + name).toMaster();
+    Track_0 = new Tone.Player("./" + name).toMaster();
 
     // Step 3: Write name to Track-1 title
 };
 
-console.dir(audio_file_JOSH);
+
+load_1.onchange = function () {
+    // Step 1: Get name
+    const files = this.files;
+    const name = files[0].name;
+
+    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+    // -Assumes in current directory
+    Track_1 = new Tone.Player("./" + name).toMaster();
+
+    // Step 3: Write name to Track-1 title
+};
+
+load_2.onchange = function () {
+    // Step 1: Get name
+    const files = this.files;
+    // const file = URL.createObjectURL(files[0]);
+    const name = files[0].name;
+
+    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+    // -Assumes in current directory
+    Track_2 = new Tone.Player("./" + name).toMaster();
+
+    // Step 3: Write name to Track-1 title
+};
+
+console.dir(load_2);
