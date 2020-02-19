@@ -106,3 +106,8 @@
     background: green;
     transition: background-color 0.3s ease-in;
 }
+
+#audio_file_JOSH {
+    overflow: hidden;
+    width: 100%;
+}

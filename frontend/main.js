@@ -4,11 +4,6 @@ let loopBeat;
 let bassSynth = new Tone.MembraneSynth().toMaster();
 let synth = new Tone.Synth().toMaster()
 
-const play_button = document.getElementById('play_button');
-play_button.addEventListener('click', () => {
-
-});
-
 //attach a click listener to a play button
 document.querySelector('#play_button').addEventListener('click', async () => {
     // -The await expression causes async function execution to pause until 
@@ -51,8 +46,6 @@ let track_1 = [false, false, false, false, false, false, false, false, false, fa
 let track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
-// Player
-var player = new Tone.Player("./hh_sample.mp3").toMaster();
 
 function callback(time) {
     const velocity = volume;
@@ -147,3 +140,34 @@ beat_3.forEach((val, i) => {
         track_3[i] = !track_3[i];
     });
 });
+
+const load_buttons = document.querySelectorAll('.load-track');
+// load_buttons.forEach((val, i) => {
+//     load_buttons[i].addEventListener();
+// });
+// for (let button of load_buttons) {
+//     button.addEventListener(() => {
+//         alert('loading track!');
+//     });
+// }
+
+// Player
+let player;
+audio_file_JOSH.onchange = function () {
+    const files = this.files;
+    const file = URL.createObjectURL(files[0]);
+    // audio_player.src = file;
+    // audio_player.play();
+
+    // Step 1: Get name
+    const name = files[0].name;
+    console.log(name);
+
+    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+    // -Assumes in current directory
+    player = new Tone.Player("./" + name).toMaster();
+
+    // Step 3: Write name to Track-1 title
+};
+
+console.dir(audio_file_JOSH);
