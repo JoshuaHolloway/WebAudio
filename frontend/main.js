@@ -9,8 +9,6 @@ class Track {
     player = null;
     pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
-
-
     constructor(name, track_num) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
@@ -106,7 +104,7 @@ vol_slider.addEventListener('change', () => {
 // TODO: Move these into the class
 // TODO: Move these into the class
 
-const beats_2 = document.querySelectorAll('.beats-1');
+//const beats_2 = document.querySelectorAll('.beats-1');
 const beats_3 = document.querySelectorAll('.beats-2');
 
 // Grab each individual beat and  
@@ -179,11 +177,11 @@ function callback(time) {
 
 
     Tracks[0].beats_elems[bar].style.background = 'yellow';
-    beats_2[bar].style.background = 'yellow';
+    Tracks[1].beats_elems[bar].style.background = 'yellow';
     beats_3[bar].style.background = 'yellow';
     if (bar > 0) {
         Tracks[0].beats_elems[bar - 1].style.background = 'green';
-        beats_2[bar - 1].style.background = 'green';
+        Tracks[1].beats_elems[bar - 1].style.background = 'green';
         beats_3[bar - 1].style.background = 'green';
     }
 
