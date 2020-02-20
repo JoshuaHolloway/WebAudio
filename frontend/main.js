@@ -7,7 +7,7 @@ class Track {
     // Fields
     name = 'Untitled Track';
     player = null;
-    pattern = [false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
     constructor(name) {
         this.name = name;
@@ -48,11 +48,12 @@ class Track {
 }
 
 let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
-track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
 track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 Tracks[0].set();
 Tracks[1].two_and_four();
+Tracks[2].one_and_three();
 
 
 
@@ -151,7 +152,7 @@ function callback(time) {
         Tracks[1].player.start(time);
         Tracks[1].player.stop(time + 0.5);
     }
-    if (track_3[idx]) {
+    if (Tracks[2].pattern[idx]) {
         Tracks[2].player.start(time);
         Tracks[2].player.stop(time + 0.5);
     }
