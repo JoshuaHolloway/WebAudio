@@ -11,12 +11,12 @@ class Track {
 
 
 
-    constructor(name) {
+    constructor(name, track_num) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
 
-        this.beats_elems = document.querySelectorAll('.beats-0');
-        this.beat_elems = document.querySelectorAll('.beats-0 .beat');
+        this.beats_elems = document.querySelectorAll('.beats-' + track_num);
+        this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
     }
 
     // Methods
@@ -56,7 +56,7 @@ class Track {
     }
 }
 
-let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
+let Tracks = [new Track('hh_sample.mp3', '0'), new Track('clap_sample.mp3', '1'), new Track('bass_sample.mp3', '2')];
 Tracks[0].set();
 Tracks[1].two_and_four();
 Tracks[2].one_and_three();
