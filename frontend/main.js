@@ -16,8 +16,7 @@ class Track {
     // Methods
 }
 
-let Track__0 = new Track('hh_sample');
-
+let Tracks = [new Track('hh_sample'), new Track('clap_sample'), new Track('bass_sample')];
 
 const init = () => {
     // let name = 'hh_sample.mp3';
@@ -125,8 +124,8 @@ function callback(time) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
 
-        Track__0.player.start(time);
-        Track__0.player.stop(time + 0.1);
+        Tracks[0].player.start(time);
+        Tracks[0].player.stop(time + 0.1);
         // Track_0.start(time);
         // Track_0.stop(time + 0.1);
     }
