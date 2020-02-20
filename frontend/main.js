@@ -7,6 +7,7 @@ class Track {
     // Fields
     name = 'Untitled Track';
     player = null;
+    pattern = [false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
     constructor(name) {
         this.name = name;
@@ -20,6 +21,8 @@ class Track {
 }
 
 let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
+track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 //create a synth and bass and connect them to the master output (your speakers)
 // let bassSynth = new Tone.MembraneSynth().toMaster();
@@ -60,9 +63,7 @@ vol_slider.addEventListener('change', () => {
 //  -Create a default track for bass
 
 
-let track_1 = [false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-let track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-let track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
 
 
 function callback(time) {
@@ -103,11 +104,9 @@ function callback(time) {
         beats_3[bar - 1].style.background = 'green';
     }
 
-    // TODO: Store tracks_x[]'s as 2D-array
-    // TODO: Store tracks_x[]'s as 2D-array
-    // TODO: Store tracks_x[]'s as 2D-array
 
-    if (track_1[idx]) {
+
+    if (Tracks[0].pattern[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
         Tracks[0].player.start(time);
@@ -133,10 +132,10 @@ const beat_1 = document.querySelectorAll('.beat-1');
 beat_1.forEach((val, i) => {
 
     beat_1[i].addEventListener('click', () => {
-        if (track_1[i]) beat_1[i].style.background = 'rgba(255, 154, 72)';
+        if (Tracks[0].pattern[i]) beat_1[i].style.background = 'rgba(255, 154, 72)';
         else beat_1[i].style.background = 'black';
 
-        track_1[i] = !track_1[i];
+        Tracks[0].pattern[i] = !(Tracks[0].pattern[i]);
     });
 });
 
