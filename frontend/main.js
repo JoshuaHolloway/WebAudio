@@ -2,12 +2,16 @@
 let loopBeat;
 let Track_0, Track_1, Track_2;
 
+class Song {
+
+}
+
 class Track {
 
     // Fields
     name = 'Untitled Track';
     player = null;
-    pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+    pattern = new Array(16);
 
     constructor(name, track_num) {
         this.name = name;
@@ -15,6 +19,16 @@ class Track {
 
         this.beats_elems = document.querySelectorAll('.beats-' + track_num);
         this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
+
+        switch (track_num) {
+            case 0: {
+                this.set(); break;
+            } case 1: {
+                this.one_and_three(); break;
+            } case 2: {
+                this.two_and_four(); break;
+            } default: { this.clear(); }
+        }
 
         this.beat_elems.forEach((val, i) => {
             this.beat_elems[i].addEventListener('click', () => {
@@ -29,8 +43,6 @@ class Track {
                 this.pattern[i] = !(this.pattern[i]);
             });
         });
-
-
     }
 
     // Methods
@@ -91,9 +103,9 @@ document.querySelector('#play_button').addEventListener('click', async () => {
 
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 180;
-    Tone.Transport.start(0);
+    Tone.Transport.start();
 
-    loopBeat.start(0);
+    loopBeat.start();
 })
 
 const stop_button = document.getElementById('stop_button');
