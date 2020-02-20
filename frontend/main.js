@@ -180,11 +180,11 @@ function callback(time) {
 
 
 
-    Track[0].beats_1[bar].style.background = 'yellow';
+    Tracks[0].beats_1[bar].style.background = 'yellow';
     beats_2[bar].style.background = 'yellow';
     beats_3[bar].style.background = 'yellow';
     if (bar > 0) {
-        Track[0].beats_1[bar - 1].style.background = 'green';
+        Tracks[0].beats_1[bar - 1].style.background = 'green';
         beats_2[bar - 1].style.background = 'green';
         beats_3[bar - 1].style.background = 'green';
     }
