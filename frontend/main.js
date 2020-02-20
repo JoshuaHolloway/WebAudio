@@ -9,8 +9,8 @@ class Track {
     player = null;
     pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
-    beats_elems = document.querySelectorAll('.beats-1');
-    beat_elems = document.querySelectorAll('.beats-1 .beat');
+    beats_elems = document.querySelectorAll('.beats-0');
+    beat_elems = document.querySelectorAll('.beats-0 .beat');
 
     constructor(name) {
         this.name = name;

@@ -52,7 +52,7 @@
 }
 
 /* Single Beat-Section */
-.beats-1, .beats-2, .beats-3 {
+.beats-0, .beats-1, .beats-2 {
     margin: 5px;
     height: 80px;
     width: 100px;
@@ -67,7 +67,7 @@
 }
 
 /* Individual Beat */
-.beats-1 .beat, .beats-2 .beat, .beats-3 .beat {
+.beats-0 .beat, .beats-1 .beat, .beats-2 .beat{
     margin: 0px 5px 0px 5px;
     height: 70px;
     width: 20px;
