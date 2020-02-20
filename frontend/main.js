@@ -6,17 +6,20 @@ class Track {
 
     // Fields
     name = 'Untitled Track';
-    player;
+    player = null;
 
     constructor(name) {
         this.name = name;
-        this.player = new Tone.Player('./' + name + '.mp3').toMaster();
+        this.player = new Tone.Player('./' + name).toMaster();
     }
 
     // Methods
+    change(name) {
+        this.player = new Tone.Player('./' + name).toMaster();
+    }
 }
 
-let Tracks = [new Track('hh_sample'), new Track('clap_sample'), new Track('bass_sample')];
+let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
 
 const init = () => {
     // let name = 'hh_sample.mp3';
@@ -198,7 +201,7 @@ load_0.onchange = function () {
 
     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
     // -Assumes in current directory
-    Track_0 = new Tone.Player("./" + name).toMaster();
+    Tracks[0].change(name);
 
     // Step 3: Write name to Track-1 title
 };
