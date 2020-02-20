@@ -52,6 +52,8 @@ track_2 = [false, false, false, false, false, false, false, false, false, false,
 track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 Tracks[0].set();
+Tracks[1].two_and_four();
+
 
 
 //create a synth and bass and connect them to the master output (your speakers)
@@ -142,7 +144,7 @@ function callback(time) {
         Tracks[0].player.start(time);
         Tracks[0].player.stop(time + 0.5);
     }
-    if (track_2[idx]) {
+    if (Tracks[1].pattern[idx]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
