@@ -5,6 +5,9 @@ let Track_0, Track_1, Track_2;
 const init = () => {
     let name = 'hh_sample.mp3';
     Track_0 = new Tone.Player('./' + name).toMaster();
+
+    name = 'clap_sample.mp3';
+    Track_1 = new Tone.Player('./' + name).toMaster();
 };
 
 
