@@ -10,6 +10,7 @@ class Track {
     pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
     beats_1 = document.querySelectorAll('.beats-1');
+    beat_1 = document.querySelectorAll('.beats-1 .beat');
 
     constructor(name) {
         this.name = name;
@@ -110,20 +111,18 @@ const beats_2 = document.querySelectorAll('.beats-2');
 const beats_3 = document.querySelectorAll('.beats-3');
 
 // Grab each individual beat and  
-const beat_1 = document.querySelectorAll('.beats-1 .beat');
 const beat_2 = document.querySelectorAll('.beats-2 .beat');
 const beat_3 = document.querySelectorAll('.beat-3');
 
-console.dir(beat_1);
-beat_1.forEach((val, i) => {
+Tracks[0].beat_1.forEach((val, i) => {
 
-    beat_1[i].addEventListener('click', () => {
+    Tracks[0].beat_1[i].addEventListener('click', () => {
         if (Tracks[0].pattern[i]) {
-            beat_1[i].style.background = 'rgba(255, 154, 72)';
+            Tracks[0].beat_1[i].style.background = 'rgba(255, 154, 72)';
             console.log('Clicked');
         }
         else {
-            beat_1[i].style.background = 'black';
+            Tracks[0].beat_1[i].style.background = 'black';
             console.log('Clicked again');
         }
 
