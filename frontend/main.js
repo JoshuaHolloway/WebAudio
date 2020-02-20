@@ -1,4 +1,12 @@
+// Globals
 let loopBeat;
+let Track_0, Track_1, Track_2;
+
+const init = () => {
+    let name = 'hh_sample.mp3';
+    Track_0 = new Tone.Player('./' + name).toMaster();
+};
+
 
 //create a synth and bass and connect them to the master output (your speakers)
 // let bassSynth = new Tone.MembraneSynth().toMaster();
@@ -12,10 +20,11 @@ document.querySelector('#play_button').addEventListener('click', async () => {
     await Tone.start();
     console.log('audio is ready');
 
+    init();
 
     loopBeat = new Tone.Loop(callback, '4n');
-    Tone.Transport.bpm.value = 140;
-    Tone.Transport.start();
+    Tone.Transport.bpm.value = 180;
+    Tone.Transport.start(0);
 
     loopBeat.start(0);
 })
@@ -26,7 +35,6 @@ stop_button.addEventListener('click', () => {
 });
 
 const vol_slider = document.getElementById('volume');
-// console.dir(vol_slider);
 
 let volume;
 vol_slider.addEventListener('change', () => {
@@ -34,13 +42,12 @@ vol_slider.addEventListener('change', () => {
     console.log('volume = ' + volume + ', type: ' + typeof volume);
 });
 
-//const N = 16;
-// let track_1 = new Array(16);
-// let track_2 = new Array(16);
-// for (let i = 0; i < N; ++i) {
-//     track_1[i] = 0;
-//     track_2[i] = 0;
-// }
+// TODO: 
+//  -Default each track
+//  -Default the song pattern
+//  -Create a default track for synth
+//  -Create a default track for bass
+
 
 let track_1 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
@@ -48,7 +55,8 @@ let track_3 = [false, false, false, false, false, false, false, false, false, fa
 
 
 function callback(time) {
-    const velocity = volume;
+
+
 
     const BarsBeatsSixteenths = Tone.Transport.position;
     const Bars_Beats_Sixteenths = BarsBeatsSixteenths.split(':');
@@ -91,11 +99,13 @@ function callback(time) {
 
 
     if (track_1[idx]) {
+        // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
         Track_0.start(time);
         Track_0.stop(time + 0.1);
     }
     if (track_2[idx]) {
+        // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
         Track_1.start(time);
@@ -156,7 +166,6 @@ const load_buttons = document.querySelectorAll('.load-track');
 // }
 
 // Player
-let Track_0, Track_1, Track_2;
 load_0.onchange = function () {
     // Step 1: Get name
     const files = this.files;
