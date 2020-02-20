@@ -9,12 +9,14 @@ class Track {
     player = null;
     pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
-    beats_elems = document.querySelectorAll('.beats-0');
-    beat_elems = document.querySelectorAll('.beats-0 .beat');
+
 
     constructor(name) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
+
+        this.beats_elems = document.querySelectorAll('.beats-0');
+        this.beat_elems = document.querySelectorAll('.beats-0 .beat');
     }
 
     // Methods
