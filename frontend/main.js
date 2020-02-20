@@ -22,11 +22,14 @@ class Track {
 
         switch (track_num) {
             case 0: {
-                this.set(); break;
+                this.set();
+                break;
             } case 1: {
-                this.one_and_three(); break;
+                this.two_and_four();
+                break;
             } case 2: {
-                this.two_and_four(); break;
+                this.one_and_three();
+                break;
             } default: { this.clear(); }
         }
 
@@ -82,10 +85,10 @@ class Track {
     }
 }
 
-let Tracks = [new Track('hh_sample.mp3', '0'), new Track('clap_sample.mp3', '1'), new Track('bass_sample.mp3', '2')];
-Tracks[0].set();
-Tracks[1].two_and_four();
-Tracks[2].one_and_three();
+let Tracks = [new Track('hh_sample.mp3', 0), new Track('clap_sample.mp3', 1), new Track('bass_sample.mp3', 2)];
+// Tracks[0].set();
+// Tracks[1].two_and_four();
+// Tracks[2].one_and_three();
 
 // ========================================================
 
@@ -104,7 +107,6 @@ document.querySelector('#play_button').addEventListener('click', async () => {
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 180;
     Tone.Transport.start();
-
     loopBeat.start();
 })
 
