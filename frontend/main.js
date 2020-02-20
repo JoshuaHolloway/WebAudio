@@ -9,6 +9,8 @@ class Track {
     player = null;
     pattern = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
+    beats_1 = document.querySelectorAll('.beats-1');
+
     constructor(name) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
@@ -44,6 +46,10 @@ class Track {
     two_and_four() {
         this.pattern[4] = true;
         this.pattern[12] = true;
+    }
+
+    sync_style() {
+
     }
 }
 
@@ -99,7 +105,7 @@ vol_slider.addEventListener('change', () => {
 // TODO: Move these into the class
 // TODO: Move these into the class
 // TODO: Move these into the class
-const beats_1 = document.querySelectorAll('.beats-1');
+
 const beats_2 = document.querySelectorAll('.beats-2');
 const beats_3 = document.querySelectorAll('.beats-3');
 
@@ -173,13 +179,12 @@ function callback(time) {
     document.querySelector('#time').innerHTML = 'Time: ' + time;
 
 
-    // console.dir(beats_1);
 
-    beats_1[bar].style.background = 'yellow';
+    Track[0].beats_1[bar].style.background = 'yellow';
     beats_2[bar].style.background = 'yellow';
     beats_3[bar].style.background = 'yellow';
     if (bar > 0) {
-        beats_1[bar - 1].style.background = 'green';
+        Track[0].beats_1[bar - 1].style.background = 'green';
         beats_2[bar - 1].style.background = 'green';
         beats_3[bar - 1].style.background = 'green';
     }
