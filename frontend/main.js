@@ -18,11 +18,41 @@ class Track {
     change(name) {
         this.player = new Tone.Player('./' + name).toMaster();
     }
+
+    set() {
+        // for (let pattern of this.pattern)
+        //     pattern = true;
+        for (let i = 0; i < this.pattern.length; ++i)
+            this.pattern[i] = true;
+    }
+
+    clear() {
+        for (let pattern of this.pattern)
+            pattern = false;
+    }
+
+    print() {
+        for (let pattern of this.pattern)
+            console.log(pattern);
+    }
+
+    one_and_three() {
+        this.pattern[0] = true;
+        this.pattern[8] = true;
+    }
+
+    two_and_four() {
+        this.pattern[4] = true;
+        this.pattern[12] = true;
+    }
 }
 
 let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
 track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
+Tracks[0].set();
+
 
 //create a synth and bass and connect them to the master output (your speakers)
 // let bassSynth = new Tone.MembraneSynth().toMaster();
@@ -110,18 +140,18 @@ function callback(time) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
         Tracks[0].player.start(time);
-        Tracks[0].player.stop(time + 0.1);
+        Tracks[0].player.stop(time + 0.5);
     }
     if (track_2[idx]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
         Tracks[1].player.start(time);
-        Tracks[1].player.stop(time + 0.1);
+        Tracks[1].player.stop(time + 0.5);
     }
     if (track_3[idx]) {
         Tracks[2].player.start(time);
-        Tracks[2].player.stop(time + 0.1);
+        Tracks[2].player.stop(time + 0.5);
     }
 
     console.log('time: ' + time);
