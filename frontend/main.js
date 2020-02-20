@@ -21,18 +21,6 @@ class Track {
 
 let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
 
-const init = () => {
-    // let name = 'hh_sample.mp3';
-    // Track_0 = new Tone.Player('./' + name).toMaster();
-
-    // name = 'clap_sample.mp3';
-    // Track_1 = new Tone.Player('./' + name).toMaster();
-
-    name = 'bass_sample.mp3';
-    Track_2 = new Tone.Player('./' + name).toMaster();
-};
-
-
 //create a synth and bass and connect them to the master output (your speakers)
 // let bassSynth = new Tone.MembraneSynth().toMaster();
 // let synth = new Tone.Synth().toMaster()
@@ -44,8 +32,6 @@ document.querySelector('#play_button').addEventListener('click', async () => {
     //  execution of the async function after fulfillment.
     await Tone.start();
     console.log('audio is ready');
-
-    init();
 
     loopBeat = new Tone.Loop(callback, '4n');
     Tone.Transport.bpm.value = 180;
@@ -97,8 +83,6 @@ function callback(time) {
     const sixteenth = Number(Bars_Beats_Sixteenths[2]);
     // console.log(`sixteenth: ${sixteenth}`);
 
-
-
     const idx = (bar * 4) + (beat);
     document.querySelector('#bar').innerHTML = 'Bar: ' + bar;
     document.querySelector('#beat').innerHTML = 'Beat ' + beat;
@@ -119,16 +103,15 @@ function callback(time) {
         beats_3[bar - 1].style.background = 'green';
     }
 
-
+    // TODO: Store tracks_x[]'s as 2D-array
+    // TODO: Store tracks_x[]'s as 2D-array
+    // TODO: Store tracks_x[]'s as 2D-array
 
     if (track_1[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-
         Tracks[0].player.start(time);
         Tracks[0].player.stop(time + 0.1);
-        // Track_0.start(time);
-        // Track_0.stop(time + 0.1);
     }
     if (track_2[idx]) {
         // const velocity = volume;
@@ -138,10 +121,8 @@ function callback(time) {
         Tracks[1].player.stop(time + 0.1);
     }
     if (track_3[idx]) {
-        //sync the source so that it plays between 0 and 0.3 on the Transport's timeline
-        //player.sync().start(time).stop(time + 0.3);
-        Track_2.start(time);
-        Track_2.stop(time + 0.1);
+        Tracks[2].player.start(time);
+        Tracks[2].player.stop(time + 0.1);
     }
 
     console.log('time: ' + time);
@@ -219,7 +200,7 @@ load_2.onchange = function () {
 
     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
     // -Assumes in current directory
-    Track_2 = new Tone.Player("./" + name).toMaster();
+    Tracks[2].change(name);
 
     // Step 3: Write name to Track-1 title
 };
