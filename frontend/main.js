@@ -25,8 +25,8 @@ const init = () => {
     // let name = 'hh_sample.mp3';
     // Track_0 = new Tone.Player('./' + name).toMaster();
 
-    name = 'clap_sample.mp3';
-    Track_1 = new Tone.Player('./' + name).toMaster();
+    // name = 'clap_sample.mp3';
+    // Track_1 = new Tone.Player('./' + name).toMaster();
 
     name = 'bass_sample.mp3';
     Track_2 = new Tone.Player('./' + name).toMaster();
@@ -74,14 +74,12 @@ vol_slider.addEventListener('change', () => {
 //  -Create a default track for bass
 
 
-let track_1 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+let track_1 = [false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let track_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 let track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 
 function callback(time) {
-
-
 
     const BarsBeatsSixteenths = Tone.Transport.position;
     const Bars_Beats_Sixteenths = BarsBeatsSixteenths.split(':');
@@ -136,8 +134,8 @@ function callback(time) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
-        Track_1.start(time);
-        Track_1.stop(time + 0.1);
+        Tracks[1].player.start(time);
+        Tracks[1].player.stop(time + 0.1);
     }
     if (track_3[idx]) {
         //sync the source so that it plays between 0 and 0.3 on the Transport's timeline
@@ -183,15 +181,9 @@ beat_3.forEach((val, i) => {
     });
 });
 
-const load_buttons = document.querySelectorAll('.load-track');
-// load_buttons.forEach((val, i) => {
-//     load_buttons[i].addEventListener();
-// });
-// for (let button of load_buttons) {
-//     button.addEventListener(() => {
-//         alert('loading track!');
-//     });
-// }
+
+
+// TODO: Change load_x's to an arrays
 
 // Player
 load_0.onchange = function () {
@@ -214,7 +206,7 @@ load_1.onchange = function () {
 
     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
     // -Assumes in current directory
-    Track_1 = new Tone.Player("./" + name).toMaster();
+    Tracks[1].change(name);
 
     // Step 3: Write name to Track-1 title
 };
