@@ -2,9 +2,26 @@
 let loopBeat;
 let Track_0, Track_1, Track_2;
 
+class Track {
+
+    // Fields
+    name = 'Untitled Track';
+    player;
+
+    constructor(name) {
+        this.name = name;
+        this.player = new Tone.Player('./' + name + '.mp3').toMaster();
+    }
+
+    // Methods
+}
+
+let Track__0 = new Track('hh_sample');
+
+
 const init = () => {
-    let name = 'hh_sample.mp3';
-    Track_0 = new Tone.Player('./' + name).toMaster();
+    // let name = 'hh_sample.mp3';
+    // Track_0 = new Tone.Player('./' + name).toMaster();
 
     name = 'clap_sample.mp3';
     Track_1 = new Tone.Player('./' + name).toMaster();
@@ -107,8 +124,11 @@ function callback(time) {
     if (track_1[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-        Track_0.start(time);
-        Track_0.stop(time + 0.1);
+
+        Track__0.player.start(time);
+        Track__0.player.stop(time + 0.1);
+        // Track_0.start(time);
+        // Track_0.stop(time + 0.1);
     }
     if (track_2[idx]) {
         // const velocity = volume;
