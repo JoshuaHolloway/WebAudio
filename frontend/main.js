@@ -105,7 +105,7 @@ vol_slider.addEventListener('change', () => {
 // TODO: Move these into the class
 
 //const beats_2 = document.querySelectorAll('.beats-1');
-const beats_3 = document.querySelectorAll('.beats-2');
+//const beats_3 = document.querySelectorAll('.beats-2');
 
 // Grab each individual beat and  
 const beat_2 = document.querySelectorAll('.beats-1 .beat');
@@ -178,11 +178,11 @@ function callback(time) {
 
     Tracks[0].beats_elems[bar].style.background = 'yellow';
     Tracks[1].beats_elems[bar].style.background = 'yellow';
-    beats_3[bar].style.background = 'yellow';
+    Tracks[2].beats_elems[bar].style.background = 'yellow';
     if (bar > 0) {
         Tracks[0].beats_elems[bar - 1].style.background = 'green';
         Tracks[1].beats_elems[bar - 1].style.background = 'green';
-        beats_3[bar - 1].style.background = 'green';
+        Tracks[2].beats_elems[bar - 1].style.background = 'green';
     }
 
 
