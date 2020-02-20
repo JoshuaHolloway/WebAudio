@@ -15,6 +15,22 @@ class Track {
 
         this.beats_elems = document.querySelectorAll('.beats-' + track_num);
         this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
+
+        this.beat_elems.forEach((val, i) => {
+            this.beat_elems[i].addEventListener('click', () => {
+                if (this.pattern[i]) {
+                    this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+                    console.log('Clicked');
+                }
+                else {
+                    this.beat_elems[i].style.background = 'black';
+                    console.log('Clicked again');
+                }
+                this.pattern[i] = !(this.pattern[i]);
+            });
+        });
+
+
     }
 
     // Methods
@@ -99,54 +115,6 @@ vol_slider.addEventListener('change', () => {
 //  -Create a default track for synth
 //  -Create a default track for bass
 
-// TODO: Move these into the class
-// TODO: Move these into the class
-// TODO: Move these into the class
-// TODO: Move these into the class
-
-//const beats_2 = document.querySelectorAll('.beats-1');
-//const beats_3 = document.querySelectorAll('.beats-2');
-
-// Grab each individual beat and  
-//const beat_2 = document.querySelectorAll('.beats-1 .beat');
-//const beat_3 = document.querySelectorAll('.beat-2');
-
-Tracks[0].beat_elems.forEach((val, i) => {
-
-    Tracks[0].beat_elems[i].addEventListener('click', () => {
-        if (Tracks[0].pattern[i]) {
-            Tracks[0].beat_elems[i].style.background = 'rgba(255, 154, 72)';
-            console.log('Clicked');
-        }
-        else {
-            Tracks[0].beat_elems[i].style.background = 'black';
-            console.log('Clicked again');
-        }
-
-        Tracks[0].pattern[i] = !(Tracks[0].pattern[i]);
-    });
-});
-
-Tracks[1].beat_elems.forEach((val, i) => {
-
-    Tracks[1].beat_elems[i].addEventListener('click', () => {
-        if (Tracks[1].pattern[i]) Tracks[1].beat_elems[i].style.background = 'rgba(255, 154, 72)';
-        else Tracks[1].beat_elems[i].style.background = 'black';
-
-        Tracks[1].pattern[i] = !(Tracks[1].pattern);
-    });
-});
-
-
-Tracks[2].beat_elems.forEach((val, i) => {
-
-    Tracks[2].beat_elems[i].addEventListener('click', () => {
-        if (Tracks[2].pattern[i]) Tracks[2].beat_elems[i].style.background = 'rgba(255, 154, 72)';
-        else Tracks[2].beat_elems[i].style.background = 'black';
-
-        Tracks[2].pattern[i] = !(Tracks[2].pattern);
-    });
-});
 
 // ========================================================
 
