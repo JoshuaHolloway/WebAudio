@@ -108,7 +108,7 @@ vol_slider.addEventListener('change', () => {
 //const beats_3 = document.querySelectorAll('.beats-2');
 
 // Grab each individual beat and  
-const beat_2 = document.querySelectorAll('.beats-1 .beat');
+//const beat_2 = document.querySelectorAll('.beats-1 .beat');
 const beat_3 = document.querySelectorAll('.beat-2');
 
 Tracks[0].beat_elems.forEach((val, i) => {
@@ -127,11 +127,11 @@ Tracks[0].beat_elems.forEach((val, i) => {
     });
 });
 
-beat_2.forEach((val, i) => {
+Tracks[1].beat_elems.forEach((val, i) => {
 
-    beat_2[i].addEventListener('click', () => {
-        if (Tracks[1].pattern[i]) beat_2[i].style.background = 'rgba(255, 154, 72)';
-        else beat_2[i].style.background = 'black';
+    Tracks[1].beat_elems[i].addEventListener('click', () => {
+        if (Tracks[1].pattern[i]) Tracks[1].beat_elems[i].style.background = 'rgba(255, 154, 72)';
+        else Tracks[1].beat_elems[i].style.background = 'black';
 
         Tracks[1].pattern[i] = !(Tracks[1].pattern);
     });
