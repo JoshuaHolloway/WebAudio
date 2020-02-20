@@ -95,14 +95,17 @@ vol_slider.addEventListener('change', () => {
 //  -Create a default track for synth
 //  -Create a default track for bass
 
-//
+// TODO: Move these into the class
+// TODO: Move these into the class
+// TODO: Move these into the class
+// TODO: Move these into the class
 const beats_1 = document.querySelectorAll('.beats-1');
 const beats_2 = document.querySelectorAll('.beats-2');
 const beats_3 = document.querySelectorAll('.beats-3');
 
 // Grab each individual beat and  
 const beat_1 = document.querySelectorAll('.beats-1 .beat');
-const beat_2 = document.querySelectorAll('.beat-2');
+const beat_2 = document.querySelectorAll('.beats-2 .beat');
 const beat_3 = document.querySelectorAll('.beat-3');
 
 console.dir(beat_1);
