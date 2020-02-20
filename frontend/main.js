@@ -55,7 +55,7 @@ Tracks[0].set();
 Tracks[1].two_and_four();
 Tracks[2].one_and_three();
 
-
+// ========================================================
 
 //create a synth and bass and connect them to the master output (your speakers)
 // let bassSynth = new Tone.MembraneSynth().toMaster();
@@ -95,9 +95,55 @@ vol_slider.addEventListener('change', () => {
 //  -Create a default track for synth
 //  -Create a default track for bass
 
+//
+const beats_1 = document.querySelectorAll('.beats-1');
+const beats_2 = document.querySelectorAll('.beats-2');
+const beats_3 = document.querySelectorAll('.beats-3');
+
+// Grab each individual beat and  
+const beat_1 = document.querySelectorAll('.beats-1 .beat');
+const beat_2 = document.querySelectorAll('.beat-2');
+const beat_3 = document.querySelectorAll('.beat-3');
+
+console.dir(beat_1);
+beat_1.forEach((val, i) => {
+
+    beat_1[i].addEventListener('click', () => {
+        if (Tracks[0].pattern[i]) {
+            beat_1[i].style.background = 'rgba(255, 154, 72)';
+            console.log('Clicked');
+        }
+        else {
+            beat_1[i].style.background = 'black';
+            console.log('Clicked again');
+        }
+
+        Tracks[0].pattern[i] = !(Tracks[0].pattern[i]);
+    });
+});
+
+beat_2.forEach((val, i) => {
+
+    beat_2[i].addEventListener('click', () => {
+        if (Tracks[1].pattern[i]) beat_2[i].style.background = 'rgba(255, 154, 72)';
+        else beat_2[i].style.background = 'black';
+
+        Tracks[1].pattern[i] = !(Tracks[1].pattern);
+    });
+});
 
 
+beat_3.forEach((val, i) => {
 
+    beat_3[i].addEventListener('click', () => {
+        if (Tracks[2].pattern[i]) beat_3[i].style.background = 'rgba(255, 154, 72)';
+        else beat_3[i].style.background = 'black';
+
+        Tracks[2].pattern[i] = !(Tracks[2].pattern);
+    });
+});
+
+// ========================================================
 
 function callback(time) {
 
@@ -123,9 +169,7 @@ function callback(time) {
     document.querySelector('#index').innerHTML = 'Index: ' + idx;
     document.querySelector('#time').innerHTML = 'Time: ' + time;
 
-    const beats_1 = document.querySelectorAll('.beats-1');
-    const beats_2 = document.querySelectorAll('.beats-2');
-    const beats_3 = document.querySelectorAll('.beats-3');
+
     // console.dir(beats_1);
 
     beats_1[bar].style.background = 'yellow';
@@ -160,41 +204,7 @@ function callback(time) {
     console.log('time: ' + time);
 }
 
-// Grab each individual beat and  
-const beat_1 = document.querySelectorAll('.beat-1');
-beat_1.forEach((val, i) => {
-
-    beat_1[i].addEventListener('click', () => {
-        if (Tracks[0].pattern[i]) beat_1[i].style.background = 'rgba(255, 154, 72)';
-        else beat_1[i].style.background = 'black';
-
-        Tracks[0].pattern[i] = !(Tracks[0].pattern[i]);
-    });
-});
-
-const beat_2 = document.querySelectorAll('.beat-2');
-beat_2.forEach((val, i) => {
-
-    beat_2[i].addEventListener('click', () => {
-        if (track_2[i]) beat_2[i].style.background = 'rgba(255, 154, 72)';
-        else beat_2[i].style.background = 'black';
-
-        track_2[i] = !track_2[i];
-    });
-});
-
-const beat_3 = document.querySelectorAll('.beat-3');
-beat_3.forEach((val, i) => {
-
-    beat_3[i].addEventListener('click', () => {
-        if (track_3[i]) beat_3[i].style.background = 'rgba(255, 154, 72)';
-        else beat_3[i].style.background = 'black';
-
-        track_3[i] = !track_3[i];
-    });
-});
-
-
+// ========================================================
 
 // TODO: Change load_x's to an arrays
 
@@ -237,4 +247,4 @@ load_2.onchange = function () {
     // Step 3: Write name to Track-1 title
 };
 
-console.dir(load_2);
+
