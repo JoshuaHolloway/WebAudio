@@ -55,9 +55,6 @@ class Track {
 }
 
 let Tracks = [new Track('hh_sample.mp3'), new Track('clap_sample.mp3'), new Track('bass_sample.mp3')];
-
-track_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-
 Tracks[0].set();
 Tracks[1].two_and_four();
 Tracks[2].one_and_three();
@@ -107,12 +104,12 @@ vol_slider.addEventListener('change', () => {
 // TODO: Move these into the class
 // TODO: Move these into the class
 
-const beats_2 = document.querySelectorAll('.beats-2');
-const beats_3 = document.querySelectorAll('.beats-3');
+const beats_2 = document.querySelectorAll('.beats-1');
+const beats_3 = document.querySelectorAll('.beats-2');
 
 // Grab each individual beat and  
-const beat_2 = document.querySelectorAll('.beats-2 .beat');
-const beat_3 = document.querySelectorAll('.beat-3');
+const beat_2 = document.querySelectorAll('.beats-1 .beat');
+const beat_3 = document.querySelectorAll('.beat-2');
 
 Tracks[0].beat_elems.forEach((val, i) => {
 
