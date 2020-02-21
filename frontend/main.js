@@ -36,17 +36,25 @@ class Track {
             default: this.clear();
         }
 
+        // Definitely not a pure function!
         const change_beat_color = (i) => {
-            if (this.pattern[i]) this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
-            else this.beat_elems[i].style.background = 'black';
+            if (this.pattern[i]) this.beat_elems[i].style.background = 'black';
+            else this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
         };
 
         // Event-listener for drawing beat-pattern
         this.beat_elems.forEach((val, i) => {
+
+            // Set initial beat-pattern graphics
+            change_beat_color(i);
+
+            // Change color of beat graphic upon click
             this.beat_elems[i].addEventListener('click', () => {
                 this.pattern[i] = !(this.pattern[i]);
                 change_beat_color(i);
             });
+
+
         });
 
         // Create callback for load button
