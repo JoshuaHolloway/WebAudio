@@ -53,8 +53,6 @@ class Track {
                 this.pattern[i] = !(this.pattern[i]);
                 change_beat_color(i);
             });
-
-
         });
 
         // Create callback for load button
@@ -75,13 +73,9 @@ class Track {
     }
 
     // Methods
-    change(name) {
-        this.player = new Tone.Player('./' + name).toMaster();
-    }
+    change = (name) => this.player = new Tone.Player('./' + name).toMaster();
 
     set() {
-        // for (let pattern of this.pattern)
-        //     pattern = true;
         for (let i = 0; i < this.pattern.length; ++i)
             this.pattern[i] = true;
     }
@@ -104,10 +98,6 @@ class Track {
     two_and_four() {
         this.pattern[4] = true;
         this.pattern[12] = true;
-    }
-
-    sync_style() {
-
     }
 }
 
