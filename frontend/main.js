@@ -68,8 +68,7 @@ class Track {
             this.change(name);
 
             // Step 3: Write name to Track-1 title
-            const title = name.split('.');
-            this.track_name_elem.innerHTML = title[0];
+            this.track_name_elem.innerHTML = name.split('.')[0];
         });
     }
 
