@@ -21,7 +21,6 @@ class Track {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
 
-
         const track_num_str = track_num.toString();
         this.track_name_elem = document.querySelector('#track-name-' + track_num);
         this.track_name_elem.innerHTML = 'Track-' + track_num_str;
@@ -56,7 +55,6 @@ class Track {
             });
         });
 
-
         // Create callback for load button
         const load_track_elem = document.querySelector('#load_' + track_num.toString());
         console.dir(load_track_elem);
@@ -72,7 +70,7 @@ class Track {
 
             // Step 3: Write name to Track-1 title
             const title = name.split('.');
-            this.track_name_elem.innerHTML = title;
+            this.track_name_elem.innerHTML = title[0];
         });
     }
 
