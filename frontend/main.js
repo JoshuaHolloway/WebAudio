@@ -28,6 +28,7 @@ class Track {
         this.beats_elems = document.querySelectorAll('.beats-' + track_num);
         this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
 
+        // Initialize beat pattern on default tracks
         switch (track_num) {
             case 0: {
                 this.set();
@@ -41,8 +42,12 @@ class Track {
             } default: { this.clear(); }
         }
 
+        // Event-listener for drawing beat-pattern
         this.beat_elems.forEach((val, i) => {
             this.beat_elems[i].addEventListener('click', () => {
+
+                this.pattern[i] = !(this.pattern[i]);
+
                 if (this.pattern[i]) {
                     this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
                     console.log('Clicked');
@@ -51,7 +56,7 @@ class Track {
                     this.beat_elems[i].style.background = 'black';
                     console.log('Clicked again');
                 }
-                this.pattern[i] = !(this.pattern[i]);
+
             });
         });
 
