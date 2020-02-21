@@ -36,12 +36,16 @@ class Track {
             default: this.clear();
         }
 
+        const change_beat_color = (i) => {
+            if (this.pattern[i]) this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+            else this.beat_elems[i].style.background = 'black';
+        };
+
         // Event-listener for drawing beat-pattern
         this.beat_elems.forEach((val, i) => {
             this.beat_elems[i].addEventListener('click', () => {
                 this.pattern[i] = !(this.pattern[i]);
-                if (this.pattern[i]) this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
-                else this.beat_elems[i].style.background = 'black';
+                change_beat_color(i);
             });
         });
 
