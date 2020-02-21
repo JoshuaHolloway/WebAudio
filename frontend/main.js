@@ -61,8 +61,7 @@ class Track {
         load_track_elem.addEventListener('change', () => {
 
             // Step 1: Get name
-            const files = load_track_elem.files;
-            const name = files[0].name;
+            const name = load_track_elem.files[0].name;
 
             // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
             // -Assumes in current directory
@@ -149,8 +148,6 @@ vol_slider.addEventListener('change', () => {
 });
 
 // TODO: 
-//  -Default each track
-//  -Default the song pattern
 //  -Create a default track for synth
 //  -Create a default track for bass
 
