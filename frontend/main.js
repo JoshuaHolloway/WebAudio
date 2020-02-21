@@ -30,33 +30,18 @@ class Track {
 
         // Initialize beat pattern on default tracks
         switch (track_num) {
-            case 0: {
-                this.set();
-                break;
-            } case 1: {
-                this.two_and_four();
-                break;
-            } case 2: {
-                this.one_and_three();
-                break;
-            } default: { this.clear(); }
+            case 0: this.set(); break;
+            case 1: this.two_and_four(); break;
+            case 2: this.one_and_three(); break;
+            default: this.clear();
         }
 
         // Event-listener for drawing beat-pattern
         this.beat_elems.forEach((val, i) => {
             this.beat_elems[i].addEventListener('click', () => {
-
                 this.pattern[i] = !(this.pattern[i]);
-
-                if (this.pattern[i]) {
-                    this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
-                    console.log('Clicked');
-                }
-                else {
-                    this.beat_elems[i].style.background = 'black';
-                    console.log('Clicked again');
-                }
-
+                if (this.pattern[i]) this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+                else this.beat_elems[i].style.background = 'black';
             });
         });
 
