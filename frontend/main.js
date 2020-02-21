@@ -1,10 +1,13 @@
 // Globals
 let loopBeat;
-let Track_0, Track_1, Track_2;
+
+// ========================================================
 
 class Song {
 
 }
+
+// ========================================================
 
 class Track {
 
@@ -46,6 +49,25 @@ class Track {
                 this.pattern[i] = !(this.pattern[i]);
             });
         });
+
+
+        // Create callback for load button
+        const load_track_elem = document.querySelector('#load_' + track_num.toString());
+        console.dir(load_track_elem);
+        load_track_elem.addEventListener('change', () => {
+
+            console.log('inside event listener');
+
+            // Step 1: Get name
+            const files = load_track_elem.files;
+            const name = files[0].name;
+
+            // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+            // -Assumes in current directory
+            this.change(name);
+
+            // Step 3: Write name to Track-1 title
+        });
     }
 
     // Methods
@@ -85,10 +107,9 @@ class Track {
     }
 }
 
+// ========================================================
+
 let Tracks = [new Track('hh_sample.mp3', 0), new Track('clap_sample.mp3', 1), new Track('bass_sample.mp3', 2)];
-// Tracks[0].set();
-// Tracks[1].two_and_four();
-// Tracks[2].one_and_three();
 
 // ========================================================
 
@@ -194,43 +215,33 @@ function callback(time) {
 
 // TODO: Change load_x's to an arrays
 
-// Player
-load_0.onchange = function () {
-    // Step 1: Get name
-    const files = this.files;
-    const name = files[0].name;
 
-    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
-    // -Assumes in current directory
-    Tracks[0].change(name);
+// load_1.onchange = function () {
 
-    // Step 3: Write name to Track-1 title
-};
+//     console.log('load button pressed');
 
+//     // Step 1: Get name
+//     const files = this.files;
+//     const name = files[0].name;
 
-load_1.onchange = function () {
-    // Step 1: Get name
-    const files = this.files;
-    const name = files[0].name;
+//     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+//     // -Assumes in current directory
+//     Tracks[1].change(name);
 
-    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
-    // -Assumes in current directory
-    Tracks[1].change(name);
-
-    // Step 3: Write name to Track-1 title
-};
-
-load_2.onchange = function () {
-    // Step 1: Get name
-    const files = this.files;
-    // const file = URL.createObjectURL(files[0]);
-    const name = files[0].name;
-
-    // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
-    // -Assumes in current directory
-    Tracks[2].change(name);
-
-    // Step 3: Write name to Track-1 title
-};
+//     // Step 3: Write name to Track-1 title
+// };
 
 
+
+// load_2.onchange = function () {
+//     // Step 1: Get name
+//     const files = this.files;
+//     // const file = URL.createObjectURL(files[0]);
+//     const name = files[0].name;
+
+//     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
+//     // -Assumes in current directory
+//     Tracks[2].change(name);
+
+//     // Step 3: Write name to Track-1 title
+// };
