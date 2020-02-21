@@ -15,10 +15,16 @@ class Track {
     name = 'Untitled Track';
     player = null;
     pattern = new Array(16);
+    track_name_elem;
 
     constructor(name, track_num) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
+
+
+        const track_num_str = track_num.toString();
+        this.track_name_elem = document.querySelector('#track-name-' + track_num);
+        this.track_name_elem.innerHTML = 'Track-' + track_num_str;
 
         this.beats_elems = document.querySelectorAll('.beats-' + track_num);
         this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
@@ -56,8 +62,6 @@ class Track {
         console.dir(load_track_elem);
         load_track_elem.addEventListener('change', () => {
 
-            console.log('inside event listener');
-
             // Step 1: Get name
             const files = load_track_elem.files;
             const name = files[0].name;
@@ -67,6 +71,8 @@ class Track {
             this.change(name);
 
             // Step 3: Write name to Track-1 title
+            const title = name.split('.');
+            this.track_name_elem.style.innerHTML = title;
         });
     }
 
@@ -212,36 +218,3 @@ function callback(time) {
 }
 
 // ========================================================
-
-// TODO: Change load_x's to an arrays
-
-
-// load_1.onchange = function () {
-
-//     console.log('load button pressed');
-
-//     // Step 1: Get name
-//     const files = this.files;
-//     const name = files[0].name;
-
-//     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
-//     // -Assumes in current directory
-//     Tracks[1].change(name);
-
-//     // Step 3: Write name to Track-1 title
-// };
-
-
-
-// load_2.onchange = function () {
-//     // Step 1: Get name
-//     const files = this.files;
-//     // const file = URL.createObjectURL(files[0]);
-//     const name = files[0].name;
-
-//     // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
-//     // -Assumes in current directory
-//     Tracks[2].change(name);
-
-//     // Step 3: Write name to Track-1 title
-// };
