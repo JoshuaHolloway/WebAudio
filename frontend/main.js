@@ -9,27 +9,27 @@ class Song {
 
 // ========================================================
 
-class Track {
+class Instrument {
 
     // Fields
-    name = 'Untitled Track';
+    name = 'Untitled Instrument';
     player = null;
     pattern = new Array(16);
-    track_name_elem;
+    instrument_name_elem;
 
-    constructor(name, track_num) {
+    constructor(name, instrument_num) {
         this.name = name;
         this.player = new Tone.Player('./' + name).toMaster();
 
-        const track_num_str = track_num.toString();
-        this.track_name_elem = document.querySelector('#track-name-' + track_num);
-        this.track_name_elem.innerHTML = 'Track-' + track_num_str;
+        const instrument_num_str = instrument_num.toString();
+        this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
+        this.instrument_name_elem.innerHTML = 'Instrument-' + instrument_num_str;
 
-        this.beats_elems = document.querySelectorAll('.beats-' + track_num);
-        this.beat_elems = document.querySelectorAll('.beats-' + track_num + ' .beat');
+        this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
+        this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
 
-        // Initialize beat pattern on default tracks
-        switch (track_num) {
+        // Initialize beat pattern on default instruments
+        switch (instrument_num) {
             case 0: this.set(); break;
             case 1: this.two_and_four(); break;
             case 2: this.one_and_three(); break;
@@ -56,19 +56,19 @@ class Track {
         });
 
         // Create callback for load button
-        const load_track_elem = document.querySelector('#load_' + track_num.toString());
-        console.dir(load_track_elem);
-        load_track_elem.addEventListener('change', () => {
+        const load_instrument_elem = document.querySelector('#load_' + instrument_num.toString());
+        console.dir(load_instrument_elem);
+        load_instrument_elem.addEventListener('change', () => {
 
             // Step 1: Get name
-            const name = load_track_elem.files[0].name;
+            const name = load_instrument_elem.files[0].name;
 
             // Step 2: Load into player via: new Tone.Player('./' + name).toMaster();
             // -Assumes in current directory
             this.change(name);
 
-            // Step 3: Write name to Track-1 title
-            this.track_name_elem.innerHTML = name.split('.')[0];
+            // Step 3: Write name to Instrument-1 title
+            this.instrument_name_elem.innerHTML = name.split('.')[0];
         });
     }
 
@@ -103,7 +103,7 @@ class Track {
 
 // ========================================================
 
-let Tracks = [new Track('hh_sample.mp3', 0), new Track('clap_sample.mp3', 1), new Track('bass_sample.mp3', 2)];
+let Instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
 
 // ========================================================
 
@@ -139,8 +139,8 @@ vol_slider.addEventListener('change', () => {
 });
 
 // TODO: 
-//  -Create a default track for synth
-//  -Create a default track for bass
+//  -Create a default instrument for synth
+//  -Create a default instrument for bass
 
 
 // ========================================================
@@ -171,33 +171,33 @@ function callback(time) {
 
 
 
-    Tracks[0].beats_elems[bar].style.background = 'yellow';
-    Tracks[1].beats_elems[bar].style.background = 'yellow';
-    Tracks[2].beats_elems[bar].style.background = 'yellow';
+    Instruments[0].beats_elems[bar].style.background = 'yellow';
+    Instruments[1].beats_elems[bar].style.background = 'yellow';
+    Instruments[2].beats_elems[bar].style.background = 'yellow';
     if (bar > 0) {
-        Tracks[0].beats_elems[bar - 1].style.background = 'green';
-        Tracks[1].beats_elems[bar - 1].style.background = 'green';
-        Tracks[2].beats_elems[bar - 1].style.background = 'green';
+        Instruments[0].beats_elems[bar - 1].style.background = 'green';
+        Instruments[1].beats_elems[bar - 1].style.background = 'green';
+        Instruments[2].beats_elems[bar - 1].style.background = 'green';
     }
 
 
 
-    if (Tracks[0].pattern[idx]) {
+    if (Instruments[0].pattern[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-        Tracks[0].player.start(time);
-        Tracks[0].player.stop(time + 0.5);
+        Instruments[0].player.start(time);
+        Instruments[0].player.stop(time + 0.5);
     }
-    if (Tracks[1].pattern[idx]) {
+    if (Instruments[1].pattern[idx]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
-        Tracks[1].player.start(time);
-        Tracks[1].player.stop(time + 0.5);
+        Instruments[1].player.start(time);
+        Instruments[1].player.stop(time + 0.5);
     }
-    if (Tracks[2].pattern[idx]) {
-        Tracks[2].player.start(time);
-        Tracks[2].player.stop(time + 0.5);
+    if (Instruments[2].pattern[idx]) {
+        Instruments[2].player.start(time);
+        Instruments[2].player.stop(time + 0.5);
     }
 
     console.log('time: ' + time);
