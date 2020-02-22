@@ -103,8 +103,12 @@ class Instrument {
 
 // ========================================================
 
-let Instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
+// let Instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
 
+class Pattern {
+    instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
+}
+const pattern = new Pattern();
 // ========================================================
 
 //create a synth and bass and connect them to the master output (your speakers)
@@ -171,33 +175,33 @@ function callback(time) {
 
 
 
-    Instruments[0].beats_elems[bar].style.background = 'yellow';
-    Instruments[1].beats_elems[bar].style.background = 'yellow';
-    Instruments[2].beats_elems[bar].style.background = 'yellow';
+    pattern.instruments[0].beats_elems[bar].style.background = 'yellow';
+    pattern.instruments[1].beats_elems[bar].style.background = 'yellow';
+    pattern.instruments[2].beats_elems[bar].style.background = 'yellow';
     if (bar > 0) {
-        Instruments[0].beats_elems[bar - 1].style.background = 'green';
-        Instruments[1].beats_elems[bar - 1].style.background = 'green';
-        Instruments[2].beats_elems[bar - 1].style.background = 'green';
+        pattern.instruments[0].beats_elems[bar - 1].style.background = 'green';
+        pattern.instruments[1].beats_elems[bar - 1].style.background = 'green';
+        pattern.instruments[2].beats_elems[bar - 1].style.background = 'green';
     }
 
 
 
-    if (Instruments[0].pattern[idx]) {
+    if (pattern.instruments[0].pattern[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-        Instruments[0].player.start(time);
-        Instruments[0].player.stop(time + 0.5);
+        pattern.instruments[0].player.start(time);
+        pattern.instruments[0].player.stop(time + 0.5);
     }
-    if (Instruments[1].pattern[idx]) {
+    if (pattern.instruments[1].pattern[idx]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
-        Instruments[1].player.start(time);
-        Instruments[1].player.stop(time + 0.5);
+        pattern.instruments[1].player.start(time);
+        pattern.instruments[1].player.stop(time + 0.5);
     }
-    if (Instruments[2].pattern[idx]) {
-        Instruments[2].player.start(time);
-        Instruments[2].player.stop(time + 0.5);
+    if (pattern.instruments[2].pattern[idx]) {
+        pattern.instruments[2].player.start(time);
+        pattern.instruments[2].player.stop(time + 0.5);
     }
 
     console.log('time: ' + time);
