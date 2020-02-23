@@ -1,13 +1,26 @@
-.container {
+:root {
+    --primary-color: rgba(13, 110, 139, 0.75);
+    --overlay-color: rgba(24, 39, 51, 0.85);
+    --menu-speed: 0.75s;
+    --default-track-width: 95vw;
+}
+
+
+.container-channel-rack {
     /* margin: 20px;
     display: grid;
     grid-template-columns: 200px 2fr 20% 1fr;
     grid-template-rows: 5rem 2.5rem; */
-
     width: fit-content;
 }
 
-.row {
+.container-song {
+    width: fit-content;
+
+}
+
+
+.row-channel-rack {
     display: grid;
     grid-template-columns: 100px 20px 120px 40px 1fr;
     
@@ -16,6 +29,28 @@
     border: black solid 2px;
 }
 
+.row-song {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    /* grid-template-rows: 100%; */
+
+    width: var(--default-track-width);
+    border: black 10px solid;
+}
+
+.track-title {
+    width: 100px;
+    height: 100px;
+    background: red;
+    border: 10px green solid;
+}
+
+.track-paint-region {
+
+    height: 100px;
+    background: red;
+    border: 10px blue solid;
+}
 
 .el1 {
     background: rgba(255, 154, 72, 0.5);
