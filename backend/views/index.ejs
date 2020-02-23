@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Josh</title>
+</head>
+
+<body>
+    <h1>Hello from index.ejs</h1>
+    <%=josh%>
+
+    <div id="status"></div>
+
+    <button id="josh-button">Josh</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            
+        
+            // Send to /josh
+            $('#josh-button').click(() => {
+                console.log('button pressed');
+
+                // Button pressed
+
+                $.ajax({
+                    url: 'josh/',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: data => {
+
+                        // Handle response:
+
+                        console.log('/josh was successful: :P');
+
+                        $('#status').html('All users: ' + data);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
