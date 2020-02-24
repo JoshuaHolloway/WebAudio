@@ -14,6 +14,18 @@
     <button id="readButton">Get profile</button>
     <button id="josh-button">Josh</button>
 
+    <div id="jobDiv"></div>
+    <img id="petImage"></img>
+
+    <hr/>
+    Name: <input id="insertNameBox" type="text" size="20"/>
+    Job: <input id="insertJobBox" type="text" size="20"/>
+    Pet: <input id="insertPetBox" type="text" size="20"/>
+    <button id="insertButton">Insert into database</button>
+
+    <hr/>
+    <div id="status"></div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(() => {
@@ -49,10 +61,7 @@
                     }
                 });               
             });
-
             // ================================
-        
-            // Send to /josh
             $('#josh-button').click(() => {
 
                 console.log('button pressed');
@@ -79,9 +88,28 @@
                     console.log(err);
                 });
             });
+            // ================================
+            $('#insertButton').click(() => {
+
+                const insertNameBox = $('#insertNameBox').val();
+                const insertJobBox = $('#insertJobBox').val();
+                const insertPetBox = $('#insertPetBox').val();
+
+                console.log(insertNameBox);
+                console.log(insertJobBox);
+                console.log(insertPetBox);
+
+                $.ajax({
+                    url: '/users',
+                    type: 'POST',
+                    data: {
+                        'insertNameBox': insertPetBox,
+                        'insertJobBox': insertJobBox,
+                        'insertPetBox': insertPetBox
+                    }
+                });
+            });
         });
     </script>
-
 </body>
-
 </html>

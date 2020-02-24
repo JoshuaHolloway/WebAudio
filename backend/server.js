@@ -20,6 +20,7 @@ const fake_db = {
   steve: { job: 'eng', pet: 'bear.jpg' }
 };
 //=======================================
+// REST: Get some data from the users collection
 app.get('/users', (req, res) => {
     console.clear();
     console.log('INSIDE /users handler');
@@ -70,6 +71,15 @@ app.get('/users/:userid', (req, res) => {
             }
                 
     });
+});
+//=======================================
+// REST: Post some new data to the users collection
+app.post('/users', (req, res) => {
+
+    console.log('Inside /users POST');
+
+    console.log(req);
+    res.send({});
 });
 //=======================================
 // executed for every incoming request
