@@ -10,12 +10,42 @@
 
     <div id="status"></div>
 
+    Name: <input id="nameBox" type="text" size="20"/>
+    <button id="readButton">Get profile</button>
     <button id="josh-button">Josh</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(() => {
+
             
+            $('#readButton').click(() => {
+                const nameBox = $('#nameBox').val();
+                const requestURL = 'users/' + nameBox;
+                console.log('making ajax request to:', requestURL);
+
+                // AJAX:
+                // Step 1: Make background (XMLHTTP) request
+                // Step 2: Run callback with data arg upon receiving request
+                //          -Response will be in JSON format as a string
+                // Step 3: Parse JSON-string into JS-Object
+
+                $.ajax({
+                // all URLs are relative to http://localhost:3000/
+                url: '/josh/' + nameBox, // TODO: Change this back to requestURL!!!
+                type: 'GET',
+                dataType: 'json', // this URL returns data in JSON format
+                success: data => {
+                    console.log('You received some data!', data);
+
+                    
+                }
+                });
+
+                
+            });
+
+            // ================================
         
             // Send to /josh
             $('#josh-button').click(() => {
@@ -27,14 +57,22 @@
                     url: '/users',
                     type: 'GET',
                     dataType: 'json',
-                    success: data => {
+                    success: res => {
 
                         // Handle response:
 
                         console.log('/users was successful');
 
-                        $('#status').html('All users: ' + data);
+                        $('#status').html('All users: ' + res);
                     }
+                })
+                .done(res => {
+                    console.log('in .done()');
+                    console.log(res);
+                })
+                .fail(err => {
+                    console.log('in .fail()');
+                    console.log(err);
                 });
             });
         });
