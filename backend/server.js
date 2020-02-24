@@ -40,7 +40,7 @@ app.get('/users', (req, res) => {
 //=======================================
 app.get('/users/:userid', (req, res) => {
     console.clear();
-    console.log('In  /josh/:userid  Path');
+    console.log('In  /users/:userid  Path');
 
     const userID = req.params.userid;
     console.log(userID);
@@ -51,7 +51,7 @@ app.get('/users/:userid', (req, res) => {
 
         // Arg-2: Object that contains the mapping for $name
         {
-            $name: nameToLookup
+            $name: userID
         },
 
         // Arg-3: Callback function to run when the query finishes        
@@ -63,7 +63,12 @@ app.get('/users/:userid', (req, res) => {
             if (rows.length < 1)
                 res.send({});
             else
-                res.send(rows);
+            {
+                // Assume only one person with userID in db
+                const row = rows[0];
+                res.send(row);
+            }
+                
     });
 });
 //=======================================
