@@ -5,6 +5,9 @@ const app = express();
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('pets.db');
 //=======================================
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true})); // hook up the body-parser to the express-app
+//=======================================
 app.set('view engine', 'ejs');
 //=======================================
 // JS-Object
@@ -75,11 +78,29 @@ app.get('/users/:userid', (req, res) => {
 //=======================================
 // REST: Post some new data to the users collection
 app.post('/users', (req, res) => {
+  console.log('Inside app.post(/users) for POST ', req.body);
 
-    console.log('Inside /users POST');
-
-    console.log(req);
-    res.send({});
+  // db.run() ececutes an SQL-query and then runs a callback
+  // -It does not return any data,
+  //  whereas db.all() returns data.
+  db.run(
+    // Arg-1: SQL-query
+    'INSERT INTO users_to_pets VALUES ($name, $job, $pet)',
+    // Arg-2: Values for args in SQL-query
+    {
+      $name: req.body.name,
+      $job: req.body.job,
+      $pet: req.body.pet
+    },
+    // Arg-3: Callback to run after SQL-query
+    err => {
+      if (err) {
+        res.send({ message: 'error in app.post(/users)' });
+      } else {
+        res.send({ message: 'successfully run app.post(/users)' });
+      }
+    }
+  );
 });
 //=======================================
 // executed for every incoming request
