@@ -59,8 +59,11 @@ app.get('/josh/:userid', (req, res) => {
 
             console.log(rows);
 
-            // Send response:
-            res.send(data);
+            // If query is invalid return empty object
+            if (rows.length < 1)
+                res.send({});
+            else
+                res.send(rows);
     });
 
     // res.send({josh: 'a'});
