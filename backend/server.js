@@ -38,7 +38,7 @@ app.get('/users', (req, res) => {
     // res.send(db_keys);
 });
 //=======================================
-app.get('/josh/:userid', (req, res) => {
+app.get('/users/:userid', (req, res) => {
     console.clear();
     console.log('In  /josh/:userid  Path');
 
@@ -65,38 +65,6 @@ app.get('/josh/:userid', (req, res) => {
             else
                 res.send(rows);
     });
-
-    // res.send({josh: 'a'});
-});
-
-//=======================================
-app.get('/users/:userid', (req, res) => {
-
-    console.log('inside /users/:userid');
-
-    const nameToLookup = req.params.userid;
-
-    db.all(
-        // Arg-1: SQL-query
-        'SELECT * FROM users_to_pets WHERE name=$name',
-
-        // Arg-2: Object that contains the mapping for $name
-        {
-        $name: nameToLookup
-        },
-
-        // Arg-3: Callback function to run when the query finishes
-        (err, rows) => {
-        console.log('Query has finished');
-        console.log(rows);
-        if (rows.length > 0) {
-            //res.send(rows);
-            res.send(rows[0]); // Array only has one element (the row)
-        } else {
-            res.send({}); // failed, so return an empty object instead of undefined
-        }
-        }
-    );
 });
 //=======================================
 // executed for every incoming request

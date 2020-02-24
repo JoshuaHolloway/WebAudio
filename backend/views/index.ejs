@@ -17,12 +17,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(() => {
-
             
             $('#readButton').click(() => {
                 const nameBox = $('#nameBox').val();
-                const requestURL = 'users/' + nameBox;
-                console.log('making ajax request to:', requestURL);
 
                 // AJAX:
                 // Step 1: Make background (XMLHTTP) request
@@ -32,26 +29,21 @@
 
                 $.ajax({
                 // all URLs are relative to http://localhost:3000/
-                url: '/josh/' + nameBox, // TODO: Change this back to requestURL!!!
+                url: '/users/' + nameBox,
                 type: 'GET',
                 dataType: 'json', // this URL returns data in JSON format
                 success: data => {
                     console.log('You received some data!', data);
-
-                    
                 }
-                });
-
-                
+                });               
             });
 
             // ================================
         
             // Send to /josh
             $('#josh-button').click(() => {
-                console.log('button pressed');
 
-                // Button pressed
+                console.log('button pressed');
 
                 $.ajax({
                     url: '/users',
