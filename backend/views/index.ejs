@@ -24,14 +24,14 @@
                 // Button pressed
 
                 $.ajax({
-                    url: 'josh/',
+                    url: '/users',
                     type: 'GET',
                     dataType: 'json',
                     success: data => {
 
                         // Handle response:
 
-                        console.log('/josh was successful: :P');
+                        console.log('/users was successful');
 
                         $('#status').html('All users: ' + data);
                     }

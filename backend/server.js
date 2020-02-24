@@ -1,3 +1,4 @@
+console.log('In server.js');
 const express = require('express');
 const app = express();
 //=======================================
@@ -19,16 +20,16 @@ const fake_db = {
   steve: { job: 'eng', pet: 'bear.jpg' }
 };
 //=======================================
-app.get('/josh', (req, res) => {
-    console.log('INSIDE /josh! :)');
+app.get('/users', (req, res) => {
+    console.log('INSIDE /users handler');
 
     db.all('SELECT name FROM users_to_pets', (err, rows) => {
         // console.log(rows);
-        const db_names = rows.map(x => x.name);
+        const data = rows.map(x => x.name);
         // console.log(db_names);
 
         // Send response:
-        res.send(db_names);
+        res.send(data);
     });
 
     // // Send response:
@@ -38,7 +39,7 @@ app.get('/josh', (req, res) => {
 //=======================================
 // executed for every incoming request
 app.use('/', (req, res) => {
-    console.log('Root Route Handler: /');
+    console.log('INSIDE / handler');
 
     res.render('index.ejs', {
         josh: 'HI from server.js :)'
