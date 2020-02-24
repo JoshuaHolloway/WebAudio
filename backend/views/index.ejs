@@ -91,21 +91,30 @@
             // ================================
             $('#insertButton').click(() => {
 
-                const insertNameBox = $('#insertNameBox').val();
-                const insertJobBox = $('#insertJobBox').val();
-                const insertPetBox = $('#insertPetBox').val();
-
-                console.log(insertNameBox);
-                console.log(insertJobBox);
-                console.log(insertPetBox);
+                const $name = $('#insertNameBox').val();
+                const $job = $('#insertJobBox').val();
+                const $pet = $('#insertPetBox').val();
+                console.log('Sending this data to server via Post-Request to /users:')
+                ;
+                console.log($name, ' ', $job, ' ', $pet);
 
                 $.ajax({
                     url: '/users',
                     type: 'POST',
-                    data: {
-                        'insertNameBox': insertPetBox,
-                        'insertJobBox': insertJobBox,
-                        'insertPetBox': insertPetBox
+                    data: { 
+                        // Form-Data (Posted-Data)
+                        // -Look at Headers in Network-tab
+                        //  after selecting the users request
+                        //  in dev-tools
+
+                        name: $name,
+                        job: $job,
+                        pet: $pet
+                    },
+                    success: (data) => {
+                        $('#status').html(data.message)
+                        console.log('Reterned from server:');
+                        console.log(data.message);
                     }
                 });
             });
