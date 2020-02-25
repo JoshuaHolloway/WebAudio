@@ -43,9 +43,16 @@ body {
 
 .channel-rack-row {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 205px 1fr;
 
     border: yellow solid 0.01px;
 
     height: 30px;
+}
+
+.el1 {
+    background: red;
+}
+.el2 {
+    background: green;
 }
