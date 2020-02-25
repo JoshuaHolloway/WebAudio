@@ -1,3 +1,8 @@
+:root {
+    --padding-channel-rack-center-left: 0px;
+    --padding-channel-rack-center-top: 16px;
+}
+
 body {
     margin: 0;
     padding: 3px;
@@ -14,18 +19,33 @@ body {
 #channel-rack {
     height: 214px;
     width: 497px;
+
     border: solid 1px red;
     background: yellow;
     opacity: 0.2;
 }
 
 #channel-rack-center {
-    height: 153px;
-    width: 485px;
+
+    height: calc(153px - var(--padding-channel-rack-center-top));
+    width: calc(485px - var(--padding-channel-rack-center-left));
+    
     border: solid 2px red;
 
     margin-top: 29px;
     margin-left: 4px;
 
     background: blue;
+
+    padding-top: var(--padding-channel-rack-center-top);
+    padding-left: var(--padding-channel-rack-center-left);
+}
+
+.channel-rack-row {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    border: yellow solid 0.01px;
+
+    height: 30px;
 }
