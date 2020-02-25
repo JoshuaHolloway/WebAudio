@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-image: url('channel-rack.png');
+    /* background-image: url('channel-rack.png'); */
     height: 216px;
     width: 499px;
 
@@ -20,7 +20,7 @@ body {
     height: 214px;
     width: 497px;
 
-    border: solid 1px red;
+    /* border: solid 1px red; */
     /* background: yellow; */
     opacity: 0.2;
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .el1 {
-    background: red;
+    /* background: red; */
 
     display: flex;
     align-items: center;
