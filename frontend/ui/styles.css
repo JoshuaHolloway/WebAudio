@@ -20,7 +20,7 @@ body {
     height: 214px;
     width: 497px;
 
-    /* border: solid 1px red; */
+    border: solid 1px red;
     /* background: yellow; */
     opacity: 0.2;
 }
@@ -67,7 +67,7 @@ body {
 .beat {
     height: 20px;
     width: 12px;
-    background: #595F63;
+    background: #95DA37;
 
     border-radius: 2px;
 }
@@ -78,41 +78,51 @@ body {
 }
 
 .light {
-    height: 10px;
-    width: 10px;
-    background: green;
+    height: 8px;
+    width: 8px;
+    background: #95DA37;
     border-radius: 50%;
     margin-left: 6px;
+
+    border: solid #434C51 1px;
 }
 
 .knob {
-    height: 15px;
-    width: 15px;
-    background: #595F63;
+    height: 14px;
+    width: 14px;
+    background: ;
     border-radius: 50%;
     margin-left: 4px;
+
+    border: solid #434C51 1px;
 }
 
 .number {
-    height: 25px;
-    width: 35px;
-    background: #595F63;
+    height: 24px;
+    width: 34px;
+    background: #4D565B;
     border-radius: 2px;
     margin-left: 4px;
+
+    border: solid #434C51 1px;
 }
 
 .name {
-    height: 25px;
+    height: 24px;
     width: 82px;
-    background: #595F63;
+    background: #4D565B;
     border-radius: 2px;
     margin-left: 8px;
+
+    border: solid #434C51 1px;
 }
 
 .on-off {
-    height: 26px;
-    width: 7px;
-    background: #595F63;
+    height: 24px;
+    width: 6px;
+    background: #4D565B;
     border-radius: 2px;
-    margin-left: 8px;
+    margin-left: 9px;
+
+    border: solid #434C51 1px;
 }
