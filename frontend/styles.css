@@ -5,7 +5,6 @@
     --default-track-width: 95vw;
 }
 
-
 .container-channel-rack {
     /* margin: 20px;
     display: grid;
@@ -18,7 +17,6 @@
     width: fit-content;
 
 }
-
 
 .row-channel-rack {
     display: grid;
@@ -50,6 +48,10 @@
     height: 100px;
     background: red;
     border: 10px blue solid;
+}
+
+.single-pattern {
+    
 }
 
 .el1 {
