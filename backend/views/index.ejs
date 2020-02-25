@@ -92,21 +92,21 @@
             $('#insertButton').click(() => {
                 console.log('insertButton clicked!!!');
                 $.ajax({
-                url: 'users',
-                type: 'POST',
+                    url: 'users',
+                    type: 'POST',
 
-                // Send this data to server
-                data: {
-                    name: $('#insertNameBox').val(),
-                    job: $('#insertJobBox').val(),
-                    pet: $('#insertPetBox').val()
-                },
+                    // Send this data to server
+                    data: {
+                        name: $('#insertNameBox').val(),
+                        job: $('#insertJobBox').val(),
+                        pet: $('#insertPetBox').val()
+                    },
 
-                // This is run after response from server
-                success: data => {
-                    $('#status').html(data.message);
-                    console.log('JOSH');
-                }
+                    // This is run after response from server
+                    success: data => {
+                        $('#status').html(data.message);
+                        console.log('JOSH');
+                    }
                 }); // $.ajax
             });
         });
