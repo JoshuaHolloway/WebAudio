@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+}
+
+.container {
+    background-image: url('ui.png');
+    height: 100vh;
+    width: 100vw;
+
+    opacity: 0.9;
+}
+
+#id {
+    
+}
