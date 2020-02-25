@@ -18,3 +18,14 @@ body {
     background: yellow;
     opacity: 0.2;
 }
+
+#channel-rack-center {
+    height: 153px;
+    width: 485px;
+    border: solid 2px red;
+
+    margin-top: 29px;
+    margin-left: 4px;
+
+    background: blue;
+}
