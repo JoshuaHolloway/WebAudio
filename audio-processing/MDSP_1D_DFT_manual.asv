@@ -3,8 +3,8 @@ clc, clear, close all;
 
 
 N = 5;
-% x = [1 2 3 2 1];
-x = [3 2 1 1 2]; % Modular wrap-around (periodic extension)
+x = [1 2 3 2 1];
+% x = [3 2 1 1 2]; % Modular wrap-around (periodic extension)
 FFT_matlab = fft(x)
 
 % Re-Create DCT and DFT
@@ -25,10 +25,13 @@ for k = 1:N
 end
 Y_DFT
 
-error = abs(real(Y_DFT') - FFT_matlab);
+% error = abs(real(Y_DFT') - FFT_matlab);
+
+error = Y
+
 
 figure,
 subplot(4,1,1), stem(x, 'fill'),  title('x(n)');
-subplot(4,1,2), stem(FFT_matlab, 'fill'), title('Y_1(n) = DCT(x(n))');
+subplot(4,1,2), stem(FFT_matlab, 'fill'), title('Y_1(n) = FFT(x(n))');
 subplot(4,1,3), stem(Y_DFT, 'fill'), title('Y_2(n) = DFT(x(n))');
 subplot(4,1,4), stem(error, 'fill'), title('Error Signal = |DFT_{manual}-FFT_{matlab}|');
