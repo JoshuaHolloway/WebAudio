@@ -7,7 +7,23 @@
 </head>
 <body>
     
-    <p id="result"></p>
+    <span>[1,2,3] * [1,1,1] = </span>
+    <span id="result"></span>
     
+    <!-- <input id="load_0" type="file" accept="audio/*" style="display: none;" />
+    <input type="button" value="Load" onclick="document.getElementById('load_0').click();" /> -->
+
+    <script src="convolve.js"></script>
+    <script>
+
+        const x = [1, 2, 3];
+        const h = [1, 1, 1];
+        const y = convolve(x, h);
+        console.log(y);
+
+        const result = document.querySelector('#result');
+        result.innerHTML = y;
+
+    </script>
 </body>
 </html>

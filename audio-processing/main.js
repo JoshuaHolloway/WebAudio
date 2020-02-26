@@ -58,6 +58,9 @@ pannerControl.addEventListener('input', function () {
 }, false);
 
 //======================================================
+// main.mjs
+
+//======================================================
 // Audio Processing:
 
 // Create a ScriptProcessorNode
@@ -73,11 +76,51 @@ function onProcess(e) {
     let leftOut = e.outputBuffer.getChannelData(0);
     let rightOut = e.outputBuffer.getChannelData(1);
 
-    for (let i = 0; i < leftIn.length; i++) {
-        // flip left and right channels
-        leftOut[i] = Math.random() * rightIn[i];
-        rightOut[i] = leftIn[i];
+    // let weights = [0.0525, 0,-0.0379,0,0.0537,0,-0.0771,0,0.1172,0,-0.060,0,
+    //     0.6345,1.0000,0.6345,0,-0.2060,0,0.1172,0,-0.0771,0,0.0537,0,-0.0379,      0,0.0525];
+
+
+    const weights = [2.279093e-04, 4.338670e-04, 7.800471e-04, 1.226644e-03, 1.734934e-03, 2.230406e-03, 2.602548e-03, 2.710722e-03, 2.398645e-03, 1.516924e-03, -4.865758e-05, -2.345731e-03, -5.325363e-03, -8.819384e-03, -1.252988e-02, -1.603491e-02, -1.881341e-02, -2.028914e-02, -1.989036e-02, -1.711956e-02, -1.162531e-02, -3.266574e-03, 7.840238e-03, 2.129938e-02, 3.644446e-02, 5.237976e-02, 6.805157e-02, 8.234249e-02, 9.417876e-02, 1.026383e-01, 1.070463e-01, 1.070463e-01, 1.026383e-01, 9.417876e-02, 8.234249e-02, 6.805157e-02, 5.237976e-02, 3.644446e-02, 2.129938e-02, 7.840238e-03, -3.266574e-03, -1.162531e-02, -1.711956e-02, -1.989036e-02, -2.028914e-02, -1.881341e-02, -1.603491e-02, -1.252988e-02, -8.819384e-03, -5.325363e-03, -2.345731e-03, -4.865758e-05, 1.516924e-03, 2.398645e-03, 2.710722e-03, 2.602548e-03, 2.230406e-03, 1.734934e-03, 1.226644e-03, 7.800471e-04, 4.338670e-04, 2.279093e-04];
+
+
+
+    // weights = [1,1,1];
+
+    // for (let i = 0; i < leftIn.length; i++) {
+    //     // flip left and right channels
+    //     // leftOut[i] = Math.random() * rightIn[i];
+    //     rightOut[i] = leftIn[i];
+    //     // let sum = 0;
+    //     // for (let k = 0; k < 3; k++)
+    //     //     sum += leftIn[i+k];
+    // }
+
+    var al = leftIn.length;
+    var wl = weights.length;
+    var offset = ~~(wl / 2);
+    // var output = new Array(al);
+
+    // Low-pass
+    for (var i = 0; i < al; i++) {
+        var kmin = (i >= offset) ? 0 : offset - i;
+        var kmax = (i + offset < al) ? wl - 1 : al - 1 - i + offset;
+
+        leftOut[i] = 0;
+        for (var k = kmin; k <= kmax; k++)
+            leftOut[i] += leftIn[i - offset + k] * weights[k];
+        
     }
+
+
+
+
+    
+    // leftOut = convolve(leftIn, h);
+    // leftOut = leftIn;
+    // console.log(leftOut);
+    console.log('leftIn.length = ', leftIn.length);
+    console.log('leftOut.length = ', leftOut.length);
+
 }
 //======================================================
 

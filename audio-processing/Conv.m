@@ -14,4 +14,12 @@ for n = 1:4
     z(n) = sum;
 end
 z
-        
+
+x = [1, 2, 3];
+conv(x,h, 'same')
+
+
+FIRHalfbandInterp = dsp.FIRHalfbandInterpolator('Specification',...
+    'Filter order and transition width','FilterOrder',26);
+C = coeffs(FIRHalfbandInterp);
+C.Numerator
