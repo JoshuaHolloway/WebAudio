@@ -106,7 +106,6 @@ function onProcess(e) {
 
         for (let k = kmin_hpf; k <= kmax_hpf; k++)
             rightOut[i] += rightIn[i - offset_hpf + k] * weights_hpf[k];
-            
     }
 
 
@@ -142,4 +141,14 @@ powerButton.addEventListener('click', function () {
 
 
 
+//======================================================
 
+        // Plotly
+        function getData() {
+            return Math.random();
+        }
+
+        Plotly.plot('chart', [{
+            y:[getData()],
+            type:'line'
+        }]);
