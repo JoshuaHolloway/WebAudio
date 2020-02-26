@@ -226,7 +226,7 @@ for (let i = 0; i < num_channel_rack_rows; ++i) {
 // console.log(channel_rack_rows__children[0][1]);
 
 
-let pattern_ = [false, false, false, true, false, false, false, true, false, false, false, true, false, false, false, true];
+let pattern_ = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 for(let i = 0; i < num_channel_rack_rows; ++i) {
     // for (let j = 0; j < num_channel_rack_rows; ++j) {}
            
@@ -242,23 +242,25 @@ for(let i = 0; i < num_channel_rack_rows; ++i) {
 
     channel_rack_row__children__array.forEach((val, i) => {
         channel_rack_row__children__array[i].addEventListener('click', () => {
-            pattern_[i] = !(pattern_[i]);
+
             
             if(pattern_[i])
             {
-                console.log('i = ', i);
-                // gray elements
-                if ((0<=i && i<4) || (8<=i && i<12)) {
-                    channel_rack_row__children__array[i].style.background = 'red';
-                }
-                else {
-                    channel_rack_row__children__array[i].style.background = 'black';
-                }
-
+                // console.log('i = ', i);
+                if ((0<=i && i<4) || (8<=i && i<12)) // gray elements
+                    channel_rack_row__children__array[i].style.background = '#555A5E';
+                else // red elements
+                    channel_rack_row__children__array[i].style.background = '#655456';
             }
             else {
-                channel_rack_row__children__array[i].style.background = 'rgba(255, 154, 72)';
+                // console.log('i = ', i);
+                if ((0<=i && i<4) || (8<=i && i<12)) // gray elements
+                    channel_rack_row__children__array[i].style.background = '#B2C2CC';
+                else // red elements
+                    channel_rack_row__children__array[i].style.background = '#DEB1B3';
             }
+
+                pattern_[i] = !(pattern_[i]);
         });
     });
 }
