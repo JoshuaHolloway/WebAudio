@@ -12,8 +12,6 @@ body {
     /* background-image: url('channel-rack.png'); */
     height: 216px;
     width: 499px;
-
-    /* opacity: 0.9; */
 }
 
 #channel-rack {
@@ -22,7 +20,6 @@ body {
 
     border: solid 1px #2A3338;
     background: #3F484D;
-    /* opacity: 0.2; */
 }
 
 #channel-rack-center {
@@ -45,22 +42,15 @@ body {
 .channel-rack-row {
     display: grid;
     grid-template-columns: 205px 1fr;
-
-    /* border: yellow solid 0.01px; */
-
     height: 30px;
 }
 
 .el1 {
-    /* background: red; */
-
     display: flex;
     align-items: center;
 }
 .el2 {
-    /* background: green; */
     display: flex;
-
     padding-left: 5px;
     padding-top: 5px;
 }
@@ -68,7 +58,6 @@ body {
 .beat {
     height: 20px;
     width: 11px;
-    /* background: #95DA37; */
     border: #394045 solid 1px;
     border-radius: 2px;
 }
@@ -89,30 +78,19 @@ body {
 .light {
     height: 6px;
     width: 6px;
-    /* background: #95DA37; */
     background-image: linear-gradient(0deg, #B5E56A, #88C23C);
-
-
-    
-
-
     border-radius: 50%;
     margin-left: 6px;
-
     border: solid #434C51 1px;
 }
 
 .knob {
     height: 14px;
     width: 14px;
-    /* background: #41484E; */
     background-image: linear-gradient(0deg, #3A4147, #4E555B);
     border-radius: 50%;
     margin-left: 4px;
-
     border: solid #3E4549 1px;
-
-
 }
 
 .number {
@@ -121,7 +99,6 @@ body {
     background: #4D565B;
     border-radius: 2px;
     margin-left: 4px;
-
     border: solid #3F484D 1px;
 }
 
@@ -131,7 +108,6 @@ body {
     background: #4D565B;
     border-radius: 2px;
     margin-left: 8px;
-
     border: solid #3F484D 1px;
 }
 
@@ -141,6 +117,5 @@ body {
     background: #4D565B;
     border-radius: 2px;
     margin-left: 9px;
-
     border: solid #434C51 1px;
 }
