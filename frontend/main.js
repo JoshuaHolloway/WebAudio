@@ -208,3 +208,42 @@ function callback(time) {
 }
 
 // ========================================================
+
+const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
+console.log(channel_rack_rows);
+
+const num_channel_rack_rows = 4;
+let channel_rack_rows__children = new Array(num_channel_rack_rows);
+for (let i = 0; i < num_channel_rack_rows; ++i) {
+    channel_rack_rows__children[i] = channel_rack_rows[i].children;
+    // console.log(channel_rack_rows__children[i]);
+}
+
+// left:
+// console.log(channel_rack_rows__children[0][0]);
+
+// right:
+// console.log(channel_rack_rows__children[0][1]);
+
+
+const pattern_ = [false, false, false, true, false, false, false, true, false, false, false, true, false, false, false, true];
+for(let i = 0; i < num_channel_rack_rows; ++i) {
+    // for (let j = 0; j < num_channel_rack_rows; ++j) {}
+           
+    // Right:
+    const channel_rack_row = channel_rack_rows__children[i][1];
+    // console.log(channel_rack_row);
+    const channel_rack_row__children = channel_rack_row.children;
+    console.log(channel_rack_row__children);
+
+    // Convert nodelist to an array:
+    const channel_rack_row__children__array = Array.from(channel_rack_row__children);
+    console.log(channel_rack_row__children__array);
+
+    channel_rack_row__children__array.forEach((val, i) => {
+        channel_rack_row__children__array[i].addEventListener('click', () => {
+            if (pattern_[i]) channel_rack_row__children__array[i].style.background = 'black';
+            else channel_rack_row__children__array[i].style.background = 'rgba(255, 154, 72)';
+        });
+    });
+}
