@@ -1,0 +1,29 @@
+%% Compute DFT manually:
+clc, clear, close all;
+
+
+N = 3;
+x =[
+  1 1 1; ... 
+  1 0 0;  ...
+  1 0 0];
+
+FFT_matlab = fft2(x)
+
+% Re-Create DCT and DFT
+Y_DFT = zeros(N,N);
+for k1 = 1:N
+  for k2 = 1:N
+    SUM = 0;
+    for n1 = 1:N
+      for n2 = 1:N 
+        W = exp(-(2*pi*1i)/(N));
+        W1 = W.^((k1-1)*(n1-1));
+        W2 = W.^((k2-1)*(n2-1));
+        SUM = SUM + W1.*W2 .* x(n1,n2);
+        Y_DFT(k1,k2) = SUM;
+      end
+    end
+  end
+end
+Y_DFT
