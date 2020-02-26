@@ -280,4 +280,9 @@ const add_channel_rack_row_button = document.querySelector('#add-row');
 add_channel_rack_row_button.addEventListener('click', () => {
     ++num_channel_rack_rows;
     console.log('Number of rows in channel rack = ', num_channel_rack_rows);
+
+    const new_div = document.createElement('div');
+    new_div.innerText = 'JOSH';
+    const item = document.getElementsByClassName('test-row');
+    item[0].appendChild(new_div);
 });
