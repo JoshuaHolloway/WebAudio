@@ -4,7 +4,7 @@ let loopBeat;
 // ========================================================
 
 class Song {
-    
+
 }
 
 // ========================================================
@@ -220,7 +220,7 @@ function callback(time) {
 const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
 console.log(channel_rack_rows);
 
-const num_channel_rack_rows = 4;
+let num_channel_rack_rows = 4;
 let channel_rack_rows__children = new Array(num_channel_rack_rows);
 for (let i = 0; i < num_channel_rack_rows; ++i) {
     channel_rack_rows__children[i] = channel_rack_rows[i].children;
@@ -274,3 +274,11 @@ for(let row = 0; row < num_channel_rack_rows; ++row) {
     });
 }
 
+// ========================================================
+
+// let num_channel_rack_rows = 0; // Used before prototype loop above
+const add_channel_rack_row_button = document.querySelector('#add-row');
+add_channel_rack_row_button.addEventListener('click', () => {
+    ++num_channel_rack_rows;
+    console.log('Number of rows in channel rack = ', num_channel_rack_rows);
+});
