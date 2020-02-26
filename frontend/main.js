@@ -226,41 +226,42 @@ for (let i = 0; i < num_channel_rack_rows; ++i) {
 // console.log(channel_rack_rows__children[0][1]);
 
 
+// TODO: This is currently only one pattern for all rows in channel rack
 let pattern_ = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-for(let i = 0; i < num_channel_rack_rows; ++i) {
+
+for(let row = 0; row < num_channel_rack_rows; ++row) {
     // for (let j = 0; j < num_channel_rack_rows; ++j) {}
            
     // Right:
-    const channel_rack_row = channel_rack_rows__children[i][1];
+    const channel_rack_row = channel_rack_rows__children[row][1];
     // console.log(channel_rack_row);
-    const channel_rack_row__children = channel_rack_row.children;
-    console.log(channel_rack_row__children);
+    const beats_nodeList = channel_rack_row.children;
+    console.log(beats_nodeList);
 
     // Convert nodelist to an array:
-    const channel_rack_row__children__array = Array.from(channel_rack_row__children);
-    console.log(channel_rack_row__children__array);
+    const beats = Array.from(beats_nodeList);
+    console.log(beats);
 
-    channel_rack_row__children__array.forEach((val, i) => {
-        channel_rack_row__children__array[i].addEventListener('click', () => {
-
+    beats.forEach((val, j) => {
+        beats[j].addEventListener('click', () => {
             
-            if(pattern_[i])
+            if(pattern_[j])
             {
                 // console.log('i = ', i);
-                if ((0<=i && i<4) || (8<=i && i<12)) // gray elements
-                    channel_rack_row__children__array[i].style.background = '#555A5E';
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    beats[j].style.background = '#555A5E';
                 else // red elements
-                    channel_rack_row__children__array[i].style.background = '#655456';
+                    beats[j].style.background = '#655456';
             }
             else {
                 // console.log('i = ', i);
-                if ((0<=i && i<4) || (8<=i && i<12)) // gray elements
-                    channel_rack_row__children__array[i].style.background = '#B2C2CC';
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    beats[j].style.background = '#B2C2CC';
                 else // red elements
-                    channel_rack_row__children__array[i].style.background = '#DEB1B3';
+                    beats[j].style.background = '#DEB1B3';
             }
 
-                pattern_[i] = !(pattern_[i]);
+                pattern_[j] = !(pattern_[j]);
         });
     });
 }
