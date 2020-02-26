@@ -94,8 +94,6 @@ function onProcess(e) {
     let x = Array(leftIn.length);
     for (var i = 0; i < al; i++) {
 
-        x[i] = rightIn[i];
-
         const kmin_lpf = (i >= offset_lpf) ? 0 : offset_lpf - i;
         const kmax_lpf = (i + offset_lpf < al) ? wl_lpf - 1 : al - 1 - i + offset_lpf;
 

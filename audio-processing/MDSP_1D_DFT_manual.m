@@ -17,7 +17,10 @@ for k = 1:N
   end
   SUM = 0;
   for n = 1:N
-    w = exp(-(2*pi*1i)/(N));
+    w = exp(-(2*pi*1i)/(N))
+    pause
+    
+    
     w = w.^((k-1)*(n-1));
     SUM = SUM + w .* x(n);
     Y_DFT(k) = SUM;

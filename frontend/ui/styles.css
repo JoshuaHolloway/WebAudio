@@ -13,7 +13,7 @@ body {
     height: 216px;
     width: 499px;
 
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 
 #channel-rack {
@@ -22,7 +22,7 @@ body {
 
     border: solid 1px red;
     /* background: yellow; */
-    opacity: 0.2;
+    /* opacity: 0.2; */
 }
 
 #channel-rack-center {
@@ -67,7 +67,7 @@ body {
 .beat {
     height: 20px;
     width: 12px;
-    background: #95DA37;
+    /* background: #95DA37; */
 
     border-radius: 2px;
 }
@@ -75,6 +75,14 @@ body {
 /* Skip the margin on the first one: */
 .beat:nth-child(n+2) {
     margin-left: 4px;
+}
+
+.beat-l {
+    background: #545A5E;
+}
+
+.beat-r {
+    background: #665556;
 }
 
 .light {

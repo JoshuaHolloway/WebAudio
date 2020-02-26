@@ -14,6 +14,7 @@
     <input type="button" value="Load" onclick="document.getElementById('load_0').click();" /> -->
 
     <script src="convolve.js"></script>
+    <script src="dsp.js"></script>
     <script>
 
         const x = [1, 2, 3];
@@ -23,6 +24,16 @@
 
         const result = document.querySelector('#result');
         result.innerHTML = y;
+
+
+        let z = {
+            re: 0,
+            im: 5
+        };
+
+
+
+        console.log(z.im);
 
     </script>
 </body>
