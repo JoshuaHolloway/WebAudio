@@ -275,14 +275,53 @@ for(let row = 0; row < num_channel_rack_rows; ++row) {
 
 // ========================================================
 
+const channel_rack_row_html = `
+<div class="channel-rack-row">
+    <div class="channel-rack-col-left">
+        <span class="light"></span>
+        <span class="knob"></span>
+        <span class="knob"></span>
+        <span class="number"></span>
+        <span class="name"></span>
+        <span class="on-off"></span>  
+    </div>
+    <div class="channel-rack-col-right">
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>
+        <span class="beat beat-l"></span>                        
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+        <span class="beat beat-r"></span>
+    </div>
+</div>
+`;
+
+
 // let num_channel_rack_rows = 0; // Used before prototype loop above
 const add_channel_rack_row_button = document.querySelector('#add-row');
 add_channel_rack_row_button.addEventListener('click', () => {
     ++num_channel_rack_rows;
     console.log('Number of rows in channel rack = ', num_channel_rack_rows);
 
+
     const new_div = document.createElement('div');
-    new_div.innerText = 'JOSH';
-    const item = document.getElementsByClassName('test-row');
-    item[0].appendChild(new_div);
+    new_div.classList.add('test-row');
+
+
+
+
+    const test_rows = document.getElementsByClassName('test-rows')[0];
+    test_rows.appendChild(new_div);
+
+
 });
