@@ -20,7 +20,7 @@ body {
     height: 214px;
     width: 497px;
 
-    border: solid 1px red;
+    border: solid 1px #2A3338;
     background: #3F484D;
     /* opacity: 0.2; */
 }
@@ -30,12 +30,13 @@ body {
     height: calc(153px - var(--padding-channel-rack-center-top));
     width: calc(485px - var(--padding-channel-rack-center-left));
     
-    border: solid 2px #323B40;
+    border: solid 1.5px #323B40;
 
     margin-top: 29px;
     margin-left: 4px;
 
     background: #5F686D;
+    border-radius: 2px;
 
     padding-top: var(--padding-channel-rack-center-top);
     padding-left: var(--padding-channel-rack-center-left);
@@ -66,9 +67,9 @@ body {
 
 .beat {
     height: 20px;
-    width: 12px;
+    width: 11px;
     /* background: #95DA37; */
-
+    border: #394045 solid 1px;
     border-radius: 2px;
 }
 
