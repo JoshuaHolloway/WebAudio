@@ -35,7 +35,7 @@ body {
     margin-top: 29px;
     margin-left: 4px;
 
-    /* background: blue; */
+    background: #5F686D;
 
     padding-top: var(--padding-channel-rack-center-top);
     padding-left: var(--padding-channel-rack-center-left);
