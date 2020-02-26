@@ -4,6 +4,12 @@ let loopBeat;
 // ========================================================
 
 class Song {
+    
+}
+
+// ========================================================
+
+class Channel_Rack {
 
 }
 
@@ -208,6 +214,8 @@ function callback(time) {
 }
 
 // ========================================================
+
+// TODO: Port into Channel Rack class
 
 const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
 console.log(channel_rack_rows);
