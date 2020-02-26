@@ -276,33 +276,31 @@ for(let row = 0; row < num_channel_rack_rows; ++row) {
 // ========================================================
 
 const channel_rack_row_html = `
-<div class="channel-rack-row">
-    <div class="channel-rack-col-left">
-        <span class="light"></span>
-        <span class="knob"></span>
-        <span class="knob"></span>
-        <span class="number"></span>
-        <span class="name"></span>
-        <span class="on-off"></span>  
-    </div>
-    <div class="channel-rack-col-right">
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>
-        <span class="beat beat-l"></span>                        
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-        <span class="beat beat-r"></span>
-    </div>
+<div class="channel-rack-col-left">
+    <span class="light"></span>
+    <span class="knob"></span>
+    <span class="knob"></span>
+    <span class="number"></span>
+    <span class="name"></span>
+    <span class="on-off"></span>  
+</div>
+<div class="channel-rack-col-right">
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>
+    <span class="beat beat-l"></span>                        
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
+    <span class="beat beat-r"></span>
 </div>
 `;
 
@@ -314,14 +312,21 @@ add_channel_rack_row_button.addEventListener('click', () => {
     console.log('Number of rows in channel rack = ', num_channel_rack_rows);
 
 
+    // Test it out
     const new_div = document.createElement('div');
     new_div.classList.add('test-row');
-
-
-
 
     const test_rows = document.getElementsByClassName('test-rows')[0];
     test_rows.appendChild(new_div);
 
+    // Apply to actual row in channel-rack:
+    const channel_rack_center = document.getElementById('channel-rack-center');
+    console.log(channel_rack_center);
 
+    const new_channel_rack_row = document.createElement('div');
+    new_channel_rack_row.classList.add('channel-rack-row');
+
+    new_channel_rack_row.innerHTML = channel_rack_row_html;
+
+    channel_rack_center.appendChild(new_channel_rack_row);
 });
