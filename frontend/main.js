@@ -244,11 +244,11 @@ for(let row = 0; row < num_channel_rack_rows; ++row) {
     const channel_rack_row = channel_rack_rows__children[row][1];
     // console.log(channel_rack_row);
     const beats_nodeList = channel_rack_row.children;
-    console.log(beats_nodeList);
+    // console.log(beats_nodeList);
 
     // Convert nodelist to an array:
     const beats = Array.from(beats_nodeList);
-    console.log(beats);
+    // console.log(beats);
 
     beats.forEach((val, j) => {
         beats[j].addEventListener('click', () => {
@@ -268,7 +268,6 @@ for(let row = 0; row < num_channel_rack_rows; ++row) {
                 else // red elements
                     beats[j].style.background = '#DEB1B3';
             }
-
                 pattern_[j] = !(pattern_[j]);
         });
     });
