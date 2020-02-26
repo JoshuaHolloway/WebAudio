@@ -88,7 +88,10 @@ body {
 .light {
     height: 8px;
     width: 8px;
-    background: #95DA37;
+    /* background: #95DA37; */
+    background-image: linear-gradient(0deg, #3A4147, #4E555B);
+
+
     border-radius: 50%;
     margin-left: 6px;
 
@@ -98,11 +101,13 @@ body {
 .knob {
     height: 14px;
     width: 14px;
-    background: ;
+    background: #41484E;
     border-radius: 50%;
     margin-left: 4px;
 
     border: solid #434C51 1px;
+
+
 }
 
 .number {
