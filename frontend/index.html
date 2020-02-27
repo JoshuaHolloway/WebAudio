@@ -17,12 +17,6 @@
         <!-- <script src="main.js"></script> -->
     </div>
 
-
-
-
-
-
-
     <div class="channel-rack-container">
         <div id="channel-rack">
             <div id="channel-rack-center">
@@ -32,7 +26,11 @@
                         <span class="knob"></span>
                         <span class="knob"></span>
                         <span class="number"></span>
-                        <span class="name"></span>
+                        <span class="name">
+                            <input id="load_0" type="file" accept="audio/*" style="display: none;" />
+                            <input type="button" value="Load" onclick="document.getElementById('load_0').click();" />
+                            <!-- https://stackoverflow.com/a/14806776 -->
+                        </span>
                         <span class="on-off"></span>  
                     </div>
                     <div class="Beats-0">
@@ -60,7 +58,10 @@
                         <span class="knob"></span>
                         <span class="knob"></span>
                         <span class="number"></span>
-                        <span class="name"></span>
+                        <span class="name">
+                            <input id="load_1" type="file" accept="audio/*" style="display: none;" />
+                            <input type="button" value="Load" onclick="document.getElementById('load_1').click();" />
+                        </span>
                         <span class="on-off"></span>  
                     </div>
                     <div class="Beats-1">
@@ -88,7 +89,10 @@
                         <span class="knob"></span>
                         <span class="knob"></span>
                         <span class="number"></span>
-                        <span class="name"></span>
+                        <span class="name">
+                            <input id="load_2" type="file" accept="audio/*" style="display: none;" />
+                            <input type="button" value="Load" onclick="document.getElementById('load_2').click();" />
+                        </span>
                         <span class="on-off"></span>  
                     </div>
                     <div class="Beats-2">
@@ -116,7 +120,10 @@
                         <span class="knob"></span>
                         <span class="knob"></span>
                         <span class="number"></span>
-                        <span class="name"></span>
+                        <span class="name">
+                            <input id="load_3" type="file" accept="audio/*" style="display: none;" />
+                            <input type="button" value="Load" onclick="document.getElementById('load_3').click();" />
+                        </span>
                         <span class="on-off"></span>  
                     </div>
                     <div class="Beats-3">
@@ -157,8 +164,7 @@
             <div class="el2"></div>
             <div class="el3">
                 <p id="instrument-name-0">Track 0</p>
-                <input id="load_0" type="file" accept="audio/*" style="display: none;" />
-                <input type="button" value="Load" onclick="document.getElementById('load_0').click();" />
+
             </div>
             <div class="el4"></div>
             <div class="el5">
@@ -194,8 +200,7 @@
             <div class="el2"></div>
             <div class="el3">
                 <p id="instrument-name-1">Track 1</p>
-                <input id="load_1" type="file" accept="audio/*" style="display: none;" />
-                <input type="button" value="Load" onclick="document.getElementById('load_1').click();" />
+
             </div>
             <div class="el4"></div>
             <div class="el5">
@@ -232,9 +237,8 @@
             <div class="el3">
                 <p id="instrument-name-2">Track 2</p>
 
-                <input id="load_2" type="file" accept="audio/*" style="display: none;" />
-                <input type="button" value="Load" onclick="document.getElementById('load_2').click();" />
-                <!-- https://stackoverflow.com/a/14806776 -->
+
+                
             </div>
             <div class="el4"></div>
             <div class="el5">

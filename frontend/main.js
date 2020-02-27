@@ -282,15 +282,17 @@ function callback(time) {
     document.querySelector('#time').innerHTML = 'Time: ' + time;
 
 
-
-    channel_rack.instruments[0].beats_elems[bar].style.background = 'yellow';
-    channel_rack.instruments[1].beats_elems[bar].style.background = 'yellow';
-    channel_rack.instruments[2].beats_elems[bar].style.background = 'yellow';
-    if (bar > 0) {
-        channel_rack.instruments[0].beats_elems[bar - 1].style.background = 'green';
-        channel_rack.instruments[1].beats_elems[bar - 1].style.background = 'green';
-        channel_rack.instruments[2].beats_elems[bar - 1].style.background = 'green';
-    }
+    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
+    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
+    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
+    // channel_rack.instruments[0].beats_elems[bar].style.background = 'yellow';
+    // channel_rack.instruments[1].beats_elems[bar].style.background = 'yellow';
+    // channel_rack.instruments[2].beats_elems[bar].style.background = 'yellow';
+    // if (bar > 0) {
+    //     channel_rack.instruments[0].beats_elems[bar - 1].style.background = 'green';
+    //     channel_rack.instruments[1].beats_elems[bar - 1].style.background = 'green';
+    //     channel_rack.instruments[2].beats_elems[bar - 1].style.background = 'green';
+    // }
 
 
 
