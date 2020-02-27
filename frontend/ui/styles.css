@@ -100,8 +100,9 @@ body {
     background: #4D565B;
     border-radius: 2px;
     margin-left: 4px;
-    border: solid #3F484D 1px;
+    border: solid #3F484D 1px;   
 }
+
 
 .name {
     height: 24px;

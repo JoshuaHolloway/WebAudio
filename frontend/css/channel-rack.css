@@ -102,6 +102,10 @@ body {
     border-radius: 2px;
     margin-left: 4px;
     border: solid #3F484D 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .name {
