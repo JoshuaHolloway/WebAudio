@@ -23,7 +23,7 @@ class Instrument {
 
         const instrument_num_str = instrument_num.toString();
         this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
-        this.instrument_name_elem.innerHTML = 'Instrument-' + instrument_num_str;
+        this.instrument_name_elem.innerHTML = 'I-' + instrument_num_str;
 
         // OLD UI:
         this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
