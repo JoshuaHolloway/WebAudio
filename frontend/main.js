@@ -129,7 +129,7 @@ class Instrument {
 
 // ========================================================
 
-class Channel_Rack {
+class Channel_Rack_TO_REMOVE {
 
     instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
     num_channel_rack_rows = 4;
@@ -299,10 +299,10 @@ class Channel_Rack {
 
 // let Instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
 
-class Pattern {
+class Channel_Rack {
     instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
 }
-const pattern = new Pattern();
+const channel_rack = new Channel_Rack();
 // ========================================================
 
 //create a synth and bass and connect them to the master output (your speakers)
@@ -369,33 +369,33 @@ function callback(time) {
 
 
 
-    pattern.instruments[0].beats_elems[bar].style.background = 'yellow';
-    pattern.instruments[1].beats_elems[bar].style.background = 'yellow';
-    pattern.instruments[2].beats_elems[bar].style.background = 'yellow';
+    channel_rack.instruments[0].beats_elems[bar].style.background = 'yellow';
+    channel_rack.instruments[1].beats_elems[bar].style.background = 'yellow';
+    channel_rack.instruments[2].beats_elems[bar].style.background = 'yellow';
     if (bar > 0) {
-        pattern.instruments[0].beats_elems[bar - 1].style.background = 'green';
-        pattern.instruments[1].beats_elems[bar - 1].style.background = 'green';
-        pattern.instruments[2].beats_elems[bar - 1].style.background = 'green';
+        channel_rack.instruments[0].beats_elems[bar - 1].style.background = 'green';
+        channel_rack.instruments[1].beats_elems[bar - 1].style.background = 'green';
+        channel_rack.instruments[2].beats_elems[bar - 1].style.background = 'green';
     }
 
 
 
-    if (pattern.instruments[0].pattern[idx]) {
+    if (channel_rack.instruments[0].pattern[idx]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
-        pattern.instruments[0].player.start(time);
-        pattern.instruments[0].player.stop(time + 0.5);
+        channel_rack.instruments[0].player.start(time);
+        channel_rack.instruments[0].player.stop(time + 0.5);
     }
-    if (pattern.instruments[1].pattern[idx]) {
+    if (channel_rack.instruments[1].pattern[idx]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
-        pattern.instruments[1].player.start(time);
-        pattern.instruments[1].player.stop(time + 0.5);
+        channel_rack.instruments[1].player.start(time);
+        channel_rack.instruments[1].player.stop(time + 0.5);
     }
-    if (pattern.instruments[2].pattern[idx]) {
-        pattern.instruments[2].player.start(time);
-        pattern.instruments[2].player.stop(time + 0.5);
+    if (channel_rack.instruments[2].pattern[idx]) {
+        channel_rack.instruments[2].player.start(time);
+        channel_rack.instruments[2].player.stop(time + 0.5);
     }
 
     console.log('time: ' + time);
@@ -407,4 +407,10 @@ function callback(time) {
 
 // ========================================================
 
-const channel_rack = new Channel_Rack();
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+let channel_rack_TO_REMOVE = new Channel_Rack_TO_REMOVE();
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
