@@ -40,6 +40,26 @@ class Instrument {
         const change_beat_color = (i) => {
             if (this.pattern[i]) this.beat_elems[i].style.background = 'black';
             else this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+
+
+            const j = i;
+            if(this.pattern[j])
+            {
+                console.log('i = ', i);
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    this.beat_elems[j].style.background = '#555A5E';
+                else // red elements
+                    this.beat_elems[j].style.background = '#655456';
+            }
+            else {
+                // console.log('i = ', i);
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    this.beat_elems[j].style.background = '#B2C2CC';
+                else // red elements
+                    this.beat_elems[j].style.background = '#DEB1B3';
+            }
+
+
         };
 
         // Event-listener for drawing beat-pattern
@@ -47,7 +67,7 @@ class Instrument {
 
             // Set initial beat-pattern graphics
             change_beat_color(i);
-
+            
             // Change color of beat graphic upon click
             this.beat_elems[i].addEventListener('click', () => {
                 this.pattern[i] = !(this.pattern[i]);
@@ -73,7 +93,7 @@ class Instrument {
     }
 
     // Methods
-    change = (name) => this.player = new Tone.Player('./' + name).toMaster();
+    change = name => this.player = new Tone.Player('./' + name).toMaster();
 
     set() {
         for (let i = 0; i < this.pattern.length; ++i)
@@ -225,7 +245,7 @@ class Channel_Rack {
         add_channel_rack_row_button.addEventListener('click', () => {
           
             // const num_rows = this.num_channel_rack_rows;
-            const num_rows = 4;
+            const num_rows = 0;
             console.log('num_rows = ', num_rows);
 
             // Add to classes instruments
