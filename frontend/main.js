@@ -25,8 +25,13 @@ class Instrument {
         this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
         this.instrument_name_elem.innerHTML = 'Instrument-' + instrument_num_str;
 
+        // OLD UI:
         this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
         this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
+
+        // NEW UI:
+        this.Beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
+        this.Beat_elems = document.querySelectorAll('.Beats-' + instrument_num + ' .beat');
 
         // Initialize beat pattern on default instruments
         switch (instrument_num) {
@@ -38,25 +43,26 @@ class Instrument {
 
         // Definitely not a pure function!
         const change_beat_color = (i) => {
-            if (this.pattern[i]) this.beat_elems[i].style.background = 'black';
-            else this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
-
+            if (this.pattern[i]) 
+                this.beat_elems[i].style.background = 'black';
+            else 
+                this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
 
             const j = i;
             if(this.pattern[j])
             {
-                console.log('i = ', i);
-                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    this.beat_elems[j].style.background = '#555A5E';
-                else // red elements
-                    this.beat_elems[j].style.background = '#655456';
-            }
-            else {
                 // console.log('i = ', i);
                 if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    this.beat_elems[j].style.background = '#B2C2CC';
+                    this.Beat_elems[j].style.background = '#B2C2CC';
                 else // red elements
-                    this.beat_elems[j].style.background = '#DEB1B3';
+                    this.Beat_elems[j].style.background = '#DEB1B3';
+            }
+            else {
+                console.log('i = ', i);
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    this.Beat_elems[j].style.background = '#555A5E';
+                else // red elements
+                    this.Beat_elems[j].style.background = '#655456';
             }
 
 
