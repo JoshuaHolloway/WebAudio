@@ -9,133 +9,6 @@ class Song {
 
 // ========================================================
 
-class Channel_Rack {
-
-    constructor() {
-
-        const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
-        console.log(channel_rack_rows);
-
-        let num_channel_rack_rows = 4;
-        let channel_rack_rows__children = new Array(num_channel_rack_rows);
-        for (let i = 0; i < num_channel_rack_rows; ++i) {
-            channel_rack_rows__children[i] = channel_rack_rows[i].children;
-            // console.log(channel_rack_rows__children[i]);
-        }
-
-        // left:
-        // console.log(channel_rack_rows__children[0][0]);
-
-        // right:
-        // console.log(channel_rack_rows__children[0][1]);
-
-
-        // TODO: This is currently only one pattern for all rows in channel rack
-        let pattern_ = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-
-        for(let row = 0; row < num_channel_rack_rows; ++row) {
-            // for (let j = 0; j < num_channel_rack_rows; ++j) {}
-                
-            // Right:
-            const channel_rack_row = channel_rack_rows__children[row][1];
-            // console.log(channel_rack_row);
-            const beats_nodeList = channel_rack_row.children;
-            // console.log(beats_nodeList);
-
-            // Convert nodelist to an array:
-            const beats = Array.from(beats_nodeList);
-            // console.log(beats);
-
-            beats.forEach((val, j) => {
-                beats[j].addEventListener('click', () => {
-                    
-                    if(pattern_[j])
-                    {
-                        // console.log('i = ', i);
-                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                            beats[j].style.background = '#555A5E';
-                        else // red elements
-                            beats[j].style.background = '#655456';
-                    }
-                    else {
-                        // console.log('i = ', i);
-                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                            beats[j].style.background = '#B2C2CC';
-                        else // red elements
-                            beats[j].style.background = '#DEB1B3';
-                    }
-                        pattern_[j] = !(pattern_[j]);
-                });
-            });
-        }
-
-
-
-
-        const channel_rack_row_html = `
-        <div class="channel-rack-col-left">
-            <span class="light"></span>
-            <span class="knob"></span>
-            <span class="knob"></span>
-            <span class="number"></span>
-            <span class="name"></span>
-            <span class="on-off"></span>  
-        </div>
-        <div class="channel-rack-col-right">
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>
-            <span class="beat beat-l"></span>                        
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-            <span class="beat beat-r"></span>
-        </div>
-        `;
-
-
-        // let num_channel_rack_rows = 0; // Used before prototype loop above
-        const add_channel_rack_row_button = document.querySelector('#add-row');
-        add_channel_rack_row_button.addEventListener('click', () => {
-            ++num_channel_rack_rows;
-            console.log('Number of rows in channel rack = ', num_channel_rack_rows);
-
-
-            // Test it out
-            const new_div = document.createElement('div');
-            new_div.classList.add('test-row');
-
-            const test_rows = document.getElementsByClassName('test-rows')[0];
-            test_rows.appendChild(new_div);
-
-            // Apply to actual row in channel-rack:
-            const channel_rack_center = document.getElementById('channel-rack-center');
-            console.log(channel_rack_center);
-
-            const new_channel_rack_row = document.createElement('div');
-            new_channel_rack_row.classList.add('channel-rack-row');
-
-            new_channel_rack_row.innerHTML = channel_rack_row_html;
-
-            channel_rack_center.appendChild(new_channel_rack_row);
-
-            // TODO: Change original Channel rack to fit the contents dynamically
-            //       instead of hard coding its height.
-        });
-
-    }
-}
-
-// ========================================================
-
 class Instrument {
 
     // Fields
@@ -227,6 +100,173 @@ class Instrument {
         this.pattern[12] = true;
     }
 }
+
+// ========================================================
+
+class Channel_Rack {
+
+    instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
+    num_channel_rack_rows = 4;
+
+    constructor() {
+
+        const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
+        console.log(channel_rack_rows);
+
+        
+        let channel_rack_rows__children = new Array(this.num_channel_rack_rows);
+        for (let i = 0; i < this.num_channel_rack_rows; ++i) {
+            channel_rack_rows__children[i] = channel_rack_rows[i].children;
+            // console.log(channel_rack_rows__children[i]);
+        }
+
+        // left:
+        // console.log(channel_rack_rows__children[0][0]);
+
+        // right:
+        // console.log(channel_rack_rows__children[0][1]);
+
+
+        // TODO: This is currently only one pattern for all rows in channel rack
+        let pattern_0 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+        let pattern_1 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+        let pattern_2 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+        let pattern_3 = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+        // There should be a different pattern for each row
+        // -Step 1: Make a different array for each row
+        // -Step 2: Turn into a 2D-array
+
+        // OR the instrument code into this class
+        //  -Use an array of instruments
+
+        // Desired Structure:
+        //  -1 Song composed of Tracks
+        //      --Each Track is composed of repeated Patterns
+        //          ---Not sure how to structure repeated patterns in each Track
+        //      --Each Track has one Channel-Rack
+        //      --Each Channel-Rack is composed of a set of Instruments
+
+        // Per Track (Consider only one Track):
+        //  -The Channel-Rack has an array of Instruments
+        //      --Each Instrument has a specific pattern
+        
+
+        for(let row = 0; row < this.num_channel_rack_rows; ++row) {
+            // for (let j = 0; j < num_channel_rack_rows; ++j) {}
+                
+            // Right:
+            const channel_rack_row = channel_rack_rows__children[row][1];
+            // console.log(channel_rack_row);
+            const beats_nodeList = channel_rack_row.children;
+            // console.log(beats_nodeList);
+
+            // Convert nodelist to an array:
+            const beats = Array.from(beats_nodeList);
+            // console.log(beats);
+
+            beats.forEach((val, j) => {
+                beats[j].addEventListener('click', () => {
+                    
+                    if(pattern_1[j])
+                    {
+                        // console.log('i = ', i);
+                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                            beats[j].style.background = '#555A5E';
+                        else // red elements
+                            beats[j].style.background = '#655456';
+                    }
+                    else {
+                        // console.log('i = ', i);
+                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                            beats[j].style.background = '#B2C2CC';
+                        else // red elements
+                            beats[j].style.background = '#DEB1B3';
+                    }
+                        pattern_1[j] = !(pattern_1[j]);
+                });
+            });
+        }
+
+
+
+
+        const channel_rack_row_html = `
+        <div class="channel-rack-col-left">
+            <span class="light"></span>
+            <span class="knob"></span>
+            <span class="knob"></span>
+            <span class="number"></span>
+            <span class="name"></span>
+            <span class="on-off"></span>  
+        </div>
+        <div class="channel-rack-col-right">
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>
+            <span class="beat beat-l"></span>                        
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+            <span class="beat beat-r"></span>
+        </div>
+        `;
+
+
+        // let num_channel_rack_rows = 0; // Used before prototype loop above
+        const add_channel_rack_row_button = document.querySelector('#add-row');
+        add_channel_rack_row_button.addEventListener('click', () => {
+          
+            // const num_rows = this.num_channel_rack_rows;
+            const num_rows = 4;
+            console.log('num_rows = ', num_rows);
+
+            // Add to classes instruments
+            const x = new Instrument('hh_sample.mp3', num_rows);
+            // this.instruments.push();
+
+            // Increase number of channel-rack rows (# of instruments)
+            ++this.num_channel_rack_rows;
+
+            
+            console.log('Number of rows in channel rack = ', this.num_channel_rack_rows);
+
+
+            // Test it out
+            const new_div = document.createElement('div');
+            new_div.classList.add('test-row');
+
+            const test_rows = document.getElementsByClassName('test-rows')[0];
+            test_rows.appendChild(new_div);
+
+            // Apply to actual row in channel-rack:
+            const channel_rack_center = document.getElementById('channel-rack-center');
+            console.log(channel_rack_center);
+
+            const new_channel_rack_row = document.createElement('div');
+            new_channel_rack_row.classList.add('channel-rack-row');
+
+            new_channel_rack_row.innerHTML = channel_rack_row_html;
+
+            channel_rack_center.appendChild(new_channel_rack_row);
+
+            // TODO: Change original Channel rack to fit the contents dynamically
+            //       instead of hard coding its height.
+        });
+
+    }
+    
+}
+
+// ========================================================
+
 
 // ========================================================
 
