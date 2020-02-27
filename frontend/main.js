@@ -69,13 +69,15 @@ class Instrument {
         };
 
         // Event-listener for drawing beat-pattern
-        this.beat_elems.forEach((val, i) => {
+        // this.beat_elems.forEach((val, i) => { // OLD UI
+        this.Beat_elems.forEach((val, i) => { // NEW UI
 
             // Set initial beat-pattern graphics
             change_beat_color(i);
             
             // Change color of beat graphic upon click
-            this.beat_elems[i].addEventListener('click', () => {
+            //this.beat_elems[i].addEventListener('click', () => { // OLD UI
+            this.Beat_elems[i].addEventListener('click', () => { // NEW UI
                 this.pattern[i] = !(this.pattern[i]);
                 change_beat_color(i);
             });
@@ -192,7 +194,7 @@ class Channel_Rack_TO_REMOVE {
             const new_channel_rack_row = document.createElement('div');
             new_channel_rack_row.classList.add('channel-rack-row');
 
-            new_channel_rack_row.innerHTML = channel_rack_row_HTML(this.num_channel_rack_rows);
+            new_channel_rack_row.innerHTML = channel_rack_row_HTML(5);
 
             channel_rack_center.appendChild(new_channel_rack_row);
 
