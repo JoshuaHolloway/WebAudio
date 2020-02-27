@@ -50,7 +50,8 @@ body {
     align-items: center;
 }
 /* .channel-rack-col-right { */
-.Beats-0, .Beats-1, .Beats-2, .Beats-3 {
+/* NOTE: Maximum of 8-Instruments in each channel-rack */
+.Beats-0, .Beats-1, .Beats-2, .Beats-3, .Beats-4, .Beats-5, .Beats-6, .Beats-7 {
     display: flex;
     padding-left: 5px;
     padding-top: 5px;
