@@ -98,7 +98,6 @@ class Instrument {
             this.change(name);
 
             // Step 3: Write name to Instrument-1 title
-            //this.instrument_name_elem.innerHTML = name.split('.')[0];
             this.instrument_name_elem.value = name.split('.')[0];
         });
     }
