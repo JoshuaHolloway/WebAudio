@@ -13,6 +13,65 @@ class Channel_Rack {
 
     constructor() {
 
+        const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
+        console.log(channel_rack_rows);
+
+        let num_channel_rack_rows = 4;
+        let channel_rack_rows__children = new Array(num_channel_rack_rows);
+        for (let i = 0; i < num_channel_rack_rows; ++i) {
+            channel_rack_rows__children[i] = channel_rack_rows[i].children;
+            // console.log(channel_rack_rows__children[i]);
+        }
+
+        // left:
+        // console.log(channel_rack_rows__children[0][0]);
+
+        // right:
+        // console.log(channel_rack_rows__children[0][1]);
+
+
+        // TODO: This is currently only one pattern for all rows in channel rack
+        let pattern_ = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+
+        for(let row = 0; row < num_channel_rack_rows; ++row) {
+            // for (let j = 0; j < num_channel_rack_rows; ++j) {}
+                
+            // Right:
+            const channel_rack_row = channel_rack_rows__children[row][1];
+            // console.log(channel_rack_row);
+            const beats_nodeList = channel_rack_row.children;
+            // console.log(beats_nodeList);
+
+            // Convert nodelist to an array:
+            const beats = Array.from(beats_nodeList);
+            // console.log(beats);
+
+            beats.forEach((val, j) => {
+                beats[j].addEventListener('click', () => {
+                    
+                    if(pattern_[j])
+                    {
+                        // console.log('i = ', i);
+                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                            beats[j].style.background = '#555A5E';
+                        else // red elements
+                            beats[j].style.background = '#655456';
+                    }
+                    else {
+                        // console.log('i = ', i);
+                        if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                            beats[j].style.background = '#B2C2CC';
+                        else // red elements
+                            beats[j].style.background = '#DEB1B3';
+                    }
+                        pattern_[j] = !(pattern_[j]);
+                });
+            });
+        }
+
+
+
+
         const channel_rack_row_html = `
         <div class="channel-rack-col-left">
             <span class="light"></span>
@@ -279,61 +338,6 @@ function callback(time) {
 
 // TODO: Port into Channel Rack class
 
-const channel_rack_rows = document.querySelectorAll('.channel-rack-row');
-console.log(channel_rack_rows);
-
-let num_channel_rack_rows = 4;
-let channel_rack_rows__children = new Array(num_channel_rack_rows);
-for (let i = 0; i < num_channel_rack_rows; ++i) {
-    channel_rack_rows__children[i] = channel_rack_rows[i].children;
-    // console.log(channel_rack_rows__children[i]);
-}
-
-// left:
-// console.log(channel_rack_rows__children[0][0]);
-
-// right:
-// console.log(channel_rack_rows__children[0][1]);
-
-
-// TODO: This is currently only one pattern for all rows in channel rack
-let pattern_ = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-
-for(let row = 0; row < num_channel_rack_rows; ++row) {
-    // for (let j = 0; j < num_channel_rack_rows; ++j) {}
-           
-    // Right:
-    const channel_rack_row = channel_rack_rows__children[row][1];
-    // console.log(channel_rack_row);
-    const beats_nodeList = channel_rack_row.children;
-    // console.log(beats_nodeList);
-
-    // Convert nodelist to an array:
-    const beats = Array.from(beats_nodeList);
-    // console.log(beats);
-
-    beats.forEach((val, j) => {
-        beats[j].addEventListener('click', () => {
-            
-            if(pattern_[j])
-            {
-                // console.log('i = ', i);
-                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    beats[j].style.background = '#555A5E';
-                else // red elements
-                    beats[j].style.background = '#655456';
-            }
-            else {
-                // console.log('i = ', i);
-                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    beats[j].style.background = '#B2C2CC';
-                else // red elements
-                    beats[j].style.background = '#DEB1B3';
-            }
-                pattern_[j] = !(pattern_[j]);
-        });
-    });
-}
-
 // ========================================================
 
+const channel_rack = new Channel_Rack();
