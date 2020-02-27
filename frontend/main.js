@@ -266,12 +266,6 @@ class Channel_Rack_TO_REMOVE {
             console.log('Number of rows in channel rack = ', this.num_channel_rack_rows);
 
 
-            // Test it out
-            const new_div = document.createElement('div');
-            new_div.classList.add('test-row');
-
-            const test_rows = document.getElementsByClassName('test-rows')[0];
-            test_rows.appendChild(new_div);
 
             // Apply to actual row in channel-rack:
             const channel_rack_center = document.getElementById('channel-rack-center');
