@@ -21,18 +21,18 @@ class Instrument {
     constructor(name, instrument_num) {
         this.name = name;
 
-        const Player_Default = {
-            onload:       Tone.noOp,
-            playbackRate: 1,
-            loop:         false,
-            autostart:    false,
-            loopStart:    0,
-            loopEnd:      0,
-            reverse:      false,
-            fadeIn:       0,
-            fadeOut:      0
-        }
-        this.player = new Tone.Player('./' + name, Player_Default).toMaster();
+        // const Player_Default = {
+        //     onload:       Tone.noOp,
+        //     playbackRate: 1,
+        //     loop:         false,
+        //     autostart:    false,
+        //     loopStart:    0,
+        //     loopEnd:      0,
+        //     reverse:      false,
+        //     fadeIn:       0,
+        //     fadeOut:      0
+        // }
+        this.player = new Tone.Player('./' + name).toMaster();
 
         const instrument_num_str = instrument_num.toString();
         this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
@@ -352,3 +352,11 @@ let channel_rack_TO_REMOVE = new Channel_Rack_TO_REMOVE();
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const increase_bpm = document.querySelector('#increase-bpm');
+increase_bpm.addEventListener('click', () => {
+    console.log(
+        'Increase bpm button has been pressed'
+    );
+
+    Tone.Transport.bpm.value = 100;
+});
