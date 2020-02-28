@@ -1,6 +1,6 @@
 // Globals
-let loopBeat;
-
+let loop;
+const synth = new Tone.MembraneSynth().toMaster();
 // ========================================================
 
 class Song {
@@ -19,7 +19,19 @@ class Instrument {
 
     constructor(name, instrument_num) {
         this.name = name;
-        this.player = new Tone.Player('./' + name).toMaster();
+
+        const Player_Default = {
+            onload:       Tone.noOp,
+            playbackRate: 1,
+            loop:         false,
+            autostart:    false,
+            loopStart:    0,
+            loopEnd:      0,
+            reverse:      false,
+            fadeIn:       0,
+            fadeOut:      0
+        }
+        this.player = new Tone.Player('./' + name, Player_Default).toMaster();
 
         const instrument_num_str = instrument_num.toString();
         this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
@@ -233,10 +245,16 @@ document.querySelector('#play_button').addEventListener('click', async () => {
     await Tone.start();
     console.log('audio is ready');
 
-    loopBeat = new Tone.Loop(callback, '4n');
-    Tone.Transport.bpm.value = 180;
+    // loopBeat = new Tone.Loop(callback, '4n');
+    // loopBeat = new Tone.Loop(callback, '16n').start(0);
+    // Tone.Transport.bpm.value = 180;
+    // Tone.Transport.start();
+    // loopBeat.start();
+
+
+    const interval = '16n';
+    loop = new Tone.Loop(callback, interval).start(0);
     Tone.Transport.start();
-    loopBeat.start();
 })
 
 const stop_button = document.getElementById('stop_button');
@@ -275,14 +293,15 @@ function callback(time) {
     // console.log(`beat: ${beat}`);
 
     const sixteenth = Number(Bars_Beats_Sixteenths[2]);
-    // console.log(`sixteenth: ${sixteenth}`);
+    // console.log(`sixteenth: ${sixteenth}`);eenth: ${sixteenth}`);
 
     const idx = (bar * 4) + (beat);
     document.querySelector('#bar').innerHTML = 'Bar: ' + bar;
     document.querySelector('#beat').innerHTML = 'Beat ' + beat;
+    document.querySelector('#sixteenth').innerHTML = 'Sixteenth ' + sixteenth;
+
     document.querySelector('#index').innerHTML = 'Index: ' + idx;
     document.querySelector('#time').innerHTML = 'Time: ' + time;
-
 
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
@@ -298,25 +317,28 @@ function callback(time) {
 
 
 
-    if (channel_rack.instruments[0].pattern[idx]) {
+    const idx_mod = idx % 16;
+    if (channel_rack.instruments[0].pattern[idx_mod]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
         channel_rack.instruments[0].player.start(time);
         channel_rack.instruments[0].player.stop(time + 0.5);
     }
-    if (channel_rack.instruments[1].pattern[idx]) {
+    if (channel_rack.instruments[1].pattern[idx_mod]) {
         // const velocity = volume;
         //play a middle 'C' for the duration of an 8th note
         // synth.triggerAttackRelease('C4', '8n', time, velocity)
         channel_rack.instruments[1].player.start(time);
         channel_rack.instruments[1].player.stop(time + 0.5);
     }
-    if (channel_rack.instruments[2].pattern[idx]) {
+    if (channel_rack.instruments[2].pattern[idx_mod]) {
         channel_rack.instruments[2].player.start(time);
         channel_rack.instruments[2].player.stop(time + 0.5);
     }
 
     console.log('time: ' + time);
+
+    // synth.triggerAttackRelease("C3", '4n', time);
 }
 
 // ========================================================
