@@ -40,11 +40,6 @@ class Instrument {
         // this.instrument_name_elem.text = 'I-' + instrument_num_str;
         this.instrument_name_elem.value = 'I-' + instrument_num_str;
 
-        // OLD UI:
-        // this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
-        // this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
-
-        // NEW UI:
         this.Beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
         this.Beat_elems = document.querySelectorAll('.Beats-' + instrument_num + ' .beat');
 
