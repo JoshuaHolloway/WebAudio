@@ -40,8 +40,8 @@ class Instrument {
         // this.instrument_name_elem.text = 'I-' + instrument_num_str;
         this.instrument_name_elem.value = 'I-' + instrument_num_str;
 
-        this.Beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
-        this.Beat_elems = document.querySelectorAll('.Beats-' + instrument_num + ' .beat');
+        // this.beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
+        this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
 
         // Initialize beat pattern on default instruments
         switch (instrument_num) {
@@ -54,25 +54,25 @@ class Instrument {
         // Definitely not a pure function!
         const change_beat_color = (i) => {
             if (this.pattern[i]) 
-                this.Beat_elems[i].style.background = 'black';
+                this.beat_elems[i].style.background = 'black';
             else 
-                this.Beat_elems[i].style.background = 'rgba(255, 154, 72)';
+                this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
 
             const j = i;
             if(this.pattern[j])
             {
                 // console.log('i = ', i);
                 if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    this.Beat_elems[j].style.background = '#B2C2CC';
+                    this.beat_elems[j].style.background = '#B2C2CC';
                 else // red elements
-                    this.Beat_elems[j].style.background = '#DEB1B3';
+                    this.beat_elems[j].style.background = '#DEB1B3';
             }
             else {
                 console.log('i = ', i);
                 if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
-                    this.Beat_elems[j].style.background = '#555A5E';
+                    this.beat_elems[j].style.background = '#555A5E';
                 else // red elements
-                    this.Beat_elems[j].style.background = '#655456';
+                    this.beat_elems[j].style.background = '#655456';
             }
 
 
@@ -80,14 +80,14 @@ class Instrument {
 
         // Event-listener for drawing beat-pattern
         // this.beat_elems.forEach((val, i) => { // OLD UI
-        this.Beat_elems.forEach((val, i) => { // NEW UI
+        this.beat_elems.forEach((val, i) => { // NEW UI
 
             // Set initial beat-pattern graphics
             change_beat_color(i);
             
             // Change color of beat graphic upon click
             //this.beat_elems[i].addEventListener('click', () => { // OLD UI
-            this.Beat_elems[i].addEventListener('click', () => { // NEW UI
+            this.beat_elems[i].addEventListener('click', () => { // NEW UI
                 this.pattern[i] = !(this.pattern[i]);
                 change_beat_color(i);
             });
