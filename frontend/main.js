@@ -41,8 +41,8 @@ class Instrument {
         this.instrument_name_elem.value = 'I-' + instrument_num_str;
 
         // OLD UI:
-        this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
-        this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
+        // this.beats_elems = document.querySelectorAll('.beats-' + instrument_num);
+        // this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
 
         // NEW UI:
         this.Beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
@@ -59,9 +59,9 @@ class Instrument {
         // Definitely not a pure function!
         const change_beat_color = (i) => {
             if (this.pattern[i]) 
-                this.beat_elems[i].style.background = 'black';
+                this.Beat_elems[i].style.background = 'black';
             else 
-                this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+                this.Beat_elems[i].style.background = 'rgba(255, 154, 72)';
 
             const j = i;
             if(this.pattern[j])
@@ -318,27 +318,6 @@ function callback(time) {
         metronome[15].style.background = 'black';
 
     timer = (timer + 1);
-
-    // for (let i = 0; i < metronome.length; i++) {
-    //     metronome[i].addEventListener('click', () => {
-    //         console.log('Added event listener');
-    //     });
-    // }
-    
-
-    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
-    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
-    // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
-    channel_rack.instruments[0].beats_elems[beat].style.background = 'yellow';
-    channel_rack.instruments[1].beats_elems[beat].style.background = 'yellow';
-    channel_rack.instruments[2].beats_elems[beat].style.background = 'yellow';
-    if (beat > 0) {
-        channel_rack.instruments[0].beats_elems[beat - 1].style.background = 'green';
-        channel_rack.instruments[1].beats_elems[beat - 1].style.background = 'green';
-        channel_rack.instruments[2].beats_elems[beat - 1].style.background = 'green';
-    }
-
-
 
     const idx_mod = idx % 16;
     console.log(`channel_rack.instruments[0].pattern[${idx_mod}] = ${channel_rack.instruments[0].pattern[idx_mod]}`);
