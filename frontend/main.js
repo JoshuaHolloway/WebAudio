@@ -261,7 +261,7 @@ document.querySelector('#play_button').addEventListener('click', async () => {
 
 const stop_button = document.getElementById('stop_button');
 stop_button.addEventListener('click', () => {
-    loopBeat.stop();
+    loop.stop();
 });
 
 const vol_slider = document.getElementById('volume');
