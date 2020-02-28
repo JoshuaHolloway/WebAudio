@@ -154,7 +154,10 @@
     <p id="index">Index: </p>
     <p id="time">Time: </p>
 
-    <button id="increase-bpm">increase BPM</button>
+    <input type="range" id="bpm-slider" name="bpm-slider" min="10" max="180" step="1">
+    <label for="bpm-slider">BPM</label>
+    <p id="bpm-readout"></p>
+    
 
     <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
     <script src="main.js"></script>

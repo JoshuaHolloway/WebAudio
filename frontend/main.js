@@ -353,10 +353,12 @@ let channel_rack_TO_REMOVE = new Channel_Rack_TO_REMOVE();
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const increase_bpm = document.querySelector('#increase-bpm');
-increase_bpm.addEventListener('click', () => {
-    console.log(
-        'Increase bpm button has been pressed'
-    );
 
-    Tone.Transport.bpm.value = 100;
+const bpm_slider = document.querySelector('#bpm-slider');
+
+bpm_slider.addEventListener('change', () => {
+
+    const bpm_readout = document.querySelector('#bpm-readout');
+    bpm_readout.innerHTML = bpm_slider.value;
+    Tone.Transport.bpm.value = bpm_slider.value;
 });
