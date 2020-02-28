@@ -1,5 +1,6 @@
 // Globals
 let loop;
+let timer = 0;
 const synth = new Tone.MembraneSynth().toMaster();
 // ========================================================
 
@@ -305,6 +306,25 @@ function callback(time) {
 
     document.querySelector('#index').innerHTML = 'Index: ' + idx;
     document.querySelector('#time').innerHTML = 'Time: ' + time;
+
+
+    // NEW
+    const metronome = document.querySelectorAll('.metronome');
+
+    metronome[idx].style.background = 'yellow';
+    if (idx > 0)
+        metronome[idx-1].style.background = 'black';
+    else if (idx === 0 && timer > 0)
+        metronome[15].style.background = 'black';
+
+    timer = (timer + 1);
+
+    // for (let i = 0; i < metronome.length; i++) {
+    //     metronome[i].addEventListener('click', () => {
+    //         console.log('Added event listener');
+    //     });
+    // }
+    
 
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
