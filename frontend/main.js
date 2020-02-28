@@ -250,7 +250,12 @@ document.querySelector('#play_button').addEventListener('click', async () => {
 
     const interval = '16n';
     loop = new Tone.Loop(callback, interval).start(0);
-    Tone.Transport.bpm.value = 50;
+
+    const bpm_readout = document.querySelector('#bpm-readout');
+    const bpm_slider_val = document.querySelector('#bpm-slider').value;
+    bpm_readout.innerHTML = 'BPM: ' + bpm_slider_val;
+    Tone.Transport.bpm.value = Number(bpm_slider_val);
+    
     Tone.Transport.start();
 })
 
@@ -359,6 +364,6 @@ const bpm_slider = document.querySelector('#bpm-slider');
 bpm_slider.addEventListener('change', () => {
 
     const bpm_readout = document.querySelector('#bpm-readout');
-    bpm_readout.innerHTML = bpm_slider.value;
-    Tone.Transport.bpm.value = bpm_slider.value;
+    bpm_readout.innerHTML = 'BPM: ' + bpm_slider.value;
+    Tone.Transport.bpm.value = Number(bpm_slider.value);
 });
