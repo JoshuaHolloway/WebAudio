@@ -254,6 +254,7 @@ document.querySelector('#play_button').addEventListener('click', async () => {
 
     const interval = '16n';
     loop = new Tone.Loop(callback, interval).start(0);
+    Tone.Transport.bpm.value = 50;
     Tone.Transport.start();
 })
 
@@ -292,10 +293,12 @@ function callback(time) {
     const beat = Number(Bars_Beats_Sixteenths[1]);
     // console.log(`beat: ${beat}`);
 
-    const sixteenth = Number(Bars_Beats_Sixteenths[2]);
+    const sixteenth = Math.round(Number(Bars_Beats_Sixteenths[2]));
     // console.log(`sixteenth: ${sixteenth}`);eenth: ${sixteenth}`);
 
-    const idx = (bar * 4) + (beat);
+    // const idx = (bar * 4) + (beat);
+    const idx = (beat * 4) + sixteenth;
+
     document.querySelector('#bar').innerHTML = 'Bar: ' + bar;
     document.querySelector('#beat').innerHTML = 'Beat ' + beat;
     document.querySelector('#sixteenth').innerHTML = 'Sixteenth ' + sixteenth;
@@ -306,18 +309,21 @@ function callback(time) {
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
     // WAS USED TO LIGHT UP EACH BAR WHEN IT IS BEING PLAYED
-    // channel_rack.instruments[0].beats_elems[bar].style.background = 'yellow';
-    // channel_rack.instruments[1].beats_elems[bar].style.background = 'yellow';
-    // channel_rack.instruments[2].beats_elems[bar].style.background = 'yellow';
-    // if (bar > 0) {
-    //     channel_rack.instruments[0].beats_elems[bar - 1].style.background = 'green';
-    //     channel_rack.instruments[1].beats_elems[bar - 1].style.background = 'green';
-    //     channel_rack.instruments[2].beats_elems[bar - 1].style.background = 'green';
-    // }
+    channel_rack.instruments[0].beats_elems[beat].style.background = 'yellow';
+    channel_rack.instruments[1].beats_elems[beat].style.background = 'yellow';
+    channel_rack.instruments[2].beats_elems[beat].style.background = 'yellow';
+    if (beat > 0) {
+        channel_rack.instruments[0].beats_elems[beat - 1].style.background = 'green';
+        channel_rack.instruments[1].beats_elems[beat - 1].style.background = 'green';
+        channel_rack.instruments[2].beats_elems[beat - 1].style.background = 'green';
+    }
 
 
 
     const idx_mod = idx % 16;
+    console.log(`channel_rack.instruments[0].pattern[${idx_mod}] = ${channel_rack.instruments[0].pattern[idx_mod]}`);
+
+
     if (channel_rack.instruments[0].pattern[idx_mod]) {
         // const velocity = volume;
         // bassSynth.triggerAttackRelease('c1', '8n', time, velocity);
@@ -335,8 +341,6 @@ function callback(time) {
         channel_rack.instruments[2].player.start(time);
         channel_rack.instruments[2].player.stop(time + 0.5);
     }
-
-    console.log('time: ' + time);
 
     // synth.triggerAttackRelease("C3", '4n', time);
 }
