@@ -28,8 +28,9 @@ body {
 
 #menu-bar {
 
-    height: 33px;
-    width: 293px;
+    height: 31px;
+    width: 291px;
     background: yellow;
 
+    border: 1px black dashed;
 }
