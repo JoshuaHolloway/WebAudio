@@ -22,7 +22,8 @@ body {
     width: calc(1px + var(--menu-bar-width));
     height: calc(2px + var(--menu-bar-height));
 
-    padding: var(--menu-bar-container-padding);
+    /* padding: var(--menu-bar-container-padding); */
+    padding: 1px;
 
     background: red;
     opacity: 0.5;
@@ -31,12 +32,24 @@ body {
 #menu-bar {
 
     height: 31px;
-    width: 291px;
+    /* width: 291px; */
+    width: 250px;
     background: yellow;
 
     border: 1px black dashed;
+
+    display: flex;
 }
 
 .menu-bar-text {
     font-size: 11px;
 }
+
+.menu-bar-text:first-of-type {
+    margin-left: 4px;
+}
+
+.menu-bar-text:nth-child(n+2) {
+    margin-left: 0px;
+} 
+
