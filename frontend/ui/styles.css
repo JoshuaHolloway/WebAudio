@@ -1,6 +1,8 @@
 :root {
-    --padding-channel-rack-center-left: 0px;
-    --padding-channel-rack-center-top: 16px;
+    --menu-bar-height: 31px;
+    --menu-bar-width: 291px;
+
+    --menu-bar-container-padding: 4px;
 }
 
 body {
@@ -17,10 +19,10 @@ body {
 }
 
 #menu-bar-container {
-    width: 300px;
-    height: 41px;
+    width: calc(1px + var(--menu-bar-width));
+    height: calc(2px + var(--menu-bar-height));
 
-    padding: 4px;
+    padding: var(--menu-bar-container-padding);
 
     background: red;
     opacity: 0.5;
