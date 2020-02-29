@@ -43,11 +43,11 @@ body {
     font-size: 11px;
 }
 
-/*
-.menu-bar-text:first-of-type {
+
+/* .menu-bar-text:first-of-type {
     margin-left: 4px;
 }
 
 .menu-bar-text:nth-child(n+2) {
-    margin-left: 0px;
-} */
+    margin-left: 1px;
+}  */
