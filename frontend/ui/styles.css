@@ -36,3 +36,7 @@ body {
 
     border: 1px black dashed;
 }
+
+.menu-bar-text {
+    font-size: 11px;
+}
