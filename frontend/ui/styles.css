@@ -16,10 +16,20 @@ body {
     /* opacity: 0.5; */
 }
 
-#menu-bar {
+#menu-bar-container {
     width: 300px;
     height: 41px;
-    background: red;
 
+    padding: 4px;
+
+    background: red;
     opacity: 0.5;
+}
+
+#menu-bar {
+
+    height: 33px;
+    width: 293px;
+    background: yellow;
+
 }
