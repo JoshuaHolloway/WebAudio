@@ -37,6 +37,7 @@ body {
     border: 1px black dashed;
 
     display: flex;
+    justify-content: space-around;
 }
 
 .menu-bar-text {
