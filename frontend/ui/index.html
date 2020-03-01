@@ -16,12 +16,12 @@
             <div id="menu-bar">
 
                 <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">FILE</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
+                    <button onclick="myFunction()" class="dropbtn">FILE</button>
+                    <div id="file-dropdown" class="dropdown-content">
+                        <a href="#">Login</a>
+                        <a href="#">Open</a>
+                        <a href="#">Save</a>
+                    </div>
                 </div>
 
 
@@ -45,7 +45,7 @@
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
         function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("file-dropdown").classList.toggle("show");
         }
 
         // Close the dropdown if the user clicks outside of it
