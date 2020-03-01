@@ -3,6 +3,8 @@
     --menu-bar-width: 291px;
 
     --menu-bar-container-padding: 4px;
+
+    --menu-bar-padding: 2px;
 }
 
 body {
@@ -30,15 +32,17 @@ body {
 
 #menu-bar {
 
-    height: 31px;
-    width: 291px;
+    height: calc(31px - 2*var(--menu-bar-padding));
+    width: calc(291px - 2*var(--menu-bar-padding));
     background: yellow;
 
     border: 1px black dashed;
 
     display: flex;
     justify-content: space-around;
-    align-items: center;;
+    align-items: center;
+
+    padding: var(--menu-bar-padding);
 }
 
 .menu-bar-text {
