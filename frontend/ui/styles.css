@@ -13,12 +13,24 @@ body {
 }
 
 .container {
-    /* background-image: url('ui.png'); */
+    background-image: url('ui.png');
     height: 99.4vh;
     width: 99.5vw;
 
     /* opacity: 0.5; */
+
+    display: grid;
+    grid-template-columns: calc(1px + var(--menu-bar-width) + 2*var(--menu-bar-container-padding)) 1fr min-content;
+    
 }
+
+#bpm-bar-container{
+
+    height: calc(2px + var(--menu-bar-height) + 2*var(--menu-bar-container-padding));
+    background: green;
+
+    opacity: 0.6;
+}     
 
 #menu-bar-container {
     width: calc(1px + var(--menu-bar-width));
