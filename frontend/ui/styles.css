@@ -10,6 +10,9 @@
     --r2-height: var(--r1-height);
     /* --r3-height: calc(100vh - (var(--r1-height) + var(--r2-height)); */
     --r3-height: calc(100vh - (var(--r1-height) + var(--r2-height)));
+
+    --r3c2-r1-height: 300px;
+    --r3c2-r2-height: calc(var(--r3-height) - var(--r3c2-r1-height));
 }
 
 body {
@@ -64,6 +67,12 @@ body {
     height: 300px;
     width: 100%;
     background: red;
+}
+
+#r3c2-r2 {
+    height: var(--r3c2-r2-height);
+    width: 100%;
+    background: green;
 }
 
 #r1c2 {
