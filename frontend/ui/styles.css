@@ -60,6 +60,12 @@ body {
     background: cyan;
 }
 
+#r3c2-r1 {
+    height: 300px;
+    width: 100%;
+    background: red;
+}
+
 #r1c2 {
     opacity: 0.6;
     background: green;
