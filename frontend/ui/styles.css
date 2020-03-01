@@ -12,10 +12,17 @@ body {
     /* padding: 3px; */
 }
 
-.container {
+.main-container {
     background-image: url('ui.png');
+
     height: 99.4vh;
     width: 99.5vw;
+}
+
+.row-container {
+    
+    height: calc(2px + var(--menu-bar-height) + 2*var(--menu-bar-container-padding));
+    width: 100%;
 
     /* opacity: 0.5; */
 
@@ -24,15 +31,28 @@ body {
     
 }
 
-#bpm-bar-container{
+/* #bpm-bar-container{ */
+.col-2 {
 
-    height: calc(2px + var(--menu-bar-height) + 2*var(--menu-bar-container-padding));
-    background: green;
-
+    height: 100%;
     opacity: 0.6;
-}     
+}
 
+#bpm-bar-container {
+    background: green;
+}
 #menu-bar-container {
+    background: red;
+}
+#bpm-bar-container-2 {
+    background: blue;
+}
+#menu-bar-container-2 {
+    background: orange;
+}
+
+/* #menu-bar-container { */
+.col-1 {
     width: calc(1px + var(--menu-bar-width));
     height: calc(2px + var(--menu-bar-height));
 
