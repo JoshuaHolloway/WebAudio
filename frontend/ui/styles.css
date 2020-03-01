@@ -41,8 +41,23 @@ body {
 #r3 {
     height: var(--r3-height);
     width: 100%;
-    background: purple;
+    /* background: purple; */
     opacity: 0.5;
+
+    display: grid;
+    grid-template-columns: 248px 1fr;
+}
+
+#r3c1 {
+    height: 100%;
+    width: 100%;
+    background: magenta;
+}
+
+#r3c2 {
+    height: 100%;
+    width: 100%;
+    background: cyan;
 }
 
 #r1c2 {
