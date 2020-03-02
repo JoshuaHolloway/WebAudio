@@ -317,21 +317,25 @@ function callback(time) {
     document.querySelector('#time').innerHTML = 'Time: ' + time;
 
 
-    // NEW
-    // const metronome = document.querySelectorAll('.metronome');
-
-    // metronome[idx].style.background = 'yellow';
-    // if (idx > 0)
-    //     metronome[idx-1].style.background = 'black';
-    // else if (idx === 0 && timer > 0)
-    //     metronome[15].style.background = 'black';
-
+    // Channel-Rack Metronome:
     const metronomes = document.querySelectorAll('.metronome-elem');
     metronomes[idx].style.background = 'yellow';
     if (idx > 0)
         metronomes[idx-1].style.background = 'black';
     else if (idx === 0 && timer > 0)
         metronomes[15].style.background = 'black';
+
+
+    // Piano-Roll Metronome:
+    const metronomes_pr = document.querySelectorAll('.piano-roll-metronome-elem-16th');
+    metronomes_pr[idx].style.background = 'yellow';
+    if (idx > 0)
+        metronomes_pr[idx-1].style.background = 'black';
+    else if (idx === 0 && timer > 0)
+        metronomes_pr[15].style.background = 'black';
+
+
+
 
     timer = (timer + 1);
 
