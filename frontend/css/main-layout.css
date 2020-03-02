@@ -120,9 +120,7 @@ body {
     opacity: var(--debug-opacity);
 }
 
-
 #menu-bar {
-
     height: calc(31px - 2*var(--menu-bar-padding));
     width: calc(291px - 2*var(--menu-bar-padding));
     background: yellow;
