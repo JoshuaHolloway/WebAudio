@@ -13,6 +13,8 @@
 
     --r3c2-r1-height: 300px;
     --r3c2-r2-height: calc(var(--r3-height) - var(--r3c2-r1-height));
+
+    --debug-opacity: 1.0;
 }
 
 body {
@@ -45,7 +47,7 @@ body {
     height: var(--r3-height);
     width: 100%;
     /* background: purple; */
-    opacity: 0.5;
+    opacity: var(--debug-opacity);
 
     display: grid;
     grid-template-columns: 248px 1fr;
@@ -91,7 +93,7 @@ body {
 }
 
 #r1c2 {
-    opacity: 0.6;
+    opacity: var(--debug-opacity);
     background: green;
     height: 100%;
 }
@@ -102,10 +104,10 @@ body {
     height: calc(2px + var(--menu-bar-height));
     padding: var(--menu-bar-container-padding);
     background: red;
-    opacity: 0.5;
+    opacity: var(--debug-opacity);
 }
 #r2c2 {
-    opacity: 0.6;
+    opacity: var(--debug-opacity);
     background: blue;
     height: 100%;
 }
@@ -115,7 +117,7 @@ body {
     width: calc(1px + var(--menu-bar-width));
     height: calc(2px + var(--menu-bar-height));
     padding: var(--menu-bar-container-padding);
-    opacity: 0.5;
+    opacity: var(--debug-opacity);
 }
 
 
