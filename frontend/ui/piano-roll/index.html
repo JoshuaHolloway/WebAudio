@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #piano-roll {
+            width: 1675px;
+            height: 660px;
+            background-image: url('piano-roll.png');
+        }
+
+
+    </style>
+
+    <style>
+        :root {
+            --piano-roll-height: 660px;
+            --r1-height: 25px;
+            --r2-height: 50px;
+            --r3-height: calc(var(--piano-roll-height) - (var(--r1-height) + var(--r2-height)) );
+        }
+
+        #r1 {
+            background: red;
+            height: var(--r1-height);
+            opacity: 0.5;
+        }
+        #r2 {
+            background: green;
+            height: var(--r2-height);
+            opacity: 0.5;
+        }
+
+        #r3 {
+            height: var(--r3-height);
+            background: blue;
+            opacity: 0.5;
+        }
+    </style>
+    <div id="piano-roll">
+        <div id="r1"></div>
+        <div id="r2"></div>
+        <div id="r3">
+            <div id="r3c1"></div>
+            <div id="r3c2"></div>
+        </div>
+    </div>
+</body>
+</html>
