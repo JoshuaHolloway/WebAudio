@@ -47,7 +47,7 @@ class Instrument {
         switch (instrument_num) {
             case 0: this.set(); break;
             case 1: this.two_and_four(); break;
-            case 2: this.one_and_three(); break;
+            case 2: this.funky_bass_drum(); break;
             default: this.clear();
         }
 
@@ -136,6 +136,15 @@ class Instrument {
     two_and_four() {
         this.pattern[4] = true;
         this.pattern[12] = true;
+    }
+
+    funky_bass_drum() {
+        this.pattern[0] = true;
+        
+        this.pattern[7] = true;
+        this.pattern[9] = true;
+        this.pattern[10] = true;
+        this.pattern[13] = true;
     }
 }
 
