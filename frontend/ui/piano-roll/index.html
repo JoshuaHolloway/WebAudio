@@ -20,7 +20,7 @@
         :root {
             --piano-roll-height: 660px;
             --r1-height: 25px;
-            --r2-height: 50px;
+            --r2-height: 45px;
             --r3-height: calc(var(--piano-roll-height) - (var(--r1-height) + var(--r2-height)) );
         }
 
@@ -34,11 +34,21 @@
             height: var(--r2-height);
             opacity: 0.5;
         }
-
         #r3 {
             height: var(--r3-height);
             background: blue;
             opacity: 0.5;
+
+            display: grid;
+            grid-template-columns: 80px 1fr;
+        }
+        #r3c1 {
+            width: 100%;
+            background: orange;
+        }
+        #r3c2 {
+            width: 100%;
+            background: purple;
         }
     </style>
     <div id="piano-roll">
