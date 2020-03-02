@@ -7,6 +7,60 @@ const synth = new Tone.MembraneSynth().toMaster();
 class Song {
 
 }
+// ========================================================
+
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// Grab each row of piano-roll
+const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
+const piano_roll_rows_arr = Array.from(piano_roll_rows);
+
+for(let i = 0; i < 16; i++)  {
+    // piano_roll_rows[i].addEventListener('click', () => console.log('JOSH') );
+
+    const piano_roll_elems = piano_roll_rows[i].children;
+    console.log(piano_roll_elems);
+    for (let j = 0; j  < 16; j++) {
+        piano_roll_elems[j].addEventListener('click', () => {
+            piano_roll_elems[j].style.background = 'black';
+        });
+        }
+}
+
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
+// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
 
 // ========================================================
 
@@ -333,6 +387,8 @@ function callback(time) {
         metronomes_pr[idx-1].style.background = 'black';
     else if (idx === 0 && timer > 0)
         metronomes_pr[15].style.background = 'black';
+
+
 
 
 
