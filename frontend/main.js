@@ -309,13 +309,20 @@ function callback(time) {
 
 
     // NEW
-    const metronome = document.querySelectorAll('.metronome');
+    // const metronome = document.querySelectorAll('.metronome');
 
-    metronome[idx].style.background = 'yellow';
+    // metronome[idx].style.background = 'yellow';
+    // if (idx > 0)
+    //     metronome[idx-1].style.background = 'black';
+    // else if (idx === 0 && timer > 0)
+    //     metronome[15].style.background = 'black';
+
+    const metronomes = document.querySelectorAll('.metronome-elem');
+    metronomes[idx].style.background = 'yellow';
     if (idx > 0)
-        metronome[idx-1].style.background = 'black';
+        metronomes[idx-1].style.background = 'black';
     else if (idx === 0 && timer > 0)
-        metronome[15].style.background = 'black';
+        metronomes[15].style.background = 'black';
 
     timer = (timer + 1);
 
