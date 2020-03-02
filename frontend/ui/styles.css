@@ -67,7 +67,22 @@ body {
     height: 300px;
     width: 100%;
     background: red;
+
+    display: grid;
+    grid-template-columns: 500px 2fr;
 }
+
+#r3c2-r1c1 {
+    height: 100%;
+    width: 100%;
+    background: cyan;
+}
+#r3c2-r1c2 {
+    height: 100%;
+    width: 100%;
+    background: hotpink;
+}
+
 
 #r3c2-r2 {
     height: var(--r3c2-r2-height);
