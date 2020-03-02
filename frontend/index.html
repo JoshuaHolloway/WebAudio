@@ -252,15 +252,15 @@
                 </div>
 
                 <!-- Piano Roll -->
-                <div id="r3c2-r2">
+                <div id="r3c2-r2" style="overflow: hidden;">
 
                     <style>
                         :root {
                             /* --piano-roll-height: 660px; */
                             --piano-roll-height: 720px;
-                            --r1-height: 25px;
-                            --r2-height: 45px;
-                            --r3-height: calc(var(--piano-roll-height) - (var(--r1-height) + var(--r2-height)) );
+                            --R1-height: 25px;
+                            --R2-height: 45px;
+                            --R3-height: calc(var(--piano-roll-height) - (var(--R1-height) + var(--R2-height)) );
                         }
                         #piano-roll {
                             width: 1675px;
@@ -268,31 +268,31 @@
                             /* background-image: url('piano-roll.png'); */
                         }
 
-                        #r1 {
+                        #R1 {
                             background: red;
-                            height: var(--r1-height);
+                            height: var(--R1-height);
                             opacity: 0.5;
                         }
-                        #r2 {
+                        #R2 {
                             background: green;
-                            height: var(--r2-height);
+                            height: var(--R2-height);
                             opacity: 0.5;
                         }
-                        #r3 {
-                            height: var(--r3-height);
+                        #R3 {
+                            height: var(--R3-height);
                             /* background: blue; */
                             opacity: 0.5;
 
                             display: grid;
                             grid-template-columns: 80px 1fr;
                         }
-                        #r3c1 {
+                        #R3c1 {
                             width: 100%;
                             /* background: orange; */
                             background-image: url('./keyboard.png');
                             margin-left: 6px;
                         }
-                        #r3c2 {
+                        #R3c2 {
                             width: 100%;
                             /* background: purple; */
                         }
@@ -319,11 +319,11 @@
 
                     </style>
                     <div id="piano-roll">
-                        <div id="r1"></div>
-                        <div id="r2"></div>
-                        <div id="r3">
-                            <div id="r3c1"></div>
-                            <div id="r3c2">
+                        <div id="R1"></div>
+                        <div id="R2"></div>
+                        <div id="R3">
+                            <div id="R3c1"></div>
+                            <div id="R3c2">
                                 <div class="piano-roll-row">
                                     <div class="piano-roll-elem"></div>
                                     <div class="piano-roll-elem"></div>
