@@ -264,6 +264,8 @@
 
                             --piano-width: 80px;
                             --piano-roll-row-height: 16px;
+
+                            --piano-roll-elem-width-32nd: 41.75px;
                         }
                         #piano-roll {
                             width: 1675px;
@@ -303,14 +305,26 @@
                             width: 100%;
                             /* background: purple; */
                         }
-                        .piano-roll-row {
+                        .piano-roll-row, .piano-roll-metronome-row {
                             height: var(--piano-roll-row-height);
                             border: 1px dashed black;
                             display: flex;
                         }
                         .piano-roll-elem {
                             height: 100%;
-                            width: 41.75px;
+                            width: var(--piano-roll-elem-width-32nd);
+                            background: yellow;
+                            border-right: 1px dotted green;
+                        }
+                        .piano-roll-metronome-elem-32nd {
+                            height: 100%;
+                            width: var(--piano-roll-elem-width-32nd);
+                            background: yellow;
+                            border-right: 1px dotted green;
+                        }
+                        .piano-roll-metronome-elem-16th {
+                            height: 100%;
+                            width: calc(2 * var(--piano-roll-elem-width-32nd) + 0.95px);
                             background: yellow;
                             border-right: 1px dotted green;
                         }
@@ -343,47 +357,27 @@
                             <div id="R2c1"></div>
                             <div id="R2c2">
 
-                                <div class="piano-roll-row">
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
-                                    <div class="piano-roll-elem"></div>
+                                <div class="piano-roll-metronome-row">
+
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    <div class="piano-roll-metronome-elem-16th"></div>
+                                    
+                                    <div class="piano-roll-metronome-elem-16th"></div>
                                 </div>
-
-
                             </div>
 
                         </div>
