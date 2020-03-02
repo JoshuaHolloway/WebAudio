@@ -36,7 +36,7 @@
         }
         #r3 {
             height: var(--r3-height);
-            background: blue;
+            /* background: blue; */
             opacity: 0.5;
 
             display: grid;
@@ -48,11 +48,18 @@
         }
         #r3c2 {
             width: 100%;
-            background: purple;
+            /* background: purple; */
         }
         .piano-roll-row {
             height: 16.5px;
             border: 1px dashed black;
+            display: flex;
+        }
+        .piano-roll-elem {
+            height: 100%;
+            width: 41.75px;
+            background: yellow;
+            border-right: 1px dotted green;
         }
         #row-1 {
             background: turquoise;
@@ -70,7 +77,47 @@
         <div id="r3">
             <div id="r3c1"></div>
             <div id="r3c2">
-                <div class="piano-roll-row" id="row-1"></div>
+                <div class="piano-roll-row">
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+                    <div class="piano-roll-elem"></div>
+
+
+                </div>
                 <div class="piano-roll-row" id="row-2"></div>
                 <div class="piano-roll-row" id="row-3"></div>
                 <div class="piano-roll-row" id="row-1"></div>
