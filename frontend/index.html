@@ -261,6 +261,9 @@
                             --R1-height: 25px;
                             --R2-height: 45px;
                             --R3-height: calc(var(--piano-roll-height) - (var(--R1-height) + var(--R2-height)) );
+
+                            --piano-width: 80px;
+                            --piano-roll-row-height: 16px;
                         }
                         #piano-roll {
                             width: 1675px;
@@ -275,8 +278,12 @@
                         }
                         #R2 {
                             background: green;
-                            height: var(--R2-height);
+                            /* height: var(--R2-height); */
+                            height: var(--piano-roll-row-height);
                             opacity: 0.5;
+
+                            display: grid;
+                            grid-template-columns: var(--piano-width) 1fr;
                         }
                         #R3 {
                             height: var(--R3-height);
@@ -284,7 +291,7 @@
                             opacity: 0.5;
 
                             display: grid;
-                            grid-template-columns: 80px 1fr;
+                            grid-template-columns: var(--piano-width) 1fr;
                         }
                         #R3c1 {
                             width: 100%;
@@ -297,7 +304,7 @@
                             /* background: purple; */
                         }
                         .piano-roll-row {
-                            height: 16px;
+                            height: var(--piano-roll-row-height);
                             border: 1px dashed black;
                             display: flex;
                         }
@@ -317,10 +324,69 @@
                             background: green;
                         }
 
+                        #R2c1 {
+                            /* height: 100%; */
+                            width: var(--piano-width);
+                            background: yellow;
+                        }
+                        #R2c2 {
+                            /* height: 100%; */
+                            width: 100%;
+                            background: blue;
+                        }
+
                     </style>
                     <div id="piano-roll">
                         <div id="R1"></div>
-                        <div id="R2"></div>
+                        <div id="R2">
+
+                            <div id="R2c1"></div>
+                            <div id="R2c2">
+
+                                <div class="piano-roll-row">
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                    <div class="piano-roll-elem"></div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
                         <div id="R3">
                             <div id="R3c1"></div>
                             <div id="R3c2">
