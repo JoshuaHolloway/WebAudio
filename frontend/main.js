@@ -31,14 +31,21 @@ class Song {
 const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
 const piano_roll_rows_arr = Array.from(piano_roll_rows);
 
-for(let i = 0; i < 16; i++)  {
+//                   1      2     3      4     5     6      7     8       9     10    11     12
+const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ]
+
+for(let row = 0; row < 16; row++)  {
     // piano_roll_rows[i].addEventListener('click', () => console.log('JOSH') );
 
-    const piano_roll_elems = piano_roll_rows[i].children;
+    const piano_roll_elems = piano_roll_rows[row].children;
     console.log(piano_roll_elems);
-    for (let j = 0; j  < 16; j++) {
-        piano_roll_elems[j].addEventListener('click', () => {
-            piano_roll_elems[j].style.background = 'black';
+    for (let col = 0; col  < 16; col++) {
+        piano_roll_elems[col].addEventListener('click', () => {
+            piano_roll_elems[col].style.background = 'black';
+
+            var synth = new Tone.Synth().toMaster();
+            synth.triggerAttackRelease(row_to_key[row], "8n");
+            console.log(`row: ${row}, key: ${row_to_key[row]}`);
         });
         }
 }
