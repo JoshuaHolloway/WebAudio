@@ -21,13 +21,20 @@ class Song {
 //     by with a 2D-array as the pattern.
 //     ---Row (1st-index) represents note
 //     ---Col (2nd-index) represents time
-const play_synth = (note) => {
+const play_synth = (note, accurate_time='now', velocity=1.0) => {
         const row = note;
 
         //                   1      2     3      4     5     6      7     8       9     10    11     12
         const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
 
-        synth.triggerAttackRelease(row_to_key[row], "8n");
+        // TODO: Play at different durations
+        const duration = '8n'; // eigth-note
+
+        if (accurate_time === 'now')
+            synth.triggerAttackRelease(row_to_key[row], duration);
+        else
+            synth.triggerAttackRelease(row_to_key[row], duration, accurate_time, velocity);
+        
         console.log(`row: ${row}, key: ${row_to_key[row]}`);
 };
 
@@ -625,7 +632,7 @@ function callback(time) {
         const notes_at_time_slice = channel_rack.piano_roll_instruments[0].get_notes_at_time(idx_mod);
 
         if(channel_rack.piano_roll_instruments[0].pattern[note][idx_mod]) {
-            play_synth(note);
+            play_synth(note, time);
         }
     }
 
