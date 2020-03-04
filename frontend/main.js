@@ -35,7 +35,7 @@ const play_synth = (note, accurate_time='now', velocity=1.0) => {
         else
             synth.triggerAttackRelease(row_to_key[row], duration, accurate_time, velocity);
         
-        console.log(`row: ${row}, key: ${row_to_key[row]}`);
+        console.log(`row: ${row}, key: ${row_to_key[row]}, at time: ${accurate_time}`);
 };
 
 class Piano_Roll_Instrument {
@@ -599,7 +599,7 @@ function callback(time) {
     timer = (timer + 1);
 
     const idx_mod = idx % 16;
-    console.log(`channel_rack.instruments[0].pattern[${idx_mod}] = ${channel_rack.instruments[0].pattern[idx_mod]}`);
+    // console.log(`channel_rack.instruments[0].pattern[${idx_mod}] = ${channel_rack.instruments[0].pattern[idx_mod]}`);
 
 
     if (channel_rack.instruments[0].pattern[idx_mod]) {
@@ -623,15 +623,15 @@ function callback(time) {
     // TODO: Change to grab notes at time (grab 1D-slice at time instance)
     // TODO: Change to polysynth to be able to play more than one note at once.
     // TODO: Be able to specify duration of note held
-    note = 0;
+
 
     // Do this outer loop in parallel
     const num_notes = 16; // TODO: Un-hard code this
     for(let note = 0; note < num_notes; note++) {
 
-        const notes_at_time_slice = channel_rack.piano_roll_instruments[0].get_notes_at_time(idx_mod);
-
         if(channel_rack.piano_roll_instruments[0].pattern[note][idx_mod]) {
+
+
             play_synth(note, time);
         }
     }
