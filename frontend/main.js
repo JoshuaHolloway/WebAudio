@@ -1,7 +1,8 @@
 // Globals
 let loop;
 let timer = 0;
-const synth = new Tone.MembraneSynth().toMaster();
+const membrane_synth = new Tone.MembraneSynth().toMaster();
+const synth = new Tone.Synth().toMaster();
 // ========================================================
 
 class Song {
@@ -9,68 +10,196 @@ class Song {
 }
 // ========================================================
 
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
 // Grab each row of piano-roll
 const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
 const piano_roll_rows_arr = Array.from(piano_roll_rows);
 
 //                   1      2     3      4     5     6      7     8       9     10    11     12
-const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ]
+const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
+
+
+const play_synth = (note) => {
+        const row = note;
+        synth.triggerAttackRelease(row_to_key[row], "8n");
+        console.log(`row: ${row}, key: ${row_to_key[row]}`);
+};
 
 for(let row = 0; row < 16; row++)  {
     // piano_roll_rows[i].addEventListener('click', () => console.log('JOSH') );
 
     const piano_roll_elems = piano_roll_rows[row].children;
-    console.log(piano_roll_elems);
     for (let col = 0; col  < 16; col++) {
         piano_roll_elems[col].addEventListener('click', () => {
             piano_roll_elems[col].style.background = 'black';
 
-            var synth = new Tone.Synth().toMaster();
-            synth.triggerAttackRelease(row_to_key[row], "8n");
-            console.log(`row: ${row}, key: ${row_to_key[row]}`);
+            play_synth(row);
         });
-        }
+    }
 }
-
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
-// ADDED THIS BUT HAVE NOT YET TESTED IT!!!!!!!!!!!!!!
 
 // ========================================================
 
+// -All instruments will have a piano roll
+// -By default they are at C4
+// -TO COLLAPSE INTO SINGLE INSTRUMENT WITH CURRENT Instrument CLASS
+//   --Piano_Roll_Instrument is Same as Instrument
+//     by with a 2D-array as the pattern.
+//     ---Row (1st-index) represents note
+//     ---Col (2nd-index) represents time
+
+
+class Piano_Roll_Instrument {
+
+    
+
+    // Fields
+    name = 'Untitled Instrument';
+    player = null;
+    pattern = [
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ];
+    
+    instrument_name_elem;
+
+    constructor(name, instrument_num) {
+
+        this.name = name;
+
+        // const Player_Default = {
+        //     onload:       Tone.noOp,
+        //     playbackRate: 1,
+        //     loop:         false,
+        //     autostart:    false,
+        //     loopStart:    0,
+        //     loopEnd:      0,
+        //     reverse:      false,
+        //     fadeIn:       0,
+        //     fadeOut:      0
+        // }
+        // this.player = new Tone.Player('./' + name).toMaster();
+
+        const instrument_num_str = instrument_num.toString();
+        this.instrument_name_elem = document.querySelector('#instrument-name-' + instrument_num);
+        // this.instrument_name_elem.innerHTML = 'I-' + instrument_num_str;
+        // this.instrument_name_elem.text = 'I-' + instrument_num_str;
+        this.instrument_name_elem.value = 'I-' + instrument_num_str;
+
+        // this.beats_elems = document.querySelectorAll('.Beats-' + instrument_num);
+        this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
+
+        // Initialize beat pattern on default instruments
+        this.set();
+
+        // Definitely not a pure function!
+        const change_beat_color = (i) => {
+            if (this.pattern[i]) 
+                this.beat_elems[i].style.background = 'black';
+            else 
+                this.beat_elems[i].style.background = 'rgba(255, 154, 72)';
+
+            const j = i;
+            if(this.pattern[j])
+            {
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    this.beat_elems[j].style.background = '#B2C2CC';
+                else // red elements
+                    this.beat_elems[j].style.background = '#DEB1B3';
+            }
+            else {
+                if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
+                    this.beat_elems[j].style.background = '#555A5E';
+                else // red elements
+                    this.beat_elems[j].style.background = '#655456';
+            }
+
+
+        };
+
+        // Event-listener for drawing beat-pattern
+        // this.beat_elems.forEach((val, i) => { // OLD UI
+        this.beat_elems.forEach((val, i) => { // NEW UI
+
+            // Set initial beat-pattern graphics
+            change_beat_color(i);
+            
+            // Change color of beat graphic upon click
+            //this.beat_elems[i].addEventListener('click', () => { // OLD UI
+            this.beat_elems[i].addEventListener('click', () => { // NEW UI
+                this.pattern[i] = !(this.pattern[i]);
+                change_beat_color(i);
+            });
+        });
+
+    }
+
+    // Methods
+    // change = name => this.player = new Tone.Player('./' + name).toMaster();
+
+
+    // TODO: Specify note
+    note = 0;
+
+
+    set() {
+
+        // TODO: Make this not hard coded
+        const row_length = 16;
+
+
+        for (let i = 0; i < row_length; ++i) {
+            this.pattern[0][i] = true;
+        }
+        console.log(this.pattern);
+            
+    }
+
+    clear() {
+        for (let pattern of this.pattern)
+            pattern = false;
+    }
+
+    print() {
+        for (let pattern of this.pattern)
+            console.log(pattern);
+    }
+
+    one_and_three() {
+        this.pattern[this.note][0] = true;
+        this.pattern[this.note][8] = true;
+    }
+
+    two_and_four() {
+        this.pattern[this.note][4] = true;
+        this.pattern[this.note][12] = true;
+    }
+
+    funky_bass_drum() {
+        this.pattern[this.note][0] = true;
+        this.pattern[this.note][7] = true;
+        this.pattern[this.note][9] = true;
+        this.pattern[this.note][10] = true;
+        this.pattern[this.note][13] = true;
+    }
+}
+
+// ========================================================
+
+// This currently only works with samples and not instruments with keys
 class Instrument {
 
     // Fields
@@ -122,14 +251,12 @@ class Instrument {
             const j = i;
             if(this.pattern[j])
             {
-                // console.log('i = ', i);
                 if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
                     this.beat_elems[j].style.background = '#B2C2CC';
                 else // red elements
                     this.beat_elems[j].style.background = '#DEB1B3';
             }
             else {
-                console.log('i = ', i);
                 if ((0<=j && j<4) || (8<=j && j<12)) // gray elements
                     this.beat_elems[j].style.background = '#555A5E';
                 else // red elements
@@ -269,7 +396,7 @@ class Channel_Rack_TO_REMOVE {
 
             // Apply to actual row in channel-rack:
             const channel_rack_center = document.getElementById('channel-rack-center');
-            console.log(channel_rack_center);
+            // console.log(channel_rack_center);
 
             const new_channel_rack_row = document.createElement('div');
             new_channel_rack_row.classList.add('channel-rack-row');
@@ -295,6 +422,8 @@ class Channel_Rack_TO_REMOVE {
 
 class Channel_Rack {
     instruments = [new Instrument('hh_sample.mp3', 0), new Instrument('clap_sample.mp3', 1), new Instrument('bass_sample.mp3', 2)];
+
+    piano_roll_instruments = [new Piano_Roll_Instrument('piano', 0)];
 }
 const channel_rack = new Channel_Rack();
 // ========================================================
@@ -423,6 +552,16 @@ function callback(time) {
         channel_rack.instruments[2].player.start(time);
         channel_rack.instruments[2].player.stop(time + 0.5);
     }
+
+    // TODO: Change to grab notes at time (grab 1D-slice at time instance)
+    // TODO: Change to polysynth to be able to play more than one note at once.
+    // TODO: Be able to specify duration of note held
+    note = 0;
+    if(channel_rack.piano_roll_instruments[0].pattern[note][idx_mod]) {
+
+        play_synth(note);
+    }
+
 
     // synth.triggerAttackRelease("C3", '4n', time);
 }
