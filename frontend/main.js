@@ -21,7 +21,15 @@ class Song {
 //     by with a 2D-array as the pattern.
 //     ---Row (1st-index) represents note
 //     ---Col (2nd-index) represents time
+const play_synth = (note) => {
+        const row = note;
 
+        //                   1      2     3      4     5     6      7     8       9     10    11     12
+        const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
+
+        synth.triggerAttackRelease(row_to_key[row], "8n");
+        console.log(`row: ${row}, key: ${row_to_key[row]}`);
+};
 
 class Piano_Roll_Instrument {
 
@@ -78,7 +86,7 @@ class Piano_Roll_Instrument {
         this.beat_elems = document.querySelectorAll('.beats-' + instrument_num + ' .beat');
 
         // Initialize beat pattern on default instruments
-        this.set();
+        this.diagonal_notes();
 
         // Definitely not a pure function!
         const change_beat_color = (i) => {
@@ -134,16 +142,13 @@ class Piano_Roll_Instrument {
         const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
         const piano_roll_rows_arr = Array.from(piano_roll_rows);
 
-        //                   1      2     3      4     5     6      7     8       9     10    11     12
-        const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
 
 
-        const play_synth = (note) => {
-                const row = note;
-                synth.triggerAttackRelease(row_to_key[row], "8n");
-                console.log(`row: ${row}, key: ${row_to_key[row]}`);
-        };
 
+
+
+        // TODO: Play the synth when the key is pressed on the keyboard column
+        //play_synth(row);
 
         // Put event listener on each note (row) for each time step (col)
         for(let row = 0; row < 16; row++)  {
@@ -154,7 +159,13 @@ class Piano_Roll_Instrument {
                 piano_roll_elems[col].addEventListener('click', () => {
                     piano_roll_elems[col].style.background = 'black';
 
+
+                    
                     play_synth(row);
+
+                    this.pattern[row][col] = true;
+                    console.log(this.pattern);
+
                 });
             }
         }
@@ -211,7 +222,39 @@ class Piano_Roll_Instrument {
         this.pattern[this.note][10] = true;
         this.pattern[this.note][13] = true;
     }
+
+    diagonal_notes() {
+        this.pattern[0][0] = true;
+        this.pattern[1][1] = true;
+        this.pattern[2][2] = true;
+        this.pattern[3][3] = true;
+        this.pattern[4][4] = true;
+        this.pattern[5][5] = true;
+        this.pattern[6][6] = true;
+        this.pattern[7][7] = true;
+        this.pattern[8][8] = true;
+        this.pattern[9][9] = true;
+        this.pattern[10][10] = true;
+        this.pattern[11][11] = true;
+        this.pattern[12][12] = true;
+        this.pattern[13][13] = true;
+        this.pattern[14][14] = true;
+        this.pattern[15][15] = true;
+    }
     
+    get_notes_at_time(col) {
+
+        // TODO: Un-Hard-Code!
+        const num_notes = 16;
+        
+        const matrix_slice = new Array(num_notes);
+        for(let row = 0; row < num_notes; row++) {
+
+            if(this.pattern[row][col])
+                matrix_slice[row] = true;
+        }
+        return matrix_slice;
+    }
 }
 
 // ========================================================
@@ -574,10 +617,19 @@ function callback(time) {
     // TODO: Change to polysynth to be able to play more than one note at once.
     // TODO: Be able to specify duration of note held
     note = 0;
-    if(channel_rack.piano_roll_instruments[0].pattern[note][idx_mod]) {
 
-        play_synth(note);
+    // Do this outer loop in parallel
+    const num_notes = 16; // TODO: Un-hard code this
+    for(let note = 0; note < num_notes; note++) {
+
+        const notes_at_time_slice = channel_rack.piano_roll_instruments[0].get_notes_at_time(idx_mod);
+
+        if(channel_rack.piano_roll_instruments[0].pattern[note][idx_mod]) {
+            play_synth(note);
+        }
     }
+
+
 
 
     // synth.triggerAttackRelease("C3", '4n', time);
