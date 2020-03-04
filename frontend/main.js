@@ -10,32 +10,7 @@ class Song {
 }
 // ========================================================
 
-// Grab each row of piano-roll
-const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
-const piano_roll_rows_arr = Array.from(piano_roll_rows);
 
-//                   1      2     3      4     5     6      7     8       9     10    11     12
-const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
-
-
-const play_synth = (note) => {
-        const row = note;
-        synth.triggerAttackRelease(row_to_key[row], "8n");
-        console.log(`row: ${row}, key: ${row_to_key[row]}`);
-};
-
-for(let row = 0; row < 16; row++)  {
-    // piano_roll_rows[i].addEventListener('click', () => console.log('JOSH') );
-
-    const piano_roll_elems = piano_roll_rows[row].children;
-    for (let col = 0; col  < 16; col++) {
-        piano_roll_elems[col].addEventListener('click', () => {
-            piano_roll_elems[col].style.background = 'black';
-
-            play_synth(row);
-        });
-    }
-}
 
 // ========================================================
 
@@ -145,7 +120,48 @@ class Piano_Roll_Instrument {
             });
         });
 
-    }
+
+
+
+
+
+
+
+
+
+
+        // Grab each row of piano-roll
+        const piano_roll_rows = document.getElementsByClassName('piano-roll-row');
+        const piano_roll_rows_arr = Array.from(piano_roll_rows);
+
+        //                   1      2     3      4     5     6      7     8       9     10    11     12
+        const row_to_key = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'E#4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', ];
+
+
+        const play_synth = (note) => {
+                const row = note;
+                synth.triggerAttackRelease(row_to_key[row], "8n");
+                console.log(`row: ${row}, key: ${row_to_key[row]}`);
+        };
+
+
+        // Put event listener on each note (row) for each time step (col)
+        for(let row = 0; row < 16; row++)  {
+            // piano_roll_rows[i].addEventListener('click', () => console.log('JOSH') );
+
+            const piano_roll_elems = piano_roll_rows[row].children;
+            for (let col = 0; col  < 16; col++) {
+                piano_roll_elems[col].addEventListener('click', () => {
+                    piano_roll_elems[col].style.background = 'black';
+
+                    play_synth(row);
+                });
+            }
+        }
+
+
+
+    } // constructor
 
     // Methods
     // change = name => this.player = new Tone.Player('./' + name).toMaster();
@@ -195,6 +211,7 @@ class Piano_Roll_Instrument {
         this.pattern[this.note][10] = true;
         this.pattern[this.note][13] = true;
     }
+    
 }
 
 // ========================================================
