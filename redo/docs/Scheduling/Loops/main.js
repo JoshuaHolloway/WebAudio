@@ -1,12 +1,16 @@
-const button = document.getElementById('play');
-button.addEventListener('click', () => {
-    const synth = new Tone.FMSynth().toMaster();
+const synth = new Tone.MembraneSynth().toMaster()
 
-    //schedule a series of notes to play as soon as the page loads
-    synth.triggerAttackRelease('C4', '4n', '8n');
-    synth.triggerAttackRelease('E4', '8n', Tone.Time('4n') + Tone.Time('8n'));
-    synth.triggerAttackRelease('G4', '16n', '2n');
-    synth.triggerAttackRelease('B4', '16n', Tone.Time('2n') + Tone.Time('8t'));
-    synth.triggerAttackRelease('G4', '16', Tone.Time('2n') + Tone.Time('8t')*2);
-    synth.triggerAttackRelease('E4', '2n', '0:3');
+//create a loop
+const loop = new Tone.Loop(function(time){
+	synth.triggerAttackRelease("C1", "8n", time)
+}, "4n")
+
+//play the loop between 0-2m on the transport
+loop.start(0).stop('2m')
+
+//start/stop the transport
+const play = document.querySelector('#play');
+play.addEventListener('click', (event) => {
+    console.log('clicked');
+    return Tone.Transport.toggle();
 });
