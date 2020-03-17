@@ -18,7 +18,8 @@ parts.addEventListener('click', e => {
                 note : 'C4', 
                 dur : '4n'
             },
-            { time : 
+            { 
+                time : 
                 {
                     '4n' : 1, 
                     '8n' : 1

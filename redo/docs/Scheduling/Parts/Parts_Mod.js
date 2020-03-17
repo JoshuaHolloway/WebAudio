@@ -18,28 +18,29 @@ parts.addEventListener('click', e => {
                 note : 'C4', 
                 dur : '4n'
             },
-            { time : 
-                {
-                    '4n' : 1, 
-                    '8n' : 1
-                }, 
-                note : 'E4', 
-                dur : '8n'
-            },
-            { 
-                time : '2n', 
-                note : 'G4', 
-                dur : '16n'
-            },
-            { 
-                time : 
-                {
-                    '2n' : 1, 
-                    '8t' : 1
-                },
-                note : 'B4', 
-                dur : '4n'
-            }
+            // { 
+            //     time : 
+            //     {
+            //         '4n' : 1, 
+            //         '8n' : 1
+            //     }, 
+            //     note : 'E4', 
+            //     dur : '8n'
+            // },
+            // { 
+            //     time : '2n', 
+            //     note : 'G4', 
+            //     dur : '16n'
+            // },
+            // { 
+            //     time : 
+            //     {
+            //         '2n' : 1, 
+            //         '8t' : 1
+            //     },
+            //     note : 'B4', 
+            //     dur : '4n'
+            // }
         ]
     );
 
@@ -48,7 +49,7 @@ parts.addEventListener('click', e => {
 
     //loop the part 3 times
     part.loop = 3;
-    part.loopEnd = '1m';
+    // part.loopEnd = '1m';
 
 
     Tone.Transport.toggle();
